@@ -1,0 +1,37 @@
+[
+  {
+    "id": "woody",
+    "name": "Woody",
+    "description": "Deep, earthy fragrances characterized by rich notes of cedarwood, vetiver, and creamy sandalwood.",
+    "keyNotes": ["Sandalwood", "Cedarwood", "Vetiver"],
+    "ingredients": "Crafted from wild-harvested woods and aged bark oils, evoking the raw depth of an ancient forest."
+  },
+  {
+    "id": "floral",
+    "name": "Floral",
+    "description": "Classic romantic scents centered around delicate blooms like jasmine, damask rose, and Florence iris.",
+    "keyNotes": ["Jasmine", "Damask Rose", "Peony"],
+    "ingredients": "Distilled from handpicked early morning blossoms to capture the purest, most dew-fresh floral oils."
+  },
+  {
+    "id": "citrus",
+    "name": "Citrus",
+    "description": "Bright, sparkling fragrances bursting with freshness, including zesty bergamot, lemon, and neroli.",
+    "keyNotes": ["Bergamot", "Neroli", "Mandarin"],
+    "ingredients": "Cold-pressed citrus peels combined with green botanical extracts for an uplifting, radiant trail."
+  },
+  {
+    "id": "oriental",
+    "name": "Oriental",
+    "description": "Warm, sweet, and sensual compositions carrying notes of amber, rich vanilla, and warm spices.",
+    "keyNotes": ["Vanilla", "Amber", "Cardamom"],
+    "ingredients": "Infused with resinous precious balsams and warm spices to construct a highly seductive, lingering scent."
+  },
+  {
+    "id": "fresh",
+    "name": "Fresh",
+    "description": "Luminous, light, and airy scents recalling sea breezes, dewy leaves, and clean rain.",
+    "keyNotes": ["Sea Salt", "Crisp Mint", "White Musk"],
+    "ingredients": "Formulated with marine accord and crushed mint leaves for a modern, revitalizing, and clean profile."
+  }
+]

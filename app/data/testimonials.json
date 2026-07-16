@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Genevieve R.",
+    "location": "Paris, France",
+    "rating": 5,
+    "quote": "L'Étoile Originelle is a work of art. The scent profile is incredibly complex yet subtle. It has easily become my signature scent.",
+    "perfume": "L'Étoile Originelle"
+  },
+  {
+    "name": "Julian K.",
+    "location": "London, UK",
+    "rating": 5,
+    "quote": "Bois de Nuit is unlike anything else. It carries a masculine depth that is both elegant and understated. The packaging is absolutely exquisite.",
+    "perfume": "Bois de Nuit"
+  },
+  {
+    "name": "Charlotte M.",
+    "location": "New York, USA",
+    "rating": 5,
+    "quote": "I am constantly asked what perfume I am wearing when I use Or Rose. The rose and iris blend is romantic, luxurious, and lasts all day.",
+    "perfume": "Or Rose"
+  }
+]

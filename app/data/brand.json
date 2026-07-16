@@ -1,0 +1,97 @@
+{
+  "features": [
+    {
+      "id": "ingredients",
+      "title": "Premium Ingredients",
+      "text": "Composed exclusively of rare Grasse absolutes, organic botanicals, and high-purity perfume oils."
+    },
+    {
+      "id": "longevity",
+      "title": "Long Lasting",
+      "text": "High concentration formulations designed to linger beautifully for 24+ hours on skin and fabrics."
+    },
+    {
+      "id": "packaging",
+      "title": "Luxury Packaging",
+      "text": "Thick custom glass cylinders, solid gold brass caps, nestled in luxury embossed linen cases."
+    },
+    {
+      "id": "shipping",
+      "title": "Worldwide Shipping",
+      "text": "Enjoy complimentary express delivery with tracked custom white-glove courier services globally."
+    }
+  ],
+  "boutiques": [
+    {
+      "city": "Paris",
+      "country": "France",
+      "address": "12 Rue du Faubourg Saint-Honoré, 75008 Paris",
+      "hours": "Mon–Sat: 10:00 – 20:00 · Sun: 12:00 – 18:00",
+      "phone": "+33 1 42 65 00 12",
+      "flag": "🇫🇷",
+      "flagship": true
+    },
+    {
+      "city": "New York",
+      "country": "United States",
+      "address": "680 Madison Avenue, New York, NY 10065",
+      "hours": "Mon–Sat: 10:00 – 19:00 · Sun: 11:00 – 17:00",
+      "phone": "+1 212 940 0012",
+      "flag": "🇺🇸",
+      "flagship": false
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "address": "5-4-1 Minami-Aoyama, Minato City, Tokyo 107-0062",
+      "hours": "Daily: 11:00 – 20:00",
+      "phone": "+81 3-6427-5012",
+      "flag": "🇯🇵",
+      "flagship": false
+    },
+    {
+      "city": "Dubai",
+      "country": "UAE",
+      "address": "Level 2, The Dubai Mall, Financial Centre Rd",
+      "hours": "Sun–Wed: 10:00 – 22:00 · Thu–Sat: 10:00 – 24:00",
+      "phone": "+971 4 339 0012",
+      "flag": "🇦🇪",
+      "flagship": false
+    }
+  ],
+  "milestones": [
+    { "year": "2008", "title": "Born in Paris", "text": "Founded by master perfumer Élise Moreau in a modest Grasse atelier, Étoile began as a personal vision: to craft timeless scents that transcend fashion and trend." },
+    { "year": "2012", "title": "The First Collection", "text": "L'Étoile Originelle launched exclusively at Printemps, Paris. Selling out within six weeks, it established Étoile as the avant-garde voice of niche French perfumery." },
+    { "year": "2016", "title": "Global Expansion", "text": "Étoile opened its first international boutique in Tokyo's Aoyama district, followed swiftly by New York and Dubai — bringing French olfactory artistry to the world." },
+    { "year": "2019", "title": "The Exclusive Line", "text": "Introduction of the ultra-prestige 'Exclusive' tier — higher-concentration formulations using the rarest raw materials sourced from six continents." },
+    { "year": "2024", "title": "Étoile Maison", "text": "The opening of Maison Étoile in the 8ème arrondissement — a fully immersive bespoke fragrance salon, combining artistry, craftsmanship, and the ultimate luxury experience." }
+  ],
+  "values": [
+    {
+      "icon": "sparkles",
+      "title": "Raw Material Purity",
+      "text": "Every ingredient is sourced in partnership with sustainable cooperatives — no synthetics, no shortcuts. We trace every drop from field to flacon."
+    },
+    {
+      "icon": "sun",
+      "title": "Slow Perfumery",
+      "text": "We believe great fragrance cannot be rushed. Each Étoile scent undergoes a minimum 24-month development cycle of evolution, testing, and refinement."
+    },
+    {
+      "icon": "globe",
+      "title": "Responsible Luxury",
+      "text": "Every Étoile flacon uses recycled glass and biodegradable packaging. Our production is carbon-neutral since 2021 — because true luxury respects the earth."
+    },
+    {
+      "icon": "face",
+      "title": "Personal Connection",
+      "text": "Each fragrance is a conversation between the perfumer and the wearer. We design not for masses but for those who understand the art of wearing an invisible signature."
+    }
+  ],
+  "stats": [
+    { "num": "16+", "label": "Years of Craft" },
+    { "num": "5", "label": "Signature Collections" },
+    { "num": "48", "label": "Countries Shipped" },
+    { "num": "100%", "label": "Natural Absolutes" }
+  ]
+}
