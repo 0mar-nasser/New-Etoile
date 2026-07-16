@@ -19,5 +19,19 @@
     "rating": 5,
     "quote": "I am constantly asked what perfume I am wearing when I use Or Rose. The rose and iris blend is romantic, luxurious, and lasts all day.",
     "perfume": "Or Rose"
+  },
+  {
+    "name": "Ariane D.",
+    "location": "Dubai, UAE",
+    "rating": 5,
+    "quote": "From the first mist, the fragrance feels couture. The bottle and packaging are as beautiful as the scent itself.",
+    "perfume": "L'Étoile Originelle Intense"
+  },
+  {
+    "name": "Matthieu V.",
+    "location": "Milan, Italy",
+    "rating": 5,
+    "quote": "Etoile fragrances are modern, clean, and deeply sophisticated. Each spray feels like a private luxury experience.",
+    "perfume": "Fleur Secrète"
   }
 ]

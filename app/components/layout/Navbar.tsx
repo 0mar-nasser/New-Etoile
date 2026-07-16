@@ -206,7 +206,7 @@ export default function Navbar() {
                 />
               </svg>
               {cartItemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#C8A76A] text-[#1D2418] font-semibold text-[10px] w-4.5 h-4.5 rounded-full flex items-center justify-center shadow-md animate-scale-in">
+                <span className="absolute -top-2 -right-2 bg-[#C8A76A] text-[#1D2418] font-semibold text-[10px] w-[18px] h-[18px] rounded-full flex items-center justify-center shadow-md animate-scale-in">
                   {cartItemCount}
                 </span>
               )}

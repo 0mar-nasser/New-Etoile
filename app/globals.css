@@ -13,17 +13,17 @@
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  
-  @keyframes float {
-    0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-12px) rotate(0.8deg);
-    }
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
 }
 
@@ -108,5 +108,45 @@ body {
 
 .luxury-btn:hover::after {
   left: 100%;
+}
+
+.luxury-btn:hover {
+  transform: translateY(-1px);
+}
+
+.bg-radial-gradient {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200, 167, 106, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 40%, rgba(244, 242, 232, 0.14), transparent 32%);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.45s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 

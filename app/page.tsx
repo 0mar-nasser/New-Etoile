@@ -10,7 +10,6 @@ import ImagePlaceholder from "./components/ui/ImagePlaceholder";
 import Hero from "./components/sections/Hero";
 import FeaturedCollection from "./components/sections/FeaturedCollection";
 import BestSellers from "./components/sections/BestSellers";
-import ScentQuiz from "./components/sections/ScentQuiz";
 import Heritage from "./components/sections/Heritage";
 import NoteFamilies from "./components/sections/NoteFamilies";
 import WhyChoose from "./components/sections/WhyChoose";
@@ -85,8 +84,6 @@ export default function Home() {
         <FeaturedCollection />
 
         <BestSellers onQuickView={setQuickViewProduct} />
-
-        <ScentQuiz />
 
         <Heritage />
 

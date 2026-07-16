@@ -30,8 +30,8 @@ export default function Hero() {
             <Button variant="primary" href="/collections">
               Shop Collection
             </Button>
-            <Button variant="secondary" href="/about">
-              Our Story
+            <Button variant="secondary" href="#philosophy">
+              Discover More
             </Button>
           </div>
         </div>
