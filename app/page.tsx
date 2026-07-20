@@ -58,7 +58,7 @@ export default function Home() {
     <>
       {/* 1. LOADING SCREEN */}
       {loading && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-opacity duration-700 ease-out">
+        <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-[#1D2418] transition-opacity duration-700 ease-out">
           <div className="relative flex flex-col items-center">
             <div className="mb-4 animate-pulse-slow">
               <span className="text-3xl text-[#C8A76A]">✦</span>
@@ -78,7 +78,7 @@ export default function Home() {
 
       {/* MAIN LAYOUT */}
       <div className={`relative min-h-screen flex flex-col transition-opacity duration-1000 ${loading ? "opacity-0" : "opacity-100"}`}>
-        
+
         <Hero />
 
         <FeaturedCollection />
@@ -87,24 +87,24 @@ export default function Home() {
 
         <Heritage />
 
-        <NoteFamilies />
-
-        <WhyChoose />
+        {/* <NoteFamilies /> */}
 
         <NewArrivals />
 
+        <WhyChoose />
+
         <Testimonials />
 
-        <SocialGallery />
+        {/* <SocialGallery /> */}
 
         <Newsletter />
 
         {/* DYNAMIC QUICK VIEW MODAL */}
         {quickViewProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div 
+            <div
               onClick={() => setQuickViewProduct(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
 
             <div className="bg-[#F4F2E8] border border-[#E7DFC9] rounded-[28px] max-w-2xl w-full p-8 shadow-2xl relative z-10">

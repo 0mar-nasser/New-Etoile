@@ -52,7 +52,7 @@ function CollectionsContent() {
   return (
     <div className="bg-[#F4F2E8] min-h-screen pt-28 pb-24 text-[#1D2418]">
       <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
-        
+
         {/* Editorial Heading */}
         <div className="space-y-4 max-w-2xl">
           <div className="flex items-center space-x-3 text-[#C8A76A]">
@@ -80,11 +80,10 @@ function CollectionsContent() {
               <button
                 key={tab.id}
                 onClick={() => setTabOverride(tab.id)}
-                className={`px-5 py-2.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 border cursor-pointer ${
-                  activeFilter === tab.id
-                    ? "bg-[#2B3325] border-[#C8A76A] text-[#F4F2E8] shadow-sm"
-                    : "bg-[#E7DFC9]/20 border-[#E7DFC9]/65 hover:bg-[#E7DFC9]/40 text-[#1D2418]"
-                }`}
+                className={`px-5 py-2.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 border cursor-pointer ${activeFilter === tab.id
+                  ? "bg-[#2B3325] border-[#C8A76A] text-[#F4F2E8] shadow-sm"
+                  : "bg-[#E7DFC9]/20 border-[#E7DFC9]/65 hover:bg-[#E7DFC9]/40 text-[#1D2418]"
+                  }`}
               >
                 {tab.name}
               </button>
@@ -158,9 +157,9 @@ function CollectionsContent() {
       {/* DYNAMIC QUICK VIEW MODAL */}
       {quickViewProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div 
+          <div
             onClick={() => setQuickViewProduct(null)}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           />
 
           <div className="bg-[#F4F2E8] border border-[#E7DFC9] rounded-[28px] max-w-2xl w-full p-8 shadow-2xl relative z-10">

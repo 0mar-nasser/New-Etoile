@@ -6,54 +6,200 @@ import brandData from "../../data/brand.json";
 export default function WhyChoose() {
   const getIcon = (id: string) => {
     switch (id) {
+      // Botanical Ingredients
       case "ingredients":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925 3.546 5.974 5.974 0 0 1-2.133-1A3.75 3.75 0 0 0 12 18Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.2"
+            stroke="currentColor"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 21c0-7 4-12 10-15-1 7-5 12-10 15Zm0 0c0-5-3-9-8-11 1 6 4 10 8 11Z"
+            />
           </svg>
         );
+
+      // Longevity
       case "longevity":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.2"
+            stroke="currentColor"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6v6l4 2m5-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10 3h4"
+            />
           </svg>
         );
+
+      // Perfume Bottle
       case "packaging":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.2"
+            stroke="currentColor"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 3h6v4H9V3Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M7 7h10l1 14H6L7 7Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 12h6"
+            />
           </svg>
         );
+
+      // Global Shipping
       case "shipping":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.2" stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.2"
+            stroke="currentColor"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 2a10 10 0 1 0 10 10"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 2c3 4 3 16 0 20M2 12h20"
+            />
           </svg>
         );
+
       default:
         return null;
     }
   };
 
   return (
-    <section className="py-20 md:py-28 bg-[#2B3325] border-t border-[#384233] text-[#F4F2E8] relative z-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section
+      className="
+      relative z-20 overflow-hidden
+      bg-[#F7F4EC]
+      py-24 md:py-32
+      text-[#273124]
+      border-t border-[#D8D0BC]
+      "
+    >
+      {/* Glow */}
+      <div className="absolute left-0 top-1/2 h-[350px] w-[350px] -translate-y-1/2 rounded-full bg-[#B9924E]/10 blur-[120px]" />
+
+      <div className="relative mx-auto max-w-7xl px-6 md:px-12">
+
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <span className="h-[1px] w-8 bg-[#B9924E]" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#B9924E]">
+              The Étoile Difference
+            </span>
+            <span className="h-[1px] w-8 bg-[#B9924E]" />
+          </div>
+
+          <h2 className="font-serif text-4xl font-light tracking-wide text-[#273124] md:text-5xl">
+            Crafted Beyond{" "}
+            <span className="italic text-[#B9924E]">
+              Ordinary
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-[#5F6658]">
+            Every Étoile fragrance is created with rare ingredients,
+            timeless craftsmanship, and an obsession for unforgettable details.
+          </p>
+        </div>
+
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+
           {brandData.features.map((feature) => (
             <div
               key={feature.id}
-              className="fade-in-section flex flex-col items-center text-center space-y-4 p-6 bg-[#1D2418]/40 border border-[#384233]/40 rounded-[20px]"
+              className="
+              group flex flex-col items-center
+              rounded-[28px]
+              border border-[#D8D0BC]
+              bg-[#FDFBF5]
+              p-8
+              text-center
+              transition-all duration-500
+              hover:-translate-y-2
+              hover:border-[#B9924E]/50
+              hover:shadow-xl
+              "
             >
-              <div className="w-12 h-12 rounded-full border border-[#C8A76A]/30 flex items-center justify-center text-[#C8A76A] bg-[#1D2418]/80 shadow-md">
+
+              {/* Icon */}
+              <div
+                className="
+                mb-5 flex h-16 w-16
+                items-center justify-center
+                rounded-full
+                border border-[#B9924E]/40
+                bg-[#F7F4EC]
+                text-[#B9924E]
+                transition-all duration-500
+                group-hover:bg-[#B9924E]
+                group-hover:text-[#FDFBF5]
+                "
+              >
                 {getIcon(feature.id)}
               </div>
-              <h3 className="font-serif text-lg tracking-wide text-[#E7DFC9] font-light">{feature.title}</h3>
-              <p className="text-xs text-[#E7DFC9]/70 leading-relaxed font-light">
+
+
+              <h3 className="font-serif text-xl font-light tracking-wide text-[#273124]">
+                {feature.title}
+              </h3>
+
+
+              <p className="mt-3 text-xs font-light leading-relaxed text-[#5F6658]">
                 {feature.text}
               </p>
+
+
+              {/* Decorative line */}
+              <div className="mt-6 h-[1px] w-10 bg-[#B9924E]/40 transition-all duration-500 group-hover:w-20" />
+
             </div>
           ))}
+
         </div>
       </div>
     </section>

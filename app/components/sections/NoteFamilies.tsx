@@ -1,91 +1,190 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import noteFamiliesData from "../../data/note_families.json";
 
+type NoteFamily = (typeof noteFamiliesData)[number];
+
+const familyMeta: Record<
+  NoteFamily["id"],
+  { symbol: string; accent: string; mood: string }
+> = {
+  woody: {
+    symbol: "W",
+    accent: "from-[#2B3325] to-[#384233]",
+    mood: "Deep & Earthy",
+  },
+  floral: {
+    symbol: "F",
+    accent: "from-[#3A2F35] to-[#5C3D4A]",
+    mood: "Romantic & Soft",
+  },
+  citrus: {
+    symbol: "C",
+    accent: "from-[#3D3A2A] to-[#5C5230]",
+    mood: "Bright & Radiant",
+  },
+  oriental: {
+    symbol: "O",
+    accent: "from-[#3A2A1F] to-[#5C3F2A]",
+    mood: "Warm & Sensual",
+  },
+  fresh: {
+    symbol: "R",
+    accent: "from-[#243038] to-[#2F4A4A]",
+    mood: "Airy & Clean",
+  },
+};
+
 export default function NoteFamilies() {
-  const [selectedNote, setSelectedNote] = useState(noteFamiliesData[0]);
+  const [selectedNote, setSelectedNote] = React.useState<NoteFamily>(noteFamiliesData[0]);
+  const selectedIndex = noteFamiliesData.findIndex((note) => note.id === selectedNote.id);
+  const meta = familyMeta[selectedNote.id];
 
   return (
-    <section id="notes" className="py-24 md:py-32 bg-[#F4F2E8] relative z-20">
+    <section id="notes" className="py-24 md:py-32 bg-[#E7DFC9]/25 relative z-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
-        <div className="fade-in-section text-center max-w-xl mx-auto mb-16 md:mb-20 flex flex-col items-center space-y-4">
-          <span className="text-[11px] tracking-[0.3em] uppercase text-[#C8A76A] font-bold">The Olfactory Wheel</span>
-          <h2 className="font-serif text-3xl md:text-5xl text-[#1D2418] font-light">Fragrance Note Families</h2>
-          <p className="text-xs text-[#2B3325]/70 font-light mt-2 max-w-sm">Select a note family to discover its raw ingredients and characters.</p>
-          <div className="h-[1px] w-12 bg-[#2B3325]/40 mt-2" />
+        <div className="fade-in-section text-center max-w-2xl mx-auto mb-14 md:mb-20 flex flex-col items-center space-y-4">
+          <div className="flex items-center space-x-3">
+            <div className="h-[1px] w-8 bg-[#C8A76A]" />
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#C8A76A] font-semibold">
+              The Olfactory Wheel
+            </span>
+            <div className="h-[1px] w-8 bg-[#C8A76A]" />
+          </div>
+          <h2 className="font-serif text-4xl md:text-5xl text-[#1D2418] font-light">
+            Fragrance Note <span className="italic text-[#2B3325]">Families</span>
+          </h2>
+          <p className="text-sm text-[#2B3325]/70 font-light leading-relaxed">
+            Explore the five pillars of perfumery and discover the raw character behind each
+            composition.
+          </p>
         </div>
 
-        {/* Note Selector Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mb-12">
-          {noteFamiliesData.map((note) => {
-            const isActive = selectedNote.id === note.id;
-            return (
-              <button
-                key={note.id}
-                onClick={() => setSelectedNote(note)}
-                className={`p-6 rounded-[20px] transition-all duration-500 flex flex-col items-center justify-center text-center space-y-3 cursor-pointer outline-none border ${
-                  isActive
-                    ? "bg-[#2B3325] border-[#C8A76A] text-[#F4F2E8] shadow-lg scale-105"
-                    : "bg-[#E7DFC9]/20 hover:bg-[#E7DFC9]/40 border-[#E7DFC9]/60 text-[#1D2418]"
-                }`}
-              >
-                <span className="text-2xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-                  {note.id === "woody" && "🪵"}
-                  {note.id === "floral" && "🌹"}
-                  {note.id === "citrus" && "🍋"}
-                  {note.id === "oriental" && "✨"}
-                  {note.id === "fresh" && "🍃"}
-                </span>
-                <span className="text-xs tracking-[0.15em] uppercase font-medium">
-                  {note.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div className="fade-in-section lg:col-span-4">
+            <div className="flex lg:flex-col gap-3 overflow-x-auto pb-2 lg:pb-0 lg:overflow-visible snap-x snap-mandatory lg:snap-none">
+              {noteFamiliesData.map((note, index) => {
+                const isActive = selectedNote.id === note.id;
+                const noteMeta = familyMeta[note.id];
 
-        {/* Content Panel */}
-        <div className="fade-in-section bg-[#E7DFC9]/35 rounded-[24px] border border-[#E7DFC9] p-8 md:p-12 transition-all duration-700 shadow-sm relative overflow-hidden">
-          <div className="absolute right-0 top-0 w-64 h-64 bg-[#C8A76A]/5 rounded-full blur-[60px]" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="md:col-span-7 flex flex-col space-y-4">
-              <span className="text-[10px] tracking-[0.30em] uppercase text-[#C8A76A] font-semibold">Fragrance Profile</span>
-              <h3 className="font-serif text-3xl text-[#1D2418] font-light tracking-wide">{selectedNote.name} Notes</h3>
-              <p className="text-sm md:text-base text-[#2B3325]/80 leading-relaxed font-light">
-                {selectedNote.description}
-              </p>
-              <div className="pt-2">
-                <h4 className="text-[11px] uppercase tracking-wider text-[#1D2418] font-semibold mb-2">Ingredients Sourcing:</h4>
-                <p className="text-xs text-[#2B3325]/75 italic font-light leading-relaxed max-w-xl">
-                  {selectedNote.ingredients}
-                </p>
-              </div>
+                return (
+                  <button
+                    key={note.id}
+                    onClick={() => setSelectedNote(note)}
+                    className={`min-w-[220px] lg:min-w-0 snap-start text-left rounded-[22px] border px-5 py-4 transition-all duration-300 cursor-pointer outline-none ${
+                      isActive
+                        ? "bg-[#1D2418] border-[#C8A76A]/60 text-[#F4F2E8] shadow-xl"
+                        : "bg-[#F4F2E8]/80 border-[#E7DFC9] text-[#1D2418] hover:border-[#C8A76A]/40 hover:bg-[#F4F2E8]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border font-serif text-lg ${
+                          isActive
+                            ? "border-[#C8A76A]/50 bg-[#C8A76A]/10 text-[#C8A76A]"
+                            : "border-[#E7DFC9] bg-white/50 text-[#2B3325]"
+                        }`}
+                      >
+                        {noteMeta.symbol}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-[10px] tracking-[0.25em] uppercase text-[#C8A76A] font-semibold">
+                          {String(index + 1).padStart(2, "0")}
+                        </p>
+                        <p className="font-serif text-xl font-light tracking-wide truncate">
+                          {note.name}
+                        </p>
+                        <p
+                          className={`text-[11px] font-light mt-0.5 ${
+                            isActive ? "text-[#E7DFC9]/70" : "text-[#2B3325]/55"
+                          }`}
+                        >
+                          {noteMeta.mood}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
+          </div>
 
-            <div className="md:col-span-5 flex flex-col bg-[#F4F2E8] p-6 rounded-[20px] border border-[#E7DFC9]/60 shadow-sm space-y-4">
-              <span className="text-[9px] tracking-widest uppercase text-[#C8A76A] font-bold">Key Essences</span>
-              <ul className="space-y-3">
-                {selectedNote.keyNotes.map((item, idx) => (
-                  <li key={idx} className="flex items-center space-x-3 text-xs md:text-sm font-light text-[#2B3325]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C8A76A]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={`/collections?filter=${selectedNote.id}`}
-                className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-6 py-2.5 rounded-full text-center text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 mt-2"
-              >
-                View Fragrances
-              </Link>
+          <div className="fade-in-section lg:col-span-8">
+            <div
+              key={selectedNote.id}
+              className={`relative overflow-hidden rounded-[32px] border border-[#384233]/40 bg-gradient-to-br ${meta.accent} text-[#F4F2E8] shadow-2xl transition-all duration-500`}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,167,106,0.18),transparent_55%)]" />
+              <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#C8A76A]/10 blur-3xl" />
+
+              <div className="relative z-10 p-8 md:p-12 space-y-8">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                  <div className="space-y-3">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A76A] font-semibold">
+                      Fragrance Profile
+                    </span>
+                    <h3 className="font-serif text-3xl md:text-4xl font-light tracking-wide">
+                      {selectedNote.name} Notes
+                    </h3>
+                    <p className="text-sm md:text-base text-[#E7DFC9]/80 font-light leading-relaxed max-w-2xl">
+                      {selectedNote.description}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="font-serif text-5xl text-[#C8A76A]/25 leading-none">
+                      {String(selectedIndex + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-[10px] tracking-[0.25em] uppercase text-[#E7DFC9]/50 mt-1">
+                      of 05 families
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="rounded-[24px] border border-[#384233]/60 bg-[#1D2418]/35 p-6 space-y-4">
+                    <span className="text-[10px] tracking-[0.25em] uppercase text-[#C8A76A] font-semibold">
+                      Key Essences
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedNote.keyNotes.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-[#C8A76A]/30 bg-[#C8A76A]/10 px-4 py-2 text-xs text-[#F4F2E8] font-light tracking-wide"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-[24px] border border-[#384233]/60 bg-[#1D2418]/35 p-6 space-y-4">
+                    <span className="text-[10px] tracking-[0.25em] uppercase text-[#C8A76A] font-semibold">
+                      Ingredients Sourcing
+                    </span>
+                    <p className="text-sm text-[#E7DFC9]/75 font-light leading-relaxed italic">
+                      {selectedNote.ingredients}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2 border-t border-[#384233]/60">
+                  <p className="text-[11px] tracking-[0.2em] uppercase text-[#E7DFC9]/55 font-light">
+                    Mood: {meta.mood}
+                  </p>
+                  <Link
+                    href={`/collections?filter=${selectedNote.id}`}
+                    className="luxury-btn inline-flex items-center justify-center gap-2 bg-[#C8A76A] hover:bg-[#F4F2E8] text-[#1D2418] px-7 py-3 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold transition-all duration-300"
+                  >
+                    <span>View Fragrances</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

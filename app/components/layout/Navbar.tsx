@@ -58,7 +58,17 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navBgClass}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        
+                {/* Center Logo */}
+        <Link href="/" className="flex flex-col items-center focus:outline-none">
+          <Image 
+            src="/Logos/title-light.png" 
+            alt="Etoile logo" 
+            width={120} 
+            height={35} 
+            className="object-contain"
+            priority
+          />
+        </Link>
         {/* Left Nav Links */}
         <div className="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
           {navigationData.navbarLinks.map((link) => (
@@ -81,17 +91,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center Logo */}
-        <Link href="/" className="flex flex-col items-center focus:outline-none">
-          <Image 
-            src="/Logos/title-light.png" 
-            alt="Etoile logo" 
-            width={120} 
-            height={35} 
-            className="object-contain"
-            priority
-          />
-        </Link>
+
 
         {/* Right Nav Options */}
         <div className="flex items-center space-x-4 md:space-x-6 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">

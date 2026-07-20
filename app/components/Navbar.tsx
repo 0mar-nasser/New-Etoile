@@ -9,14 +9,14 @@ import { PRODUCTS } from "../data/products";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { 
-    cartItemCount, 
-    toggleCartOpen, 
-    searchQuery, 
-    setSearchQuery, 
-    wishlist, 
+  const {
+    cartItemCount,
+    toggleCartOpen,
+    searchQuery,
+    setSearchQuery,
+    wishlist,
     toggleWishlist,
-    addToCart
+    addToCart,
   } = useCart();
 
   const [scrolled, setScrolled] = useState(false);
@@ -54,44 +54,58 @@ export default function Navbar() {
     : "bg-[#2B3325] py-4 border-b border-[#384233]/60 shadow-lg";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navBgClass}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navBgClass}`}
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        
+        {/* Center Logo */}
+        <Link
+          href="/"
+          className="flex flex-col items-center focus:outline-none"
+        >
+          <Image
+            src="/Logos/title-light.png"
+            alt="Etoile logo"
+            width={120}
+            height={35}
+            className="object-contain"
+            priority
+          />
+        </Link>
         {/* Left Nav Links */}
         <div className="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
-          <Link href="/collections" className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/collections" ? "text-[#C8A76A]" : ""}`}>
+          <Link
+            href="/collections"
+            className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/collections" ? "text-[#C8A76A]" : ""}`}
+          >
             Collections
           </Link>
-          <Link href="/about" className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/about" ? "text-[#C8A76A]" : ""}`}>
+          <Link
+            href="/about"
+            className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/about" ? "text-[#C8A76A]" : ""}`}
+          >
             Philosophy
           </Link>
-          <Link href="/contact" className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/contact" ? "text-[#C8A76A]" : ""}`}>
+          <Link
+            href="/contact"
+            className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/contact" ? "text-[#C8A76A]" : ""}`}
+          >
             Contact
           </Link>
         </div>
 
         {/* Mobile menu trigger */}
         <div className="md:hidden flex items-center">
-          <Link href="/collections" className="text-[#F4F2E8] hover:text-[#C8A76A] mr-4 text-xs tracking-widest uppercase font-light">
+          <Link
+            href="/collections"
+            className="text-[#F4F2E8] hover:text-[#C8A76A] mr-4 text-xs tracking-widest uppercase font-light"
+          >
             Shop
           </Link>
         </div>
 
-        {/* Center Logo */}
-        <Link href="/" className="flex flex-col items-center focus:outline-none">
-          <Image 
-            src="/Logos/title-light.png" 
-            alt="Etoile logo" 
-            width={120} 
-            height={35} 
-            className="object-contain"
-            priority
-          />
-        </Link>
-
         {/* Right Nav Options */}
         <div className="flex items-center space-x-4 md:space-x-6 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
-          
           {/* Search Icon & Box */}
           <div className="relative flex items-center">
             {searchActive && (
@@ -112,8 +126,19 @@ export default function Navbar() {
               className="hover:text-[#C8A76A] transition-colors focus:outline-none p-1"
               aria-label="Search"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z"
+                />
               </svg>
             </button>
           </div>
@@ -125,8 +150,19 @@ export default function Navbar() {
               className="relative hover:text-[#C8A76A] transition-colors focus:outline-none p-1 flex items-center"
               aria-label="Wishlist"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                />
               </svg>
               {wishlist.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#C8A76A] text-[#1D2418] font-bold text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">
@@ -138,21 +174,38 @@ export default function Navbar() {
             {wishlistOpen && (
               <div className="absolute right-0 mt-3 w-64 bg-[#F4F2E8] border border-[#E7DFC9] rounded-[16px] shadow-2xl p-4 z-50 text-[#1D2418] normal-case tracking-normal">
                 <div className="flex items-center justify-between border-b border-[#E7DFC9] pb-2 mb-2">
-                  <span className="font-serif text-xs font-semibold tracking-wider uppercase text-[#2B3325]">Wishlist</span>
-                  <button onClick={() => setWishlistOpen(false)} className="text-[10px] text-[#C8A76A] hover:underline uppercase tracking-wider font-light">Close</button>
+                  <span className="font-serif text-xs font-semibold tracking-wider uppercase text-[#2B3325]">
+                    Wishlist
+                  </span>
+                  <button
+                    onClick={() => setWishlistOpen(false)}
+                    className="text-[10px] text-[#C8A76A] hover:underline uppercase tracking-wider font-light"
+                  >
+                    Close
+                  </button>
                 </div>
 
                 {wishlistedProducts.length === 0 ? (
-                  <p className="text-[11px] text-[#2B3325]/60 text-center py-4 font-light">Your wishlist is empty.</p>
+                  <p className="text-[11px] text-[#2B3325]/60 text-center py-4 font-light">
+                    Your wishlist is empty.
+                  </p>
                 ) : (
                   <div className="space-y-2.5 max-h-60 overflow-y-auto">
                     {wishlistedProducts.map((p) => (
-                      <div key={p.id} className="flex items-center justify-between gap-2 border-b border-[#E7DFC9]/50 pb-2 last:border-b-0 last:pb-0">
+                      <div
+                        key={p.id}
+                        className="flex items-center justify-between gap-2 border-b border-[#E7DFC9]/50 pb-2 last:border-b-0 last:pb-0"
+                      >
                         <div className="flex flex-col">
-                          <Link href={`/collections/${p.id}`} className="font-serif text-xs font-medium text-[#1D2418] hover:text-[#C8A76A]">
+                          <Link
+                            href={`/collections/${p.id}`}
+                            className="font-serif text-xs font-medium text-[#1D2418] hover:text-[#C8A76A]"
+                          >
                             {p.name}
                           </Link>
-                          <span className="text-[9px] text-[#C8A76A] font-semibold">${p.price}</span>
+                          <span className="text-[9px] text-[#C8A76A] font-semibold">
+                            ${p.price}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-1.5">
                           <button
@@ -166,8 +219,17 @@ export default function Navbar() {
                             className="text-red-400 hover:text-red-600 p-1"
                             aria-label="Remove from wishlist"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                              <path fillRule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.536l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.006.306l-1.5 2.5a.75.75 0 1 0 1.292.76l1.5-2.5a.75.75 0 0 0-.286-1.066Zm5.34.306a.75.75 0 1 0-1.292-.762l-1.5 2.5a.75.75 0 1 0 1.292.762l1.5-2.5Z" clipRule="evenodd" />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="w-3.5 h-3.5"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.536l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.006.306l-1.5 2.5a.75.75 0 1 0 1.292.76l1.5-2.5a.75.75 0 0 0-.286-1.066Zm5.34.306a.75.75 0 1 0-1.292-.762l-1.5 2.5a.75.75 0 1 0 1.292.762l1.5-2.5Z"
+                                clipRule="evenodd"
+                              />
                             </svg>
                           </button>
                         </div>
@@ -185,7 +247,9 @@ export default function Navbar() {
             className="relative flex items-center space-x-1 md:space-x-2 focus:outline-none group p-1"
             aria-label="Open Cart"
           >
-            <span className="hover:text-[#C8A76A] transition-colors duration-300 hidden sm:inline">Cart</span>
+            <span className="hover:text-[#C8A76A] transition-colors duration-300 hidden sm:inline">
+              Cart
+            </span>
             <div className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +272,6 @@ export default function Navbar() {
               )}
             </div>
           </button>
-
         </div>
       </div>
     </nav>
