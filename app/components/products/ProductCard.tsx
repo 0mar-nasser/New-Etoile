@@ -26,11 +26,11 @@ export default function ProductCard({
     >
       {/* Placeholder Container */}
       <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6">
-        <ImagePlaceholder label={`${product.name} Bottle Scent`} aspect="aspect-[4/5]" theme="light" />
-        
+        {/* <ImagePlaceholder label={`${product.name} Bottle Scent`} aspect="aspect-[4/5]" theme="light" /> */}
+
         {/* Hover Info Overlay */}
         <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-          <button 
+          <button
             onClick={() => onQuickView(product)}
             className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-5 py-2.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
           >
@@ -75,7 +75,7 @@ export default function ProductCard({
         <p className="text-xs text-[#2B3325]/75 font-light leading-relaxed flex-grow line-clamp-2">
           {product.tagline}
         </p>
-        
+
         {/* Notes tags */}
         <div className="flex flex-wrap gap-1.5 pt-2">
           {product.notes.map((note, i) => (
@@ -89,8 +89,8 @@ export default function ProductCard({
         <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 mt-4">
           <span className="font-serif text-lg text-[#1D2418] font-medium">${product.price}</span>
           <div className="flex items-center space-x-3">
-            <Link 
-              href={`/collections/${product.id}`} 
+            <Link
+              href={`/collections/${product.id}`}
               className="text-[9px] tracking-widest uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A]/40 pb-0.5"
             >
               View Details

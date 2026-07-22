@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { CATALOG_ITEMS, CatalogItem } from "../data/catalog";
 import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 import { useCart } from "../context/CartContext";
@@ -33,7 +34,8 @@ const itemToProduct = (item: CatalogItem, volume: string): Product => {
     family: item.category,
     notes: [],
     notesDetailed: { head: "", heart: "", base: "" },
-    sizes: sizes
+    sizes: sizes,
+    image: item.image
   };
 };
 
@@ -41,7 +43,17 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem, onQuickView: (i
   return (
     <div className="bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40">
       <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6" onClick={() => onQuickView(item)}>
-        <ImagePlaceholder label={item.name} aspect="aspect-[4/5]" theme="light" />
+        {item.image ? (
+          <Image
+            src={item.image}
+            alt={item.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <ImagePlaceholder label={item.name} aspect="aspect-[4/5]" theme="light" />
+        )}
         <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
           <button className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-5 py-2.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer">
             Quick View
@@ -140,11 +152,10 @@ export default function CollectionsPage() {
                         setActiveTab(tab.id);
                         setBottleStyleFilter("All");
                       }}
-                      className={`whitespace-nowrap text-left px-4 py-2.5 rounded-[12px] text-xs tracking-wider transition-all duration-300 cursor-pointer ${
-                        activeTab === tab.id
-                          ? "bg-[#2B3325] text-[#F4F2E8] font-medium shadow-sm"
-                          : "text-[#2B3325] hover:bg-[#E7DFC9]/40 bg-[#E7DFC9]/20 lg:bg-transparent"
-                      }`}
+                      className={`whitespace-nowrap text-left px-4 py-2.5 rounded-[12px] text-xs tracking-wider transition-all duration-300 cursor-pointer ${activeTab === tab.id
+                        ? "bg-[#2B3325] text-[#F4F2E8] font-medium shadow-sm"
+                        : "text-[#2B3325] hover:bg-[#E7DFC9]/40 bg-[#E7DFC9]/20 lg:bg-transparent"
+                        }`}
                     >
                       {tab.name}
                     </button>
@@ -156,11 +167,10 @@ export default function CollectionsPage() {
                           <button
                             key={style}
                             onClick={() => setBottleStyleFilter(style)}
-                            className={`text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${
-                              bottleStyleFilter === style
-                                ? "text-[#C8A76A] font-bold"
-                                : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30"
-                            }`}
+                            className={`text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${bottleStyleFilter === style
+                              ? "text-[#C8A76A] font-bold"
+                              : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30"
+                              }`}
                           >
                             {style}
                           </button>
@@ -180,11 +190,10 @@ export default function CollectionsPage() {
                     <button
                       key={style}
                       onClick={() => setBottleStyleFilter(style)}
-                      className={`whitespace-nowrap text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${
-                        bottleStyleFilter === style
-                          ? "text-[#C8A76A] font-bold bg-[#2B3325]/10 px-3 py-1.5"
-                          : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30 bg-transparent"
-                      }`}
+                      className={`whitespace-nowrap text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${bottleStyleFilter === style
+                        ? "text-[#C8A76A] font-bold bg-[#2B3325]/10 px-3 py-1.5"
+                        : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30 bg-transparent"
+                        }`}
                     >
                       {style}
                     </button>
@@ -200,21 +209,31 @@ export default function CollectionsPage() {
             {activeTab === "pumps" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-700">
                 {filteredItems.map(item => (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className="group relative overflow-hidden rounded-[32px] aspect-[16/9] bg-[#E7DFC9]/30 flex items-center justify-center shadow-sm hover:shadow-xl transition-all cursor-pointer"
                     onClick={() => {
                       setSelectedVolume("100ml");
                       setQuickViewItem(item);
                     }}
                   >
-                    <ImagePlaceholder label={item.name} aspect="aspect-[16/9]" theme="light" />
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    ) : (
+                      <ImagePlaceholder label={item.name} aspect="aspect-[16/9]" theme="light" />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1D2418]/90 via-[#1D2418]/20 to-transparent flex flex-col justify-end p-8 text-left">
-                       <h3 className="font-serif text-3xl text-[#F4F2E8] font-light">{item.name}</h3>
-                       <p className="text-sm text-[#E7DFC9]/90 mt-2 max-w-md">{item.description}</p>
-                       <div className="mt-4">
-                         <span className="text-[10px] tracking-widest uppercase text-[#C8A76A] font-bold">{item.subCategory}</span>
-                       </div>
+                      <h3 className="font-serif text-3xl text-[#F4F2E8] font-light">{item.name}</h3>
+                      <p className="text-sm text-[#E7DFC9]/90 mt-2 max-w-md">{item.description}</p>
+                      <div className="mt-4">
+                        <span className="text-[10px] tracking-widest uppercase text-[#C8A76A] font-bold">{item.subCategory}</span>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -223,20 +242,20 @@ export default function CollectionsPage() {
               /* Normal Grid for others */
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-in fade-in duration-700">
                 {filteredItems.map((item) => (
-                  <CatalogCard 
-                    key={item.id} 
-                    item={item} 
+                  <CatalogCard
+                    key={item.id}
+                    item={item}
                     onQuickView={(clickedItem) => {
                       setSelectedVolume(clickedItem.category === "bottles" ? "30ml" : "100ml");
                       setQuickViewItem(clickedItem);
-                    }} 
+                    }}
                   />
                 ))}
                 {filteredItems.length === 0 && (
-                   <div className="col-span-full py-20 text-center space-y-4">
-                      <h3 className="font-serif text-2xl text-[#1D2418] font-light">No products found</h3>
-                      <p className="text-sm text-[#2B3325]/70">Try adjusting your filters.</p>
-                   </div>
+                  <div className="col-span-full py-20 text-center space-y-4">
+                    <h3 className="font-serif text-2xl text-[#1D2418] font-light">No products found</h3>
+                    <p className="text-sm text-[#2B3325]/70">Try adjusting your filters.</p>
+                  </div>
                 )}
               </div>
             )}
@@ -264,7 +283,17 @@ export default function CollectionsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left">
               <div className="relative aspect-square w-full rounded-[20px] overflow-hidden">
-                <ImagePlaceholder label={quickViewItem.name} aspect="aspect-square" theme="light" />
+                {quickViewItem.image ? (
+                  <Image
+                    src={quickViewItem.image}
+                    alt={quickViewItem.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                ) : (
+                  <ImagePlaceholder label={quickViewItem.name} aspect="aspect-square" theme="light" />
+                )}
               </div>
 
               <div className="space-y-4">
@@ -295,11 +324,10 @@ export default function CollectionsPage() {
                         <button
                           key={size}
                           onClick={() => setSelectedVolume(size)}
-                          className={`px-3 py-1 rounded-md text-[10px] tracking-wider transition-all duration-300 border cursor-pointer ${
-                            selectedVolume === size
-                              ? "bg-[#C8A76A] text-[#1D2418] border-[#C8A76A] font-bold"
-                              : "bg-transparent text-[#2B3325] border-[#E7DFC9] hover:border-[#C8A76A]"
-                          }`}
+                          className={`px-3 py-1 rounded-md text-[10px] tracking-wider transition-all duration-300 border cursor-pointer ${selectedVolume === size
+                            ? "bg-[#C8A76A] text-[#1D2418] border-[#C8A76A] font-bold"
+                            : "bg-transparent text-[#2B3325] border-[#E7DFC9] hover:border-[#C8A76A]"
+                            }`}
                         >
                           {size}
                         </button>
@@ -313,19 +341,18 @@ export default function CollectionsPage() {
                     <span className="text-[10px] uppercase tracking-widest text-[#2B3325]/60 font-bold">Price</span>
                     <span className="font-serif text-2xl font-semibold text-[#1D2418]">
                       {quickViewItem.category === "bottles"
-                        ? `$${
-                            {
-                              "30ml": 10,
-                              "50ml": 15,
-                              "75ml": 20,
-                              "100ml": 25,
-                              "150ml": 30,
-                              "200ml": 35,
-                            }[selectedVolume] || 25
-                          }`
+                        ? `$${{
+                          "30ml": 10,
+                          "50ml": 15,
+                          "75ml": 20,
+                          "100ml": 25,
+                          "150ml": 30,
+                          "200ml": 35,
+                        }[selectedVolume] || 25
+                        }`
                         : quickViewItem.price
-                        ? `$${quickViewItem.price}`
-                        : "Contact for Pricing"}
+                          ? `$${quickViewItem.price}`
+                          : "Contact for Pricing"}
                     </span>
                   </div>
 
@@ -333,11 +360,10 @@ export default function CollectionsPage() {
                     {/* Add to Wishlist */}
                     <button
                       onClick={() => toggleWishlist(quickViewItem.id)}
-                      className={`flex-1 border py-3 rounded-full text-[10px] tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
-                        isInWishlist(quickViewItem.id)
-                          ? "bg-[#C8A76A]/20 border-[#C8A76A] text-[#1D2418]"
-                          : "bg-transparent border-[#2B3325] text-[#2B3325] hover:bg-[#2B3325] hover:text-[#F4F2E8]"
-                      }`}
+                      className={`flex-1 border py-3 rounded-full text-[10px] tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${isInWishlist(quickViewItem.id)
+                        ? "bg-[#C8A76A]/20 border-[#C8A76A] text-[#1D2418]"
+                        : "bg-transparent border-[#2B3325] text-[#2B3325] hover:bg-[#2B3325] hover:text-[#F4F2E8]"
+                        }`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -16,6 +16,7 @@ export interface Product {
     volume: string;
     price: number;
   }[];
+  image?: string;
 }
 
 export const PRODUCTS: Product[] = [
@@ -37,7 +38,8 @@ export const PRODUCTS: Product[] = [
       { volume: "100ml", price: 185 },
       { volume: "200ml", price: 295 }
     ],
-    description: "A timeless, sophisticated blend that balances the delicate romance of fresh Grasse jasmine with the warm depth of gold amber and creamy sandalwood. It represents the quintessential French elegance, crafting a unique trailing scent that lingers beautifully for hours."
+    description: "A timeless, sophisticated blend that balances the delicate romance of fresh Grasse jasmine with the warm depth of gold amber and creamy sandalwood. It represents the quintessential French elegance, crafting a unique trailing scent that lingers beautifully for hours.",
+    image: "/images/product_originelle.png"
   },
   {
     id: "bois",
@@ -57,7 +59,8 @@ export const PRODUCTS: Product[] = [
       { volume: "100ml", price: 195 },
       { volume: "200ml", price: 310 }
     ],
-    description: "Inspired by Parisian nights, Bois de Nuit is a bold, velvety composition. Earthy base notes of vetiver and rich cedarwood are crowned by dark leather and hints of black pepper, projecting power, refinement, and allure."
+    description: "Inspired by Parisian nights, Bois de Nuit is a bold, velvety composition. Earthy base notes of vetiver and rich cedarwood are crowned by dark leather and hints of black pepper, projecting power, refinement, and allure.",
+    image: "/images/collection_men.png"
   },
   {
     id: "or-rose",
@@ -77,7 +80,8 @@ export const PRODUCTS: Product[] = [
       { volume: "100ml", price: 190 },
       { volume: "200ml", price: 300 }
     ],
-    description: "Luminous and romantic, Or Rose captures the scent of blooming French rose gardens at sunrise. Handpicked Damask rose petals blend with precious Florence iris and a soft whisper of Madagascar vanilla to create a floral masterpiece."
+    description: "Luminous and romantic, Or Rose captures the scent of blooming French rose gardens at sunrise. Handpicked Damask rose petals blend with precious Florence iris and a soft whisper of Madagascar vanilla to create a floral masterpiece.",
+    image: "/images/collection_women.png"
   },
   {
     id: "fleur-secrete",
@@ -97,7 +101,8 @@ export const PRODUCTS: Product[] = [
       { volume: "100ml", price: 180 },
       { volume: "200ml", price: 285 }
     ],
-    description: "A bright, sparkling fragrance that opens with crisp Italian bergamot and neroli, settling into a heart of sun-drenched orange blossom and clean white musk. It is a breath of fresh morning air in a bottle."
+    description: "A bright, sparkling fragrance that opens with crisp Italian bergamot and neroli, settling into a heart of sun-drenched orange blossom and clean white musk. It is a breath of fresh morning air in a bottle.",
+    image: "/images/collection_unisex.png"
   },
   {
     id: "originelle-intense",
@@ -117,6 +122,7 @@ export const PRODUCTS: Product[] = [
       { volume: "100ml", price: 215 },
       { volume: "200ml", price: 345 }
     ],
-    description: "An elevated interpretation of our legendary signature scent. Re-designed with double the absolute concentration, incorporating smoked amber crystals and vanilla pod infusions for an incredibly deep, dark, and sensual dry-down experience."
+    description: "An elevated interpretation of our legendary signature scent. Re-designed with double the absolute concentration, incorporating smoked amber crystals and vanilla pod infusions for an incredibly deep, dark, and sensual dry-down experience.",
+    image: "/images/collection_exclusive.png"
   }
 ];

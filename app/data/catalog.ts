@@ -6,6 +6,7 @@ export interface CatalogItem {
   description: string;
   price?: number;
   features?: string[];
+  image?: string;
 }
 
 export const CATALOG_ITEMS: CatalogItem[] = [
@@ -44,6 +45,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
   },
 
   // BOTTLES
+  // Normal Bottles
   {
     id: "bottle-normal-30",
     name: "Classic Cylinder - 30ml",
@@ -51,22 +53,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     subCategory: "Normal Bottle",
     description: "A timeless, straight-walled cylindrical glass bottle ideal for travel sizes.",
     features: ["Capacity: 30ml", "Finish: Clear Glass", "Neck: Crimp 15mm"],
-  },
-  {
-    id: "bottle-polished-50",
-    name: "Prism Elegance - 50ml",
-    category: "bottles",
-    subCategory: "Polished Bottle",
-    description: "High-polish multi-faceted bottle that captures and reflects light beautifully.",
-    features: ["Capacity: 50ml", "Finish: High Polish", "Neck: Screw 15mm"],
-  },
-  {
-    id: "bottle-vip-100",
-    name: "Crown Jewel - 100ml",
-    category: "bottles",
-    subCategory: "VIP Bottle",
-    description: "Heavyweight crystal-clear glass with an ultra-thick base for a premium feel.",
-    features: ["Capacity: 100ml", "Finish: Premium Crystal Clear", "Neck: Crimp 15mm"],
+    image: "/images/Bottles/photo_1_2026-07-22_23-11-04.jpg"
   },
   {
     id: "bottle-normal-100",
@@ -75,6 +62,56 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     subCategory: "Normal Bottle",
     description: "Clean, modern square profile perfect for contemporary brands.",
     features: ["Capacity: 100ml", "Finish: Matte Frosted", "Neck: Crimp 15mm"],
+    image: "/images/Bottles/photo_2_2026-07-22_23-11-04.jpg"
+  },
+  {
+    id: "bottle-normal-150",
+    name: "Linear Essence - 150ml",
+    category: "bottles",
+    subCategory: "Normal Bottle",
+    description: "Elegant tall rectangular profile with structured shoulders.",
+    features: ["Capacity: 150ml", "Finish: Amber Glass", "Neck: Screw 15mm"],
+    image: "/images/Bottles/photo_3_2026-07-22_23-11-04.jpg"
+  },
+
+  // Polished Bottles
+  {
+    id: "bottle-polished-50",
+    name: "Prism Elegance - 50ml",
+    category: "bottles",
+    subCategory: "Polished Bottle",
+    description: "High-polish multi-faceted bottle that captures and reflects light beautifully.",
+    features: ["Capacity: 50ml", "Finish: High Polish", "Neck: Screw 15mm"],
+    image: "/images/Bottles/photo_4_2026-07-22_23-11-04.jpg"
+  },
+  {
+    id: "bottle-polished-75",
+    name: "Diamond Cut - 75ml",
+    category: "bottles",
+    subCategory: "Polished Bottle",
+    description: "Exquisite diamond-cut pattern offering a highly tactile luxury experience.",
+    features: ["Capacity: 75ml", "Finish: Fire-polished Crystal", "Neck: Crimp 15mm"],
+    image: "/images/Bottles/photo_5_2026-07-22_23-11-04.jpg"
+  },
+  {
+    id: "bottle-polished-100",
+    name: "Orbital Lustre - 100ml",
+    category: "bottles",
+    subCategory: "Polished Bottle",
+    description: "Spherical silhouette with a hand-polished, ultra-glossy exterior.",
+    features: ["Capacity: 100ml", "Finish: High-gloss Clear", "Neck: Screw 15mm"],
+    image: "/images/Bottles/photo_6_2026-07-22_23-11-04.jpg"
+  },
+
+  // VIP Bottles
+  {
+    id: "bottle-vip-100",
+    name: "Crown Jewel - 100ml",
+    category: "bottles",
+    subCategory: "VIP Bottle",
+    description: "Heavyweight crystal-clear glass with an ultra-thick base for a premium feel.",
+    features: ["Capacity: 100ml", "Finish: Premium Crystal Clear", "Neck: Crimp 15mm"],
+    image: "/images/Bottles/photo_7_2026-07-22_23-11-04.jpg"
   },
   {
     id: "bottle-vip-200",
@@ -83,6 +120,16 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     subCategory: "VIP Bottle",
     description: "Oversized luxury decanter style bottle for exclusive and niche collections.",
     features: ["Capacity: 200ml", "Finish: Fire-polished", "Neck: Crimp 20mm"],
+    image: "/images/Bottles/photo_8_2026-07-22_23-11-04.jpg"
+  },
+  {
+    id: "bottle-vip-250",
+    name: "Imperial Flask - 250ml",
+    category: "bottles",
+    subCategory: "VIP Bottle",
+    description: "Bold flask architecture designed for VIP clients and limited runs.",
+    features: ["Capacity: 250ml", "Finish: Platinum Coating", "Neck: Crimp 20mm"],
+    image: "/images/Bottles/photo_9_2026-07-22_23-11-04.jpg"
   },
 
   // CAPS
@@ -92,6 +139,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     category: "caps",
     subCategory: "Plastic Caps",
     description: "High-clarity Surlyn cap offering a glass-like appearance with durability.",
+    image: "/images/caps/1.jpg",
   },
   {
     id: "cap-wood-1",
@@ -99,6 +147,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     category: "caps",
     subCategory: "Wood Caps",
     description: "Sustainably sourced ash wood with a smooth, tactile matte finish.",
+    image: "/images/caps/2.jpg",
   },
   {
     id: "cap-zamac-1",
@@ -106,6 +155,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     category: "caps",
     subCategory: "Zamac Caps",
     description: "Premium Zamac alloy cap with luxurious weight and a polished gold plating.",
+    image: "/images/caps/3.jpg",
   },
   {
     id: "cap-magnetic-1",
@@ -113,6 +163,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     category: "caps",
     subCategory: "Magnetic Caps",
     description: "Features a satisfying magnetic closure that self-aligns perfectly every time.",
+    image: "/images/caps/4.jpg",
   },
   {
     id: "cap-ceramic-1",
@@ -120,6 +171,7 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     category: "caps",
     subCategory: "Ceramic Caps",
     description: "Elegant, cool-to-the-touch ceramic cap with a glossy white glaze.",
+    image: "/images/caps/5.jpg",
   },
 
   // PUMPS

@@ -140,34 +140,57 @@ export default function Navbar() {
             </button>
 
             {wishlistOpen && (
-              <div className="absolute right-0 mt-3 w-64 bg-[#F4F2E8] border border-[#E7DFC9] rounded-[16px] shadow-2xl p-4 z-50 text-[#1D2418] normal-case tracking-normal">
-                <div className="flex items-center justify-between border-b border-[#E7DFC9] pb-2 mb-2">
+              <div className="absolute right-0 mt-3 w-80 bg-[#F4F2E8] border border-[#E7DFC9] rounded-[22px] shadow-2xl p-5 z-50 text-[#1D2418] normal-case tracking-normal animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-300">
+                <div className="flex items-center justify-between border-b border-[#E7DFC9] pb-3 mb-3">
                   <span className="font-serif text-xs font-semibold tracking-wider uppercase text-[#2B3325]">Wishlist</span>
-                  <button onClick={() => setWishlistOpen(false)} className="text-[10px] text-[#C8A76A] hover:underline uppercase tracking-wider font-light">Close</button>
+                  <button onClick={() => setWishlistOpen(false)} className="text-[10px] text-[#C8A76A] hover:text-[#1D2418] hover:underline uppercase tracking-wider font-semibold transition-colors duration-350 cursor-pointer">Close</button>
                 </div>
 
                 {wishlistedProducts.length === 0 ? (
-                  <p className="text-[11px] text-[#2B3325]/60 text-center py-4 font-light">Your wishlist is empty.</p>
+                  <p className="text-[11px] text-[#2B3325]/60 text-center py-6 font-light">Your wishlist is empty.</p>
                 ) : (
-                  <div className="space-y-2.5 max-h-60 overflow-y-auto">
+                  <div className="space-y-3.5 max-h-60 overflow-y-auto pr-1">
                     {wishlistedProducts.map((p) => (
-                      <div key={p.id} className="flex items-center justify-between gap-2 border-b border-[#E7DFC9]/50 pb-2 last:border-b-0 last:pb-0">
-                        <div className="flex flex-col">
-                          <Link href={`/collections/${p.id}`} className="font-serif text-xs font-medium text-[#1D2418] hover:text-[#C8A76A]">
-                            {p.name}
-                          </Link>
-                          <span className="text-[9px] text-[#C8A76A] font-semibold">${p.price}</span>
+                      <div key={p.id} className="flex items-center justify-between gap-3 border-b border-[#E7DFC9]/50 pb-3 last:border-b-0 last:pb-0 group">
+                        <div className="flex items-center gap-3">
+                          {/* Product Thumbnail */}
+                          <div className="relative w-10 h-12 rounded-[8px] overflow-hidden shrink-0 border border-[#E7DFC9] bg-[#F4F2E8]">
+                            {p.image ? (
+                              <Image
+                                src={p.image}
+                                alt={p.name}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                sizes="40px"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 relative select-none">
+                                <span className="font-serif text-[8px] font-semibold text-[#1D2418] tracking-widest opacity-85">Étoile</span>
+                              </div>
+                            )}
+                          </div>
+                          
+                          <div className="flex flex-col min-w-0">
+                            <Link href={`/collections/${p.id}`} className="font-serif text-xs font-semibold text-[#1D2418] hover:text-[#C8A76A] transition-colors leading-tight truncate max-w-[120px]">
+                              {p.name}
+                            </Link>
+                            <span className="text-[10px] text-[#C8A76A] font-bold mt-0.5">${p.price}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center space-x-1.5">
+                        
+                        <div className="flex items-center space-x-1.5 shrink-0">
                           <button
-                            onClick={() => addToCart(p, "100ml")}
-                            className="bg-[#2B3325] text-white hover:bg-[#C8A76A] hover:text-[#1D2418] px-2 py-1 rounded-full text-[8px] tracking-wider uppercase font-medium transition-colors"
+                            onClick={() => {
+                              addToCart(p, "100ml");
+                              setWishlistOpen(false);
+                            }}
+                            className="bg-[#2B3325] text-white hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-1.5 rounded-full text-[9px] tracking-wider uppercase font-bold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
                           >
                             Add
                           </button>
                           <button
                             onClick={() => toggleWishlist(p.id)}
-                            className="text-red-400 hover:text-red-600 p-1"
+                            className="text-[#2B3325]/45 hover:text-red-400/90 hover:scale-110 active:scale-95 transition-all p-1.5 rounded-full hover:bg-black/5 cursor-pointer"
                             aria-label="Remove from wishlist"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
