@@ -112,7 +112,7 @@ export default function WhyChoose() {
       className="
       relative z-20 overflow-hidden
       bg-[#F7F4EC]
-      py-24 md:py-32
+      py-24 md:py-28
       text-[#273124]
       border-t border-[#D8D0BC]
       "

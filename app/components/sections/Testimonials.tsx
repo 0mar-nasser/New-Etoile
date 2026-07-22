@@ -9,7 +9,7 @@ export default function Testimonials() {
       className="
       relative z-20 overflow-hidden
       bg-[#F7F4EC]
-      py-24 md:py-32
+      py-24 md:py-28
       "
     >
       {/* Background Glow */}

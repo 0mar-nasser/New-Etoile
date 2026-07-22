@@ -21,14 +21,25 @@ import Newsletter from "./components/sections/Newsletter";
 export default function Home() {
   const { addToCart } = useCart();
   const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
 
   // Page Intro Loader
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // 1.5s loader progress + display, then trigger fade out
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
+    }, 1600);
+    
+    // 2.3s completely unmount loading screen
+    const unmountTimer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
+    }, 2300);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(unmountTimer);
+    };
   }, []);
 
   // Intersection Observer scroll animation
@@ -58,26 +69,34 @@ export default function Home() {
     <>
       {/* 1. LOADING SCREEN */}
       {loading && (
-        <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-[#1D2418] transition-opacity duration-700 ease-out">
+        <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-all duration-700 ease-out ${
+          fadeOut ? "opacity-0 translate-y-[-20px] pointer-events-none" : "opacity-100 translate-y-0"
+        }`}>
           <div className="relative flex flex-col items-center">
-            <div className="mb-4 animate-pulse-slow">
-              <span className="text-3xl text-[#C8A76A]">✦</span>
+            {/* Animated rotating luxury star */}
+            <div className="mb-6 animate-spin-slow">
+              <span className="text-4xl text-[#C8A76A]">✦</span>
             </div>
-            <div className="overflow-hidden">
-              <h1 className="font-serif text-3xl md:text-4xl tracking-[0.3em] text-[#E7DFC9] uppercase">
+            {/* Luxury Text spacing-in animation */}
+            <div className="overflow-hidden mb-2">
+              <h1 className="font-serif text-4xl md:text-5xl text-[#E7DFC9] uppercase animate-tracking-in">
                 Étoile
               </h1>
             </div>
-            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#C8A76A]/75 font-light">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[#C8A76A]/75 font-light animate-pulse">
               Haute Parfumerie
             </p>
-            <div className="mt-8 h-[1px] w-24 bg-gradient-to-r from-transparent via-[#C8A76A] to-transparent" />
+            
+            {/* Premium Luxury Progress Bar */}
+            <div className="mt-10 w-36 h-[1px] bg-[#E7DFC9]/10 relative overflow-hidden rounded-full">
+              <div className="absolute top-0 left-0 h-full bg-[#C8A76A] animate-progress" />
+            </div>
           </div>
         </div>
       )}
 
       {/* MAIN LAYOUT */}
-      <div className={`relative min-h-screen flex flex-col transition-opacity duration-1000 ${loading ? "opacity-0" : "opacity-100"}`}>
+      <div className={`relative min-h-screen flex flex-col transition-opacity duration-1000 ${fadeOut ? "opacity-100" : "opacity-0"}`}>
 
         <Hero />
 

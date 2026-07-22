@@ -34,9 +34,8 @@ function CollectionCard({
 }: CollectionCardProps) {
   return (
     <div
-      className={`fade-in-section relative overflow-hidden shadow-xl border border-[#E7DFC9] bg-[#2B3325] group ${
-        featured ? "rounded-[32px]" : "rounded-[28px]"
-      } ${className}`}
+      className={`fade-in-section relative overflow-hidden shadow-xl border border-[#E7DFC9] bg-[#2B3325] group ${featured ? "rounded-[32px]" : "rounded-[28px]"
+        } ${className}`}
     >
       {imageSrc ? (
         <Image
@@ -55,19 +54,17 @@ function CollectionCard({
       )}
 
       <div
-        className={`absolute inset-0 z-10 ${
-          featured
-            ? "bg-gradient-to-r from-[#1D2418]/95 via-[#1D2418]/55 to-[#1D2418]/10"
-            : "bg-gradient-to-t from-[#1D2418]/95 via-[#1D2418]/20 to-transparent"
-        }`}
+        className={`absolute inset-0 z-10 ${featured
+          ? "bg-gradient-to-r from-[#1D2418]/95 via-[#1D2418]/55 to-[#1D2418]/10"
+          : "bg-gradient-to-t from-[#1D2418]/95 via-[#1D2418]/20 to-transparent"
+          }`}
       />
 
       <div
-        className={`absolute z-30 flex flex-col space-y-3 ${
-          featured
-            ? "inset-0 justify-center max-w-xl"
-            : "inset-x-0 bottom-0 justify-end"
-        } ${contentClassName}`}
+        className={`absolute z-30 flex flex-col space-y-3 ${featured
+          ? "inset-0 justify-center max-w-xl"
+          : "inset-x-0 bottom-0 justify-end"
+          } ${contentClassName}`}
       >
         <span className="text-[10px] tracking-[0.28em] uppercase text-[#C8A76A] font-semibold">
           {tag}
@@ -104,8 +101,7 @@ export default function FeaturedCollection() {
             Featured Collections
           </h2>
           <p className="text-sm md:text-base text-[#2B3325]/75 font-light leading-relaxed">
-            Discover four refined scent stories from Étoile, each crafted with rare ingredients and
-            designed to reflect a distinct mood.
+            Explore our premium range of perfumery essentials. From captivating fragrances to elegant bottles, caps, and pumps, we provide everything needed to elevate your brand.
           </p>
           <div className="h-[1px] w-16 bg-[#2B3325]/40 mt-2" />
         </div>
@@ -113,10 +109,10 @@ export default function FeaturedCollection() {
         <div className="flex flex-col gap-6 lg:gap-8">
           <CollectionCard
             featured
-            tag="For Him"
-            title="Men's Collection"
-            description="Earthy leather, smoked woods, and warm accents designed to radiate confidence and quiet elegance."
-            href="/collections?filter=men"
+            tag="Perfumes"
+            title="Perfumes Collection"
+            description="Discover our exquisite range of fragrances, crafted with the finest ingredients to create lasting impressions."
+            href="/collections?category=perfumes"
             imageSrc="/images/category-1.jpg"
             className="h-[380px] md:h-[440px]"
             titleClassName="text-4xl md:text-5xl"
@@ -125,9 +121,9 @@ export default function FeaturedCollection() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
             <CollectionCard
-              tag="For Her"
-              title="Women's Collection"
-              href="/collections?filter=women"
+              tag="Bottles"
+              title="Glass Bottles"
+              href="/collections?category=bottles"
               imageSrc="/images/category-women.jpg"
               className="h-[340px]"
               titleClassName="text-2xl md:text-3xl"
@@ -135,9 +131,9 @@ export default function FeaturedCollection() {
             />
 
             <CollectionCard
-              tag="Shared"
-              title="Unisex Scent"
-              href="/collections?filter=unisex"
+              tag="Caps"
+              title="Premium Caps"
+              href="/collections?category=caps"
               imageSrc="/images/category-unisex.jpg"
               className="h-[340px]"
               titleClassName="text-2xl md:text-3xl"
@@ -145,9 +141,9 @@ export default function FeaturedCollection() {
             />
 
             <CollectionCard
-              tag="Rare"
-              title="Exclusive Line"
-              href="/collections"
+              tag="Pumps"
+              title="Spray Pumps"
+              href="/collections?category=pumps"
               imageSrc="/images/category-exclusive.jpg"
               className="h-[340px]"
               titleClassName="text-2xl md:text-3xl"
