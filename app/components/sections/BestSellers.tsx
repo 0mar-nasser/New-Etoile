@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS, Product } from "../../data/products";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
@@ -24,12 +25,22 @@ function BestSellerItem({ product, index, onQuickView }: BestSellerItemProps) {
   return (
     <article className="fade-in-section group relative grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[260px_1fr] gap-6 md:gap-8 p-6 md:p-8 rounded-[28px] border border-[#384233]/70 bg-[#2B3325]/40 hover:bg-[#2B3325]/70 hover:border-[#C8A76A]/30 transition-all duration-500">
       <div className="relative aspect-[4/5] md:aspect-auto md:h-full min-h-[280px] rounded-[20px] overflow-hidden border border-[#384233]/60">
-        <ImagePlaceholder
-          label={`${product.name} Bottle Scent`}
-          aspect="aspect-[4/5]"
-          theme="dark"
-          className="h-full"
-        />
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 300px"
+          />
+        ) : (
+          <ImagePlaceholder
+            label={`${product.name} Bottle Scent`}
+            aspect="aspect-[4/5]"
+            theme="dark"
+            className="h-full"
+          />
+        )}
 
         <button
           onClick={() => onQuickView(product)}

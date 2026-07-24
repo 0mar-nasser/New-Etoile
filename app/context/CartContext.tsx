@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { Product } from "../data/products";
 
 export interface CartItem {
@@ -33,28 +33,26 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window === "undefined") return [];
-    try {
-      const saved = localStorage.getItem("etoile_cart");
-      return saved ? (JSON.parse(saved) as CartItem[]) : [];
-    } catch {
-      return [];
-    }
-  });
-
-  const [wishlist, setWishlist] = useState<string[]>(() => {
-    if (typeof window === "undefined") return [];
-    try {
-      const saved = localStorage.getItem("etoile_wishlist");
-      return saved ? (JSON.parse(saved) as string[]) : [];
-    } catch {
-      return [];
-    }
-  });
-
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [wishlist, setWishlist] = useState<string[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Hydrate cart and wishlist from localStorage after initial render to avoid SSR hydration mismatch
+  useEffect(() => {
+    try {
+      const savedCart = localStorage.getItem("etoile_cart");
+      if (savedCart) {
+        setCart(JSON.parse(savedCart) as CartItem[]);
+      }
+      const savedWishlist = localStorage.getItem("etoile_wishlist");
+      if (savedWishlist) {
+        setWishlist(JSON.parse(savedWishlist) as string[]);
+      }
+    } catch {
+      // Ignore JSON parse errors or access errors
+    }
+  }, []);
 
   // Save cart/wishlist to local storage
   const saveCart = (newCart: CartItem[]) => {

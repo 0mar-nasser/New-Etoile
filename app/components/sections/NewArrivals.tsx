@@ -9,9 +9,8 @@ import ImagePlaceholder from "../ui/ImagePlaceholder";
 export default function NewArrivals() {
   const { addToCart } = useCart();
 
-  const newArrivalProduct = PRODUCTS.find(
-    (p) => p.id === "originelle-intense"
-  );
+  const newArrivalProduct =
+    PRODUCTS.find((p) => p.id === "originelle-intense") || PRODUCTS[0];
 
   const upcomingProducts = [
     newArrivalProduct,

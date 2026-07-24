@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CATALOG_ITEMS, CatalogItem } from "../data/catalog";
 import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 import { useCart } from "../context/CartContext";
@@ -40,9 +41,12 @@ const itemToProduct = (item: CatalogItem, volume: string): Product => {
 };
 
 function CatalogCard({ item, onQuickView }: { item: CatalogItem, onQuickView: (item: CatalogItem) => void }) {
+  const { toggleWishlist, isInWishlist } = useCart();
+  const isFav = isInWishlist(item.id);
+
   return (
     <div className="bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40">
-      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6" onClick={() => onQuickView(item)}>
+      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6">
         {item.image ? (
           <Image
             src={item.image}
@@ -54,11 +58,51 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem, onQuickView: (i
         ) : (
           <ImagePlaceholder label={item.name} aspect="aspect-[4/5]" theme="light" />
         )}
-        <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-          <button className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-5 py-2.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer">
+
+        {/* Wishlist Button (Top Right) */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleWishlist(item.id);
+          }}
+          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-[#F4F2E8]/85 backdrop-blur-md flex items-center justify-center border border-[#E7DFC9] hover:bg-[#F4F2E8] shadow-md transition-all duration-300 z-20 cursor-pointer focus:outline-none"
+          aria-label="Add to wishlist"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill={isFav ? "currentColor" : "none"}
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className={`w-4 h-4 transition-colors ${isFav ? "text-[#C8A76A]" : "text-[#2B3325]"}`}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+            />
+          </svg>
+        </button>
+
+        {/* Quick View & Detail Page Overlay */}
+        <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-[2px]">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView(item);
+            }}
+            className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
+          >
             Quick View
           </button>
+          <Link
+            href={`/collections/${item.id}`}
+            className="bg-[#2B3325] text-[#F4F2E8] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
+          >
+            View Page
+          </Link>
         </div>
+
         {item.subCategory && (
           <span className="absolute bottom-4 left-4 bg-[#2B3325] text-white text-[8px] tracking-widest uppercase font-light px-3 py-1 rounded-full opacity-90">
             {item.subCategory}
@@ -68,7 +112,9 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem, onQuickView: (i
 
       <div className="flex flex-col flex-grow text-left space-y-2">
         <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-semibold">{item.category}</span>
-        <h3 className="font-serif text-xl text-[#1D2418] font-light tracking-wide">{item.name}</h3>
+        <Link href={`/collections/${item.id}`} className="font-serif text-xl text-[#1D2418] font-light tracking-wide hover:text-[#C8A76A] transition-colors">
+          {item.name}
+        </Link>
         <p className="text-xs text-[#2B3325]/75 font-light leading-relaxed flex-grow line-clamp-2">
           {item.description}
         </p>
@@ -79,13 +125,19 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem, onQuickView: (i
           ) : (
             <span className="font-serif text-sm text-[#1D2418] font-medium uppercase tracking-widest text-[#C8A76A]">Inquire</span>
           )}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <button
               onClick={() => onQuickView(item)}
-              className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-4 py-2.5 rounded-full text-[9px] tracking-widest uppercase font-semibold transition-all duration-300 shadow-md cursor-pointer"
+              className="bg-transparent hover:bg-[#E7DFC9]/50 text-[#2B3325] border border-[#E7DFC9] px-3 py-2 rounded-full text-[9px] tracking-widest uppercase font-semibold transition-all duration-300 cursor-pointer"
+            >
+              Quick
+            </button>
+            <Link
+              href={`/collections/${item.id}`}
+              className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-3.5 py-2 rounded-full text-[9px] tracking-widest uppercase font-semibold transition-all duration-300 shadow-md cursor-pointer"
             >
               Details
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -100,14 +152,41 @@ export default function CollectionsPage() {
 
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
 
+  // For Perfumes filtering
+  const [perfumeStyleFilter, setPerfumeStyleFilter] = useState<string>("All");
   // For Bottles filtering
   const [bottleStyleFilter, setBottleStyleFilter] = useState<string>("All");
+  // For Caps filtering
+  const [capStyleFilter, setCapStyleFilter] = useState<string>("All");
+
+  // Search Query State
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredItems = CATALOG_ITEMS.filter((item) => {
     if (item.category !== activeTab) return false;
 
+    if (activeTab === "perfumes" && perfumeStyleFilter !== "All") {
+      if (!item.subCategory?.includes(perfumeStyleFilter)) return false;
+    }
+
     if (activeTab === "bottles" && bottleStyleFilter !== "All") {
-      return item.subCategory?.includes(bottleStyleFilter) || false;
+      if (!item.subCategory?.includes(bottleStyleFilter)) return false;
+    }
+
+    if (activeTab === "caps" && capStyleFilter !== "All") {
+      if (!item.subCategory?.includes(capStyleFilter)) return false;
+    }
+
+    if (searchQuery.trim() !== "") {
+      const q = searchQuery.toLowerCase().trim();
+      const nameMatch = item.name.toLowerCase().includes(q);
+      const descMatch = item.description.toLowerCase().includes(q);
+      const subMatch = item.subCategory?.toLowerCase().includes(q) || false;
+      const featMatch = item.features?.some((f) => f.toLowerCase().includes(q)) || false;
+
+      if (!nameMatch && !descMatch && !subMatch && !featMatch) {
+        return false;
+      }
     }
 
     return true;
@@ -120,13 +199,15 @@ export default function CollectionsPage() {
     { id: "pumps", name: "Pumps" },
   ] as const;
 
+  const perfumeStyles = ["All", "Individual Bottles", "Gift Boxes", "Combined Sets", "Extrait de Parfum"];
   const bottleStyles = ["All", "Normal Bottle", "Polished Bottle", "VIP Bottle"];
+  const capStyles = ["All", "Plastic Cap", "Zamac Cap"];
 
   return (
     <div className="bg-[#F4F2E8] min-h-screen pt-28 pb-24 text-[#1D2418]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+      <div className="w-full mx-auto px-6 md:px-12 space-y-12">
         {/* Editorial Heading */}
-        <div className="space-y-4 max-w-2xl text-center mx-auto mb-16">
+        <div className="space-y-4 max-w-2xl text-center mx-auto mb-12">
           <span className="text-xs tracking-[0.3em] uppercase font-semibold text-[#C8A76A]">Premium Supply</span>
           <h1 className="font-serif text-4xl md:text-5xl font-light tracking-wide text-[#1D2418]">
             Packaging & Perfumery
@@ -134,11 +215,42 @@ export default function CollectionsPage() {
           <p className="text-xs md:text-sm text-[#2B3325]/70 font-light leading-relaxed">
             Discover our comprehensive catalog of luxury perfumery components. From our signature fragrances to exquisite empty bottles, caps, and pumps for your brand.
           </p>
+
+          {/* Functional Luxury Search Bar */}
+          <div className="pt-4 max-w-md mx-auto relative">
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search catalog by name, size, material..."
+                className="w-full bg-[#E7DFC9]/35 border border-[#E7DFC9] rounded-full py-3.5 pl-12 pr-10 text-xs tracking-wider text-[#1D2418] placeholder-[#2B3325]/50 focus:outline-none focus:border-[#C8A76A] focus:bg-[#F4F2E8] transition-all duration-300 shadow-inner"
+              />
+              <svg
+                className="absolute left-4 w-4 h-4 text-[#C8A76A]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-4 text-[#2B3325]/60 hover:text-[#1D2418] text-xs transition-colors p-1"
+                  aria-label="Clear search"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Sidebar Filters (Sticky) */}
-          <div className="w-full lg:w-1/4 sticky top-[72px] lg:top-32 z-40 bg-[#F4F2E8]/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b lg:border-b-0 border-[#E7DFC9] space-y-4 lg:space-y-10">
+          <div className="w-full lg:w-1/6 sticky top-[72px] lg:top-32 z-40 bg-[#F4F2E8]/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none py-3 lg:py-0 border-b lg:border-b-0 border-[#E7DFC9] space-y-4 lg:space-y-10">
             {/* Main Categories */}
             <div className="space-y-2 lg:space-y-4">
               <h2 className="hidden lg:block text-[10px] uppercase tracking-[0.2em] font-bold text-[#1D2418] border-b border-[#E7DFC9] pb-3">
@@ -150,7 +262,9 @@ export default function CollectionsPage() {
                     <button
                       onClick={() => {
                         setActiveTab(tab.id);
+                        setPerfumeStyleFilter("All");
                         setBottleStyleFilter("All");
+                        setCapStyleFilter("All");
                       }}
                       className={`whitespace-nowrap text-left px-4 py-2.5 rounded-[12px] text-xs tracking-wider transition-all duration-300 cursor-pointer ${activeTab === tab.id
                         ? "bg-[#2B3325] text-[#F4F2E8] font-medium shadow-sm"
@@ -159,6 +273,24 @@ export default function CollectionsPage() {
                     >
                       {tab.name}
                     </button>
+
+                    {/* Desktop nested styles for Perfumes */}
+                    {activeTab === "perfumes" && tab.id === "perfumes" && (
+                      <div className="hidden lg:flex flex-col pl-4 mt-1 gap-1 animate-in fade-in slide-in-from-left-2 duration-300 border-l border-[#E7DFC9] ml-2">
+                        {perfumeStyles.map(style => (
+                          <button
+                            key={style}
+                            onClick={() => setPerfumeStyleFilter(style)}
+                            className={`text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${perfumeStyleFilter === style
+                              ? "text-[#C8A76A] font-bold"
+                              : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30"
+                              }`}
+                          >
+                            {style}
+                          </button>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Desktop nested styles for Empty Bottles */}
                     {activeTab === "bottles" && tab.id === "bottles" && (
@@ -177,10 +309,48 @@ export default function CollectionsPage() {
                         ))}
                       </div>
                     )}
+
+                    {/* Desktop nested styles for Caps */}
+                    {activeTab === "caps" && tab.id === "caps" && (
+                      <div className="hidden lg:flex flex-col pl-4 mt-1 gap-1 animate-in fade-in slide-in-from-left-2 duration-300 border-l border-[#E7DFC9] ml-2">
+                        {capStyles.map(style => (
+                          <button
+                            key={style}
+                            onClick={() => setCapStyleFilter(style)}
+                            className={`text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${capStyleFilter === style
+                              ? "text-[#C8A76A] font-bold"
+                              : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30"
+                              }`}
+                          >
+                            {style}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* Mobile separate row styles for Perfumes */}
+            {activeTab === "perfumes" && (
+              <div className="block lg:hidden animate-in fade-in slide-in-from-left-2 duration-300">
+                <div className="flex flex-row gap-2 overflow-x-auto pb-1 scrollbar-none">
+                  {perfumeStyles.map(style => (
+                    <button
+                      key={style}
+                      onClick={() => setPerfumeStyleFilter(style)}
+                      className={`whitespace-nowrap text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${perfumeStyleFilter === style
+                        ? "text-[#C8A76A] font-bold bg-[#2B3325]/10 px-3 py-1.5"
+                        : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30 bg-transparent"
+                        }`}
+                    >
+                      {style}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Mobile separate row styles for Empty Bottles */}
             {activeTab === "bottles" && (
@@ -201,10 +371,30 @@ export default function CollectionsPage() {
                 </div>
               </div>
             )}
+
+            {/* Mobile separate row styles for Caps */}
+            {activeTab === "caps" && (
+              <div className="block lg:hidden animate-in fade-in slide-in-from-left-2 duration-300">
+                <div className="flex flex-row gap-2 overflow-x-auto pb-1 scrollbar-none">
+                  {capStyles.map(style => (
+                    <button
+                      key={style}
+                      onClick={() => setCapStyleFilter(style)}
+                      className={`whitespace-nowrap text-left px-3 py-1.5 rounded-md text-[10px] tracking-wider transition-all duration-300 cursor-pointer ${capStyleFilter === style
+                        ? "text-[#C8A76A] font-bold bg-[#2B3325]/10 px-3 py-1.5"
+                        : "text-[#2B3325]/75 hover:text-[#1D2418] hover:bg-[#E7DFC9]/30 bg-transparent"
+                        }`}
+                    >
+                      {style}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Main Content Area */}
-          <div className="w-full lg:w-3/4 min-h-[500px]">
+          <div className="w-full lg:w-4/5 min-h-[500px]">
             {/* Pumps specific layout */}
             {activeTab === "pumps" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in duration-700">
@@ -240,7 +430,7 @@ export default function CollectionsPage() {
               </div>
             ) : (
               /* Normal Grid for others */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-in fade-in duration-700">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 animate-in fade-in duration-700">
                 {filteredItems.map((item) => (
                   <CatalogCard
                     key={item.id}

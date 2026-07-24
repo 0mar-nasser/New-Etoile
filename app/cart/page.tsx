@@ -308,11 +308,10 @@ export default function CartPage() {
                 <button
                   onClick={handleCheckout}
                   disabled={checkoutState === "processing"}
-                  className={`w-full py-4.5 rounded-full text-xs tracking-[0.2em] uppercase font-bold transition-all duration-500 shadow-md hover:shadow-xl focus:outline-none relative overflow-hidden group cursor-pointer ${
-                    checkoutState === "processing"
-                      ? "bg-[#384233] text-[#C8A76A]/70 cursor-not-allowed"
-                      : "bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] hover:scale-[1.02] active:scale-[0.98]"
-                  }`}
+                  className={`w-full py-4.5 rounded-full text-xs tracking-[0.2em] uppercase font-bold transition-all duration-500 shadow-md hover:shadow-xl focus:outline-none relative overflow-hidden group cursor-pointer ${checkoutState === "processing"
+                    ? "bg-[#384233] text-[#C8A76A]/70 cursor-not-allowed"
+                    : "bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] hover:scale-[1.02] active:scale-[0.98]"
+                    }`}
                 >
                   {checkoutState === "processing" ? (
                     <span className="flex items-center justify-center gap-2">

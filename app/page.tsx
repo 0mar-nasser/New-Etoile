@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "./context/CartContext";
 import { Product } from "./data/products";
 import ImagePlaceholder from "./components/ui/ImagePlaceholder";
@@ -30,7 +31,7 @@ export default function Home() {
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
     }, 1600);
-    
+
     // 2.3s completely unmount loading screen
     const unmountTimer = setTimeout(() => {
       setLoading(false);
@@ -69,13 +70,19 @@ export default function Home() {
     <>
       {/* 1. LOADING SCREEN */}
       {loading && (
-        <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-all duration-700 ease-out ${
-          fadeOut ? "opacity-0 translate-y-[-20px] pointer-events-none" : "opacity-100 translate-y-0"
-        }`}>
+        <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-all duration-700 ease-out ${fadeOut ? "opacity-0 translate-y-[-20px] pointer-events-none" : "opacity-100 translate-y-0"
+          }`}>
           <div className="relative flex flex-col items-center">
-            {/* Animated rotating luxury star */}
-            <div className="mb-6 animate-spin-slow">
-              <span className="text-4xl text-[#C8A76A]">✦</span>
+            {/* Animated rotating luxury emblem logo */}
+            <div className="mb-6 animate-spin-fast">
+              <Image
+                src="/Logos/Nav-Logo-light.png"
+                alt="Étoile emblem"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain"
+                priority
+              />
             </div>
             {/* Luxury Text spacing-in animation */}
             <div className="overflow-hidden mb-2">
@@ -86,7 +93,7 @@ export default function Home() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#C8A76A]/75 font-light animate-pulse">
               Haute Parfumerie
             </p>
-            
+
             {/* Premium Luxury Progress Bar */}
             <div className="mt-10 w-36 h-[1px] bg-[#E7DFC9]/10 relative overflow-hidden rounded-full">
               <div className="absolute top-0 left-0 h-full bg-[#C8A76A] animate-progress" />
