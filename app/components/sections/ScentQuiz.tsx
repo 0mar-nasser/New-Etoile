@@ -53,7 +53,7 @@ export default function ScentQuiz() {
   };
 
   return (
-    <section className="py-24 bg-[#F4F2E8] border-t border-[#E7DFC9]/60 relative z-20">
+    <section className="py-20 bg-[#F4F2E8] border-t border-[#E7DFC9]/60 relative z-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="bg-[#2B3325] text-[#F4F2E8] rounded-[28px] border border-[#384233] p-8 md:p-12 relative overflow-hidden shadow-xl text-center">
           <div className="absolute right-0 bottom-0 w-64 h-64 bg-[#C8A76A]/5 rounded-full blur-[80px] pointer-events-none" />

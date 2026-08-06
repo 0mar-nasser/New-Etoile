@@ -11,11 +11,10 @@ import ImagePlaceholder from "./components/ui/ImagePlaceholder";
 import Hero from "./components/sections/Hero";
 import FeaturedCollection from "./components/sections/FeaturedCollection";
 import BestSellers from "./components/sections/BestSellers";
-import Heritage from "./components/sections/Heritage";
+import Wholesale from "./components/sections/Wholesale";
 import NoteFamilies from "./components/sections/NoteFamilies";
 import WhyChoose from "./components/sections/WhyChoose";
 import NewArrivals from "./components/sections/NewArrivals";
-import Testimonials from "./components/sections/Testimonials";
 import SocialGallery from "./components/sections/SocialGallery";
 import Newsletter from "./components/sections/Newsletter";
 
@@ -111,15 +110,13 @@ export default function Home() {
 
         <BestSellers onQuickView={setQuickViewProduct} />
 
-        <Heritage />
+        <Wholesale />
 
         {/* <NoteFamilies /> */}
 
         <NewArrivals />
 
         <WhyChoose />
-
-        <Testimonials />
 
         {/* <SocialGallery /> */}
 

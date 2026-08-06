@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS } from "../../data/products";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
@@ -22,6 +23,7 @@ export default function NewArrivals() {
       notes: ["Oud", "Leather", "Patchouli"],
       description:
         "A mysterious woody fragrance with rich leather accords and deep oriental warmth.",
+      image: "/images/perfumes/perfume_bois_de_nuit.png",
     },
     {
       ...newArrivalProduct,
@@ -31,13 +33,14 @@ export default function NewArrivals() {
       notes: ["Rose", "Peony", "White Musk"],
       description:
         "An elegant floral fragrance wrapped in velvety rose petals and soft white musk.",
+      image: "/images/perfumes/perfume_or_rose.png",
     },
   ];
 
   return (
     <section
       id="new-arrivals"
-      className="relative z-20 bg-[#1D2418] py-24 md:py-32 text-[#F4F2E8]"
+      className="relative z-20 bg-[#1D2418] py-20 md:py-32 text-[#F4F2E8]"
     >
       {/* Background Glow */}
       <div className="pointer-events-none absolute left-0 top-1/4 h-[420px] w-[420px] rounded-full bg-[#C8A76A]/5 blur-[120px]" />
@@ -51,7 +54,7 @@ export default function NewArrivals() {
               <div className="flex items-center space-x-3">
                 <div className="h-[1px] w-8 bg-[#C8A76A]" />
                 <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#C8A76A]">
-                  New Chapters
+                  Factory Innovations
                 </span>
               </div>
 
@@ -63,9 +66,7 @@ export default function NewArrivals() {
               </h2>
 
               <p className="text-sm font-light leading-relaxed text-[#E7DFC9]/75 md:text-base">
-                Discover the next expression of Étoile. Crafted with rare
-                ingredients and timeless elegance, our upcoming fragrance is
-                designed to become your next unforgettable signature.
+                Preview our upcoming glass flacon mold designs, weighted zamak caps, and high-purity perfume oil compounds engineered for next-generation fragrance brands.
               </p>
 
               <div className="flex items-center gap-8 pt-2">
@@ -109,13 +110,23 @@ export default function NewArrivals() {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] border border-[#384233]/60">
-                  <div className="transition-transform duration-700 group-hover:scale-105">
-                    <ImagePlaceholder
-                      label={`${product.name} Bottle`}
-                      aspect="aspect-[4/5]"
-                      theme="dark"
-                      className="h-full"
-                    />
+                  <div className="transition-transform duration-700 group-hover:scale-105 h-full w-full">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={`${product.name} Bottle`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 300px"
+                      />
+                    ) : (
+                      <ImagePlaceholder
+                        label={`${product.name} Bottle`}
+                        aspect="aspect-[4/5]"
+                        theme="dark"
+                        className="h-full"
+                      />
+                    )}
                   </div>
 
                   <span className="absolute left-4 top-4 rounded-full bg-[#C8A76A] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.25em] text-[#1D2418]">

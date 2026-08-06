@@ -8,52 +8,40 @@ export default function Hero() {
   return (
     <section className="relative h-screen bg-[#1D2418] flex items-center overflow-hidden">
       <Image
-        src="/images/Firefly.png"
-        alt="Étoile Signature Perfume"
+        src="/images/hero_perfume_nature_bg.png"
+        alt="Perfume Packaging Components - Empty Glass Bottle, Cap, Spray Pump, and Perfume Oil in Natural Scenery"
         fill
         priority
-        className="object-cover object-[70%_center] md:object-right"
+        className="object-cover object-right md:object-right"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1D2418]/95 via-[#1D2418]/75 to-[#1D2418]/20 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1D2418]/95 via-[#1D2418]/65 to-transparent z-10" />
 
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-20 h-full pt-20 flex items-center">
         <div className="flex flex-col justify-center space-y-6 text-[#F4F2E8] max-w-xl md:max-w-2xl">
-          <div className="flex items-center space-x-3 opacity-90 mx-auto mb-8 gap-5">
-            <div className="h-[1px] w-40 bg-[#C8A76A]" />
-            <Image
-              src="/Logos/Nav-Logo-light.png"
-              alt="Étoile emblem"
-              width={42}
-              height={42}
-              className="object-contain"
-            />
-            <div className="h-[1px] w-40 bg-[#C8A76A]" />
+          <div className="flex items-center space-x-3 opacity-90 mx-auto mb-4 gap-5">
+            <div className="h-[1px] w-24 md:w-36 bg-[#C8A76A]" />
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#C8A76A] font-semibold whitespace-nowrap">
+              Perfume & Packaging Factory
+            </span>
+            <div className="h-[1px] w-24 md:w-36 bg-[#C8A76A]" />
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl xl:text-8xl font-light tracking-wide leading-tight md:leading-none">
-            Discover Your <br />
-            <span className="italic text-[#E7DFC9]">Signature Scent</span>
+          <h1 className="font-serif text-4xl md:text-6xl xl:text-7xl font-light tracking-wide leading-tight md:leading-none">
+            Build Your Custom <br />
+            <span className="italic text-[#E7DFC9]">Perfume Brand</span>
           </h1>
-          <p className="text-sm md:text-base text-[#E7DFC9]/80 font-light leading-relaxed max-w-lg">
-            Luxury fragrances crafted with raw French ingredients and sophisticated craftsmanship to leave unforgettable impressions.
+          <p className="text-sm md:text-base text-[#E7DFC9]/85 font-light leading-relaxed max-w-xl">
+            Industrial supplier of luxury empty glass flacons, magnetic caps, precision spray pumps, and concentrated French perfume oils. Select your components and craft your signature fragrance line with low MOQ and white-glove global supply.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 pt-4">
             <Button variant="primary" href="/collections">
-              Shop Collection
+              Explore Supply Catalog
             </Button>
-            <Button variant="secondary" href="#philosophy">
-              Discover More
+            <Button variant="secondary" href="#wholesale">
+              Customize Perfume Line
             </Button>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 z-20">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-[#E7DFC9]/50 font-light">Scroll</span>
-        <div className="h-12 w-[1px] bg-gradient-to-b from-[#C8A76A] to-transparent relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-4 bg-[#F4F2E8] animate-bounce" style={{ animationDuration: '2s' }} />
         </div>
       </div>
     </section>

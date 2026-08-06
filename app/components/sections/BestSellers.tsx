@@ -143,7 +143,7 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
   return (
     <section
       id="best-sellers"
-      className="py-24 md:py-32 bg-[#1D2418] text-[#F4F2E8] relative z-20"
+      className="py-20 md:py-32 bg-[#1D2418] text-[#F4F2E8] relative z-20"
     >
       <div className="absolute left-0 top-1/4 w-[420px] h-[420px] bg-[#C8A76A]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute right-0 bottom-0 w-[320px] h-[320px] bg-[#C8A76A]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -155,17 +155,16 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
             <div className="flex items-center space-x-3">
               <div className="h-[1px] w-8 bg-[#C8A76A]" />
               <span className="text-[10px] tracking-[0.4em] uppercase text-[#C8A76A] font-semibold">
-                Olfactory Masterpieces
+                Most Requested Formulations
               </span>
             </div>
 
             <h2 className="font-serif text-4xl md:text-5xl font-light tracking-wide leading-tight">
-              The Best <span className="italic text-[#E7DFC9]">Sellers</span>
+              Top Oil <span className="italic text-[#E7DFC9]">Concentrates</span>
             </h2>
 
             <p className="text-sm md:text-base text-[#E7DFC9]/75 font-light leading-relaxed">
-              Four signature compositions adored by our patrons — each a refined expression of
-              French perfumery, chosen for their depth, longevity, and unmistakable character.
+              Four signature concentrated fragrance oil compounds favored by global perfume creators. Formulated for rich sillage, high longevity, and seamless pairing with our crystal flacons.
             </p>
 
             <div className="flex items-center gap-8 pt-2">

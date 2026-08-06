@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface FormData {
@@ -35,6 +35,16 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedBoutique, setSelectedBoutique] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const sub = params.get("subject");
+      if (sub && ["general", "order", "consultation", "bespoke", "press", "returns", "wholesale", "distributor"].includes(sub)) {
+        setForm((prev) => ({ ...prev, subject: sub }));
+      }
+    }
+  }, []);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -76,10 +86,10 @@ export default function ContactPage() {
       {/* Page Header */}
       <div className="bg-[#2B3325] pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-[#F4F2E8] space-y-3">
-          <span className="text-[10px] uppercase tracking-[0.4em] text-[#C8A76A] font-bold">We Are Here For You</span>
-          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wide">Contact Étoile</h1>
-          <p className="text-sm text-[#F4F2E8]/60 font-light leading-relaxed max-w-xl">
-            Whether you seek a bespoke consultation, fragrance advice, or simply wish to connect — our Concierge team responds within 24 hours.
+          <span className="text-[10px] uppercase tracking-[0.4em] text-[#C8A76A] font-bold">Industrial B2B Desk</span>
+          <h1 className="font-serif text-4xl md:text-6xl font-light tracking-wide">Factory B2B Inquiry & Quotation</h1>
+          <p className="text-sm text-[#F4F2E8]/70 font-light leading-relaxed max-w-xl">
+            Contact our factory sales team to request empty glass flacon samples, custom mold quotes, sprayer & cap specifications, or bulk concentrated perfume oil supply.
           </p>
         </div>
       </div>
@@ -143,8 +153,8 @@ export default function ContactPage() {
 
             {/* Quick Subject Links */}
             <div className="bg-[#E7DFC9]/30 border border-[#E7DFC9] rounded-[20px] p-6 space-y-3">
-              <h3 className="text-[10px] uppercase tracking-widest text-[#1D2418] font-semibold">Quick Enquiry Topics</h3>
-              {["Order Tracking", "Fragrance Consultation", "Bespoke / Private Label", "Press & Partnerships"].map((t) => (
+              <h3 className="text-[10px] uppercase tracking-widest text-[#1D2418] font-semibold">B2B Enquiry Topics</h3>
+              {["Empty Bottle Wholesale", "Custom Glass Mold Quote", "Caps & Pumps Supply", "Concentrated Oil Compounding", "Turnkey OEM Perfume Line"].map((t) => (
                 <button
                   key={t}
                   onClick={() => setForm((p) => ({ ...p, subject: t.toLowerCase().replace(/ /g, "_") }))}
@@ -250,6 +260,8 @@ export default function ContactPage() {
                     <option value="order">Order & Tracking</option>
                     <option value="consultation">Fragrance Consultation</option>
                     <option value="bespoke">Bespoke / Private Label</option>
+                    <option value="wholesale">Wholesale & B2B Orders</option>
+                    <option value="distributor">Distribution Partnerships</option>
                     <option value="press">Press & Partnerships</option>
                     <option value="returns">Returns & Exchanges</option>
                   </select>

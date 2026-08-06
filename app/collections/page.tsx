@@ -193,10 +193,10 @@ export default function CollectionsPage() {
   });
 
   const tabs = [
-    { id: "perfumes", name: "Perfumes" },
-    { id: "bottles", name: "Empty Bottles" },
-    { id: "caps", name: "Caps" },
-    { id: "pumps", name: "Pumps" },
+    { id: "perfumes", name: "Fragrance Oils" },
+    { id: "bottles", name: "Empty Flacons" },
+    { id: "caps", name: "Caps & Closures" },
+    { id: "pumps", name: "Spray Pumps" },
   ] as const;
 
   const perfumeStyles = ["All", "Individual Bottles", "Gift Boxes", "Combined Sets", "Extrait de Parfum"];
@@ -208,12 +208,12 @@ export default function CollectionsPage() {
       <div className="w-full mx-auto px-6 md:px-12 space-y-12">
         {/* Editorial Heading */}
         <div className="space-y-4 max-w-2xl text-center mx-auto mb-12">
-          <span className="text-xs tracking-[0.3em] uppercase font-semibold text-[#C8A76A]">Premium Supply</span>
+          <span className="text-xs tracking-[0.3em] uppercase font-semibold text-[#C8A76A]">B2B Factory Supply</span>
           <h1 className="font-serif text-4xl md:text-5xl font-light tracking-wide text-[#1D2418]">
-            Packaging & Perfumery
+            Industrial Perfume & Packaging Catalog
           </h1>
           <p className="text-xs md:text-sm text-[#2B3325]/70 font-light leading-relaxed">
-            Discover our comprehensive catalog of luxury perfumery components. From our signature fragrances to exquisite empty bottles, caps, and pumps for your brand.
+            Browse our complete industrial catalog: empty crystal glass flacons (الغرشات), weighted magnetic caps (الكابات), fine-mist spray pumps (البمبات), and concentrated French perfume oils (الزيوت العطرية المركزة).
           </p>
 
           {/* Functional Luxury Search Bar */}
@@ -430,7 +430,7 @@ export default function CollectionsPage() {
               </div>
             ) : (
               /* Normal Grid for others */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 animate-in fade-in duration-700">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 animate-in fade-in duration-700">
                 {filteredItems.map((item) => (
                   <CatalogCard
                     key={item.id}

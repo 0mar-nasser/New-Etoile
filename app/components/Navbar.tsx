@@ -58,10 +58,10 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navBgClass}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Center Logo */}
+        {/* Center Logo with Subtitle */}
         <Link
           href="/"
-          className="flex flex-col items-center focus:outline-none"
+          className="flex flex-col items-center focus:outline-none group"
         >
           <Image
             src="/Logos/title-light.png"
@@ -71,26 +71,41 @@ export default function Navbar() {
             className="object-contain"
             priority
           />
+          <span className="text-[8px] uppercase tracking-[0.3em] text-[#C8A76A]/80 font-light -mt-0.5 group-hover:text-[#C8A76A]">
+            Perfume & Packaging Factory
+          </span>
         </Link>
         {/* Left Nav Links */}
-        <div className="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
+        <div className="hidden md:flex items-center space-x-7 text-[11px] tracking-[0.18em] uppercase font-light text-[#F4F2E8]">
           <Link
             href="/collections"
             className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/collections" ? "text-[#C8A76A]" : ""}`}
           >
-            Collections
+            Catalog
+          </Link>
+          <Link
+            href="/collections?category=bottles"
+            className="hover:text-[#C8A76A] transition-colors duration-300 text-[#E7DFC9]/80"
+          >
+            Flacons
+          </Link>
+          <Link
+            href="/#wholesale"
+            className="hover:text-[#C8A76A] transition-colors duration-300"
+          >
+            Assembly
           </Link>
           <Link
             href="/about"
             className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/about" ? "text-[#C8A76A]" : ""}`}
           >
-            Philosophy
+            Factory
           </Link>
           <Link
             href="/contact"
             className={`hover:text-[#C8A76A] transition-colors duration-300 ${pathname === "/contact" ? "text-[#C8A76A]" : ""}`}
           >
-            Contact
+            B2B Inquiry
           </Link>
         </div>
 

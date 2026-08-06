@@ -1,109 +1,22 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import brandData from "../../data/brand.json";
 
 export default function WhyChoose() {
-  const getIcon = (id: string) => {
+  const getFeatureImage = (id: string) => {
     switch (id) {
-      // Botanical Ingredients
       case "ingredients":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.2"
-            stroke="currentColor"
-            className="h-7 w-7"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 21c0-7 4-12 10-15-1 7-5 12-10 15Zm0 0c0-5-3-9-8-11 1 6 4 10 8 11Z"
-            />
-          </svg>
-        );
-
-      // Longevity
+        return "/images/why_ingredients.png";
       case "longevity":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.2"
-            stroke="currentColor"
-            className="h-7 w-7"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 6v6l4 2m5-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10 3h4"
-            />
-          </svg>
-        );
-
-      // Perfume Bottle
+        return "/images/why_longevity.png";
       case "packaging":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.2"
-            stroke="currentColor"
-            className="h-7 w-7"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 3h6v4H9V3Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7 7h10l1 14H6L7 7Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 12h6"
-            />
-          </svg>
-        );
-
-      // Global Shipping
+        return "/images/why_packaging.png";
       case "shipping":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.2"
-            stroke="currentColor"
-            className="h-7 w-7"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 2a10 10 0 1 0 10 10"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 2c3 4 3 16 0 20M2 12h20"
-            />
-          </svg>
-        );
-
+        return "/images/why_shipping.png";
       default:
-        return null;
+        return "/images/why_ingredients.png";
     }
   };
 
@@ -112,13 +25,13 @@ export default function WhyChoose() {
       className="
       relative z-20 overflow-hidden
       bg-[#F7F4EC]
-      py-24 md:py-28
+      py-20 md:py-28
       text-[#273124]
       border-t border-[#D8D0BC]
       "
     >
       {/* Glow */}
-      <div className="absolute left-0 top-1/2 h-[350px] w-[350px] -translate-y-1/2 rounded-full bg-[#B9924E]/10 blur-[120px]" />
+      <div className="absolute left-0 top-1/2 h-[350px] w-[350px] -translate-y-1/2 rounded-full bg-[#B9924E]/10 blur-[120px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-12">
 
@@ -127,76 +40,78 @@ export default function WhyChoose() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-[1px] w-8 bg-[#B9924E]" />
             <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#B9924E]">
-              The Étoile Difference
+              The Factory Standard
             </span>
             <span className="h-[1px] w-8 bg-[#B9924E]" />
           </div>
 
           <h2 className="font-serif text-4xl font-light tracking-wide text-[#273124] md:text-5xl">
-            Crafted Beyond{" "}
+            Engineered for{" "}
             <span className="italic text-[#B9924E]">
-              Ordinary
+              Perfume Excellence
             </span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-[#5F6658]">
-            Every Étoile fragrance is created with rare ingredients,
-            timeless craftsmanship, and an obsession for unforgettable details.
+            We supply end-to-end industrial perfumery solutions: crystal empty flacons, weighted magnetic caps, micro-mist pumps, and 100% pure concentrated oils.
           </p>
         </div>
 
-
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-2 mx-auto">
 
           {brandData.features.map((feature) => (
             <div
               key={feature.id}
               className="
-              group flex flex-col items-center
-              rounded-[28px]
-              border border-[#D8D0BC]
-              bg-[#FDFBF5]
-              p-8
-              text-center
-              transition-all duration-500
+              group relative flex flex-col justify-end
+              min-h-[320px] md:min-h-[420px] w-full
+              rounded-[24px]
+              border border-[#D8D0BC]/60
+              overflow-hidden
+              transition-all duration-700 ease-out
               hover:-translate-y-2
               hover:border-[#B9924E]/50
-              hover:shadow-xl
+              hover:shadow-2xl hover:shadow-[#B9924E]/5
+              p-3 md:p-5
               "
             >
+              {/* Image covering the entire card background */}
+              <Image
+                src={getFeatureImage(feature.id)}
+                alt={feature.title}
+                fill
+                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 450px"
+              />
+              {/* Subtle dark luxury gradient overlay on image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80 group-hover:opacity-75 transition-opacity duration-700 pointer-events-none" />
 
-              {/* Icon */}
-              <div
-                className="
-                mb-5 flex h-16 w-16
-                items-center justify-center
-                rounded-full
-                border border-[#B9924E]/40
-                bg-[#F7F4EC]
-                text-[#B9924E]
-                transition-all duration-500
-                group-hover:bg-[#B9924E]
-                group-hover:text-[#FDFBF5]
-                "
-              >
-                {getIcon(feature.id)}
+              {/* Decorative Brand Text over image at top right */}
+              <span className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.25em] text-white/80 font-light select-none">
+                Maison Étoile
+              </span>
+
+              {/* Card Body with Glassmorphism and Backdrop Blur */}
+              <div className="relative z-10 p-5 md:p-6 rounded-[16px] bg-[#FDFBF5]/80 backdrop-blur-md border border-[#D8D0BC]/30 flex flex-col justify-between transition-all duration-500 group-hover:bg-[#FDFBF5]/90">
+                <div className="space-y-2">
+                  {/* Step counter */}
+                  <span className="font-serif text-xs italic text-[#B9924E] block select-none">
+                    0{brandData.features.findIndex(f => f.id === feature.id) + 1}
+                  </span>
+
+                  <h3 className="font-serif text-base md:text-lg font-light tracking-wide text-[#273124] group-hover:text-[#B9924E] transition-colors duration-500">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-[11px] md:text-xs font-light leading-relaxed text-[#5F6658]">
+                    {feature.text}
+                  </p>
+                </div>
+
+                {/* Left-aligned decorative line that expands on hover */}
+                <div className="mt-4 h-[1px] w-6 bg-[#B9924E]/40 transition-all duration-500 group-hover:w-12 group-hover:bg-[#B9924E]" />
               </div>
-
-
-              <h3 className="font-serif text-xl font-light tracking-wide text-[#273124]">
-                {feature.title}
-              </h3>
-
-
-              <p className="mt-3 text-xs font-light leading-relaxed text-[#5F6658]">
-                {feature.text}
-              </p>
-
-
-              {/* Decorative line */}
-              <div className="mt-6 h-[1px] w-10 bg-[#B9924E]/40 transition-all duration-500 group-hover:w-20" />
-
             </div>
           ))}
 

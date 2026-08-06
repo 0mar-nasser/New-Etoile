@@ -1,32 +1,33 @@
 {
   "navbarLinks": [
-    { "name": "Collections", "path": "/collections" },
-    { "name": "Philosophy", "path": "/about" },
-    { "name": "Contact", "path": "/contact" }
+    { "name": "Catalog & Supply", "path": "/collections" },
+    { "name": "Factory Story", "path": "/about" },
+    { "name": "Custom Assembly", "path": "/#wholesale" },
+    { "name": "B2B Inquiry", "path": "/contact" }
   ],
   "footerLinks": {
     "maison": [
-      { "name": "Our Story", "path": "/about" },
-      { "name": "Shop All Scents", "path": "/collections" },
-      { "name": "Fragrance Families", "path": "/#notes" },
-      { "name": "Sustainability", "path": "#" }
+      { "name": "Factory History", "path": "/about" },
+      { "name": "All Supply Catalog", "path": "/collections" },
+      { "name": "Fragrance Oils & Notes", "path": "/collections?category=perfumes" },
+      { "name": "Quality Standards", "path": "/about" }
     ],
     "collections": [
-      { "name": "Men's Fragrances", "path": "/collections?filter=men" },
-      { "name": "Women's Fragrances", "path": "/collections?filter=women" },
-      { "name": "Unisex Blend", "path": "/collections?filter=unisex" },
-      { "name": "The Exclusive Line", "path": "/collections" }
+      { "name": "Empty Glass Flacons", "path": "/collections?category=bottles" },
+      { "name": "Luxury Magnetic Caps", "path": "/collections?category=caps" },
+      { "name": "Precision Spray Pumps", "path": "/collections?category=pumps" },
+      { "name": "Concentrated Perfume Oils", "path": "/collections?category=perfumes" }
     ],
     "support": [
-      { "name": "Contact Us", "path": "/contact" },
-      { "name": "Shopping Bag", "path": "/cart" },
-      { "name": "Shipping & Returns", "path": "#" },
-      { "name": "Bespoke Concierge", "path": "#" }
+      { "name": "Request Custom Samples", "path": "/contact" },
+      { "name": "B2B Inquiry Form", "path": "/contact?subject=wholesale" },
+      { "name": "Custom Bottle Molds", "path": "/contact?subject=molds" },
+      { "name": "Shipping & Logistics", "path": "/contact" }
     ]
   },
   "socialLinks": [
     { "name": "IG", "label": "Instagram", "url": "#" },
-    { "name": "PT", "label": "Pinterest", "url": "#" },
+    { "name": "LK", "label": "LinkedIn", "url": "#" },
     { "name": "FB", "label": "Facebook", "url": "#" }
   ]
 }

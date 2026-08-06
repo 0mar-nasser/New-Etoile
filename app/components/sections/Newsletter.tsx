@@ -19,7 +19,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-24 md:py-28 bg-[#1D2418] text-[#F4F2E8] border-t border-[#384233] relative z-20 overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#1D2418] text-[#F4F2E8] border-t border-[#384233] relative z-20 overflow-hidden">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C8A76A]/5 rounded-full blur-[140px] pointer-events-none" />
       
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-6">

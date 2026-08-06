@@ -2,23 +2,23 @@
   "features": [
     {
       "id": "ingredients",
-      "title": "Premium Ingredients",
-      "text": "Composed exclusively of rare Grasse absolutes, organic botanicals, and high-purity perfume oils."
+      "title": "Pure Concentrated Fragrance Oils",
+      "text": "Extracted in Grasse & international ateliers, our high-purity oils and absolutes deliver unmatched sillage and longevity for perfume compounding."
     },
     {
       "id": "longevity",
-      "title": "Long Lasting",
-      "text": "High concentration formulations designed to linger beautifully for 24+ hours on skin and fabrics."
+      "title": "Precision Glass Flacons",
+      "text": "Heavy crystal bases, custom mold designs, and lead-free glass engineered specifically for premium fragrance housing."
     },
     {
       "id": "packaging",
-      "title": "Luxury Packaging",
-      "text": "Thick custom glass cylinders, solid gold brass caps, nestled in luxury embossed linen cases."
+      "title": "Leak-Proof Spray Pumps & Caps",
+      "text": "Micro-mist fine atomizers paired with luxury magnetic caps and weighted Zamak alloy closures for flawless seal and elegant luxury feel."
     },
     {
       "id": "shipping",
-      "title": "Worldwide Shipping",
-      "text": "Enjoy complimentary express delivery with tracked custom white-glove courier services globally."
+      "title": "Global B2B Logistics & Low MOQ",
+      "text": "Flexible bulk ordering, fast custom sampling, and white-glove international freight tailored for perfume brands and retail distributors."
     }
   ],
   "boutiques": [
@@ -26,16 +26,25 @@
       "city": "Paris",
       "country": "France",
       "address": "12 Rue du Faubourg Saint-Honoré, 75008 Paris",
-      "hours": "Mon–Sat: 10:00 – 20:00 · Sun: 12:00 – 18:00",
+      "hours": "Mon–Fri: 09:00 – 18:00 (Manufacturing & Lab Visits)",
       "phone": "+33 1 42 65 00 12",
       "flag": "🇫🇷",
       "flagship": true
     },
     {
+      "city": "Dubai",
+      "country": "UAE",
+      "address": "Jebel Ali Free Zone, Building 4, Dubai",
+      "hours": "Sun–Thu: 08:30 – 17:30 (Middle East Logistics Hub)",
+      "phone": "+971 4 339 0012",
+      "flag": "🇦🇪",
+      "flagship": true
+    },
+    {
       "city": "New York",
       "country": "United States",
-      "address": "680 Madison Avenue, New York, NY 10065",
-      "hours": "Mon–Sat: 10:00 – 19:00 · Sun: 11:00 – 17:00",
+      "address": "680 Madison Avenue, Suite 400, New York, NY 10065",
+      "hours": "Mon–Fri: 09:00 – 17:00 (North America B2B Sales)",
       "phone": "+1 212 940 0012",
       "flag": "🇺🇸",
       "flagship": false
@@ -44,54 +53,45 @@
       "city": "Tokyo",
       "country": "Japan",
       "address": "5-4-1 Minami-Aoyama, Minato City, Tokyo 107-0062",
-      "hours": "Daily: 11:00 – 20:00",
+      "hours": "Mon–Fri: 10:00 – 18:00 (Packaging Design Studio)",
       "phone": "+81 3-6427-5012",
       "flag": "🇯🇵",
-      "flagship": false
-    },
-    {
-      "city": "Dubai",
-      "country": "UAE",
-      "address": "Level 2, The Dubai Mall, Financial Centre Rd",
-      "hours": "Sun–Wed: 10:00 – 22:00 · Thu–Sat: 10:00 – 24:00",
-      "phone": "+971 4 339 0012",
-      "flag": "🇦🇪",
       "flagship": false
     }
   ],
   "milestones": [
-    { "year": "2008", "title": "Born in Paris", "text": "Founded by master perfumer Élise Moreau in a modest Grasse atelier, Étoile began as a personal vision: to craft timeless scents that transcend fashion and trend." },
-    { "year": "2012", "title": "The First Collection", "text": "L'Étoile Originelle launched exclusively at Printemps, Paris. Selling out within six weeks, it established Étoile as the avant-garde voice of niche French perfumery." },
-    { "year": "2016", "title": "Global Expansion", "text": "Étoile opened its first international boutique in Tokyo's Aoyama district, followed swiftly by New York and Dubai — bringing French olfactory artistry to the world." },
-    { "year": "2019", "title": "The Exclusive Line", "text": "Introduction of the ultra-prestige 'Exclusive' tier — higher-concentration formulations using the rarest raw materials sourced from six continents." },
-    { "year": "2024", "title": "Étoile Maison", "text": "The opening of Maison Étoile in the 8ème arrondissement — a fully immersive bespoke fragrance salon, combining artistry, craftsmanship, and the ultimate luxury experience." }
+    { "year": "2008", "title": "Grasse Atelier & Mold Lab", "text": "Founded as a specialized glass blowing and perfume formulation lab in Grasse, supplying niche European perfumers with custom flacons." },
+    { "year": "2012", "title": "Automated Bottle & Pump Line", "text": "Expanded production capacity to include high-precision 15mm crimp atomizers, leak-proof spray pumps, and weighted magnetic caps." },
+    { "year": "2016", "title": "Dubai Logistics Hub", "text": "Established our Middle East free-zone distribution center to supply regional perfume brands with empty bottles, caps, and bulk oils." },
+    { "year": "2019", "title": "Custom OEM/ODM Perfume Line", "text": "Launched end-to-end private label solutions—enabling brands to choose empty bottles, match caps & pumps, and select raw oils in one seamless process." },
+    { "year": "2024", "title": "Maison Étoile Factory Atelier", "text": "Opened our state-of-the-art automated manufacturing facility, producing over 10 million flacons and supplying 500+ global perfume brands." }
   ],
   "values": [
     {
       "icon": "sparkles",
-      "title": "Raw Material Purity",
-      "text": "Every ingredient is sourced in partnership with sustainable cooperatives — no synthetics, no shortcuts. We trace every drop from field to flacon."
+      "title": "Raw Material Excellence",
+      "text": "We source 100% pure concentrated fragrance oils and French absolutes, guaranteeing high stability and rich sillage for perfume formulation."
     },
     {
       "icon": "sun",
-      "title": "Slow Perfumery",
-      "text": "We believe great fragrance cannot be rushed. Each Étoile scent undergoes a minimum 24-month development cycle of evolution, testing, and refinement."
+      "title": "Glass Molding Mastery",
+      "text": "Our flacons feature ultra-clear crystal glass, heavy bases, and precision 15mm crimp finish to ensure structural integrity and luxury aesthetics."
     },
     {
       "icon": "globe",
-      "title": "Responsible Luxury",
-      "text": "Every Étoile flacon uses recycled glass and biodegradable packaging. Our production is carbon-neutral since 2021 — because true luxury respects the earth."
+      "title": "Seamless B2B Supply Chain",
+      "text": "From small batch artisan sampling to full container shipments, our global logistics network delivers components with guaranteed quality compliance."
     },
     {
       "icon": "face",
-      "title": "Personal Connection",
-      "text": "Each fragrance is a conversation between the perfumer and the wearer. We design not for masses but for those who understand the art of wearing an invisible signature."
+      "title": "Custom Brand Engineering",
+      "text": "We partner with perfume creators to design custom glass molds, unique cap finishes, custom pumps, and signature scent blends."
     }
   ],
   "stats": [
-    { "num": "16+", "label": "Years of Craft" },
-    { "num": "5", "label": "Signature Collections" },
+    { "num": "10M+", "label": "Flacons Produced" },
+    { "num": "500+", "label": "Perfume Brands Supplied" },
     { "num": "48", "label": "Countries Shipped" },
-    { "num": "100%", "label": "Natural Absolutes" }
+    { "num": "100%", "label": "Pure Concentrated Oils" }
   ]
 }

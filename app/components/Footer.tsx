@@ -11,7 +11,7 @@ export default function Footer() {
         
         {/* Column 1: Logo & Statement */}
         <div className="lg:col-span-2 space-y-6">
-          <Link href="/" className="focus:outline-none flex flex-col items-start">
+          <Link href="/" className="focus:outline-none flex flex-col items-start group">
             <Image 
               src="/Logos/title-light.png" 
               alt="Etoile logo" 
@@ -19,9 +19,12 @@ export default function Footer() {
               height={40} 
               className="object-contain"
             />
+            <span className="text-[9px] uppercase tracking-[0.3em] text-[#C8A76A] font-light mt-1">
+              Industrial Perfume & Packaging Factory
+            </span>
           </Link>
           <p className="text-xs text-[#E7DFC9]/70 leading-relaxed max-w-sm font-light">
-            Étoile is a modern luxury fragrance house inspired by French elegance, timeless beauty, and sophisticated craftsmanship. Composed in Paris, enjoyed globally.
+            Étoile is a global industrial supplier and manufacturing atelier of empty glass flacons, luxury magnetic caps, fine mist spray pumps, and concentrated French perfume oils for international fragrance brands.
           </p>
           
           {/* Social Media */}
@@ -29,8 +32,8 @@ export default function Footer() {
             <a href="#" className="w-8 h-8 rounded-full border border-[#384233] flex items-center justify-center text-[#E7DFC9] hover:text-[#C8A76A] hover:border-[#C8A76A] transition-all duration-300" aria-label="Instagram">
               <span className="text-xs font-light">IG</span>
             </a>
-            <a href="#" className="w-8 h-8 rounded-full border border-[#384233] flex items-center justify-center text-[#E7DFC9] hover:text-[#C8A76A] hover:border-[#C8A76A] transition-all duration-300" aria-label="Pinterest">
-              <span className="text-xs font-light">PT</span>
+            <a href="#" className="w-8 h-8 rounded-full border border-[#384233] flex items-center justify-center text-[#E7DFC9] hover:text-[#C8A76A] hover:border-[#C8A76A] transition-all duration-300" aria-label="LinkedIn">
+              <span className="text-xs font-light">LK</span>
             </a>
             <a href="#" className="w-8 h-8 rounded-full border border-[#384233] flex items-center justify-center text-[#E7DFC9] hover:text-[#C8A76A] hover:border-[#C8A76A] transition-all duration-300" aria-label="Facebook">
               <span className="text-xs font-light">FB</span>
@@ -40,34 +43,34 @@ export default function Footer() {
 
         {/* Column 2: Quick Links */}
         <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Maison Etoile</h4>
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Maison Étoile</h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            <li><Link href="/about" className="hover:text-[#C8A76A] transition-colors">Our Story</Link></li>
-            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">Shop All Scents</Link></li>
-            <li><Link href="/#notes" className="hover:text-[#C8A76A] transition-colors">Fragrance Families</Link></li>
-            <li><a href="#" className="hover:text-[#C8A76A] transition-colors">Sustainability</a></li>
+            <li><Link href="/about" className="hover:text-[#C8A76A] transition-colors">Factory Atelier Story</Link></li>
+            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">All Supply Catalog</Link></li>
+            <li><Link href="/#wholesale" className="hover:text-[#C8A76A] transition-colors">Custom Assembly</Link></li>
+            <li><Link href="/about" className="hover:text-[#C8A76A] transition-colors">Quality Compliance</Link></li>
           </ul>
         </div>
 
-        {/* Column 3: Collections */}
+        {/* Column 3: Packaging & Raw Materials */}
         <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Collections</h4>
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Supply Catalog</h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            <li><Link href="/collections?filter=men" className="hover:text-[#C8A76A] transition-colors">Men&rsquo;s Fragrances</Link></li>
-            <li><Link href="/collections?filter=women" className="hover:text-[#C8A76A] transition-colors">Women&rsquo;s Fragrances</Link></li>
-            <li><Link href="/collections?filter=unisex" className="hover:text-[#C8A76A] transition-colors">Unisex Blend</Link></li>
-            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">The Exclusive Line</Link></li>
+            <li><Link href="/collections?category=bottles" className="hover:text-[#C8A76A] transition-colors">Empty Glass Flacons</Link></li>
+            <li><Link href="/collections?category=caps" className="hover:text-[#C8A76A] transition-colors">Luxury Magnetic Caps</Link></li>
+            <li><Link href="/collections?category=pumps" className="hover:text-[#C8A76A] transition-colors">Precision Spray Pumps</Link></li>
+            <li><Link href="/collections?category=perfumes" className="hover:text-[#C8A76A] transition-colors">Concentrated Oils</Link></li>
           </ul>
         </div>
 
-        {/* Column 4: Client Services */}
+        {/* Column 4: B2B Services */}
         <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Support</h4>
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">B2B Services</h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            <li><Link href="/contact" className="hover:text-[#C8A76A] transition-colors">Contact Us</Link></li>
-            <li><Link href="/cart" className="hover:text-[#C8A76A] transition-colors">Shopping Bag</Link></li>
-            <li><a href="#" className="hover:text-[#C8A76A] transition-colors">Shipping & Returns</a></li>
-            <li><a href="#" className="hover:text-[#C8A76A] transition-colors">Bespoke Concierge</a></li>
+            <li><Link href="/contact" className="hover:text-[#C8A76A] transition-colors">B2B Inquiry & Samples</Link></li>
+            <li><Link href="/contact?subject=molds" className="hover:text-[#C8A76A] transition-colors">Custom Glass Molds</Link></li>
+            <li><Link href="/contact?subject=wholesale" className="hover:text-[#C8A76A] transition-colors">Bulk Freight Quote</Link></li>
+            <li><Link href="/cart" className="hover:text-[#C8A76A] transition-colors">Sample Order Bag</Link></li>
           </ul>
         </div>
 

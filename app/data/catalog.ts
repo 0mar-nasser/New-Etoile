@@ -11,158 +11,954 @@ export interface CatalogItem {
 
 export const CATALOG_ITEMS: CatalogItem[] = [
   {
-    "id": "perfume-individual-1",
-    "name": "L'Étoile Originelle",
+    "id": "oil-1",
+    "name": "Khamrah By Lattafa Perfumes Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "Our signature floral woody fragrance featuring Grasse jasmine, warm amber, and creamy sandalwood.",
-    "price": 185,
-    "features": [
-      "Notes: Grasse Jasmine, Amber, Sandalwood",
-      "Concentration: Eau de Parfum (20%)",
-      "Volume: 100ml French Crystal Flacon"
-    ],
-    "image": "/images/perfumes/perfume_originelle.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Khamrah By Lattafa Perfumes). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Khamrah By Lattafa Perfumes", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_1_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-individual-2",
-    "name": "Bois de Nuit",
+    "id": "oil-2",
+    "name": "Tobacco Vanille By Tom Ford Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "Mysterious, deep, and seductive scent with notes of Tuscan leather, smoked cedarwood, and Haitian vetiver.",
-    "price": 195,
-    "features": [
-      "Notes: Tuscan Leather, Cedarwood, Vetiver",
-      "Concentration: Eau de Parfum (22%)",
-      "Volume: 100ml Smoky Amber Glass"
-    ],
-    "image": "/images/perfumes/perfume_bois_de_nuit.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Tobacco Vanille By Tom Ford). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Tobacco Vanille By Tom Ford", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_2_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-individual-3",
-    "name": "Or Rose",
+    "id": "oil-3",
+    "name": "Le Male Elixir By Jean Paul Gaultier Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "A luminous floral oriental masterpiece combining Damask rose petals, Florence iris, and Madagascar vanilla.",
-    "price": 190,
-    "features": [
-      "Notes: Damask Rose, Iris, Madagascar Vanilla",
-      "Concentration: Eau de Parfum (20%)",
-      "Volume: 100ml Rose Gold Flacon"
-    ],
-    "image": "/images/perfumes/perfume_or_rose.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Le Male Elixir By Jean Paul Gaultier). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Le Male Elixir By Jean Paul Gaultier", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_3_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-individual-4",
-    "name": "Fleur Secrète",
+    "id": "oil-4",
+    "name": "Strongerwith Emporio Armani Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "A fresh, ethereal fragrance opening with Italian bergamot and neroli, settling into sun-drenched orange blossom.",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Strongerwith Emporio Armani). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Strongerwith Emporio Armani", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_4_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-5",
+    "name": "S De Marly By Parfums De Marly Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (S De Marly By Parfums De Marly). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by S De Marly By Parfums De Marly", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_5_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-6",
+    "name": "Le Beau Le Parfum Jean Paul Gaultier Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Le Beau Le Parfum Jean Paul Gaultier). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Le Beau Le Parfum Jean Paul Gaultier", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_6_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-7",
+    "name": "Perfume Oil Bleu De Chanel Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Perfume Oil Bleu De Chanel). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Perfume Oil Bleu De Chanel", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_7_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-8",
+    "name": "Le Beau Narcisse Jean Paul Gaultier Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Le Beau Narcisse Jean Paul Gaultier). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Le Beau Narcisse Jean Paul Gaultier", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_8_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-9",
+    "name": "Flora Gorgeous Gardenia Intense Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Flora Gorgeous Gardenia Intense). Engineered for exceptional longevity, luxury projection, and formulation stability.",
     "price": 180,
-    "features": [
-      "Notes: Italian Bergamot, Orange Blossom, White Musk",
-      "Concentration: Eau de Parfum (18%)",
-      "Volume: 100ml Crystal Glass"
-    ],
-    "image": "/images/perfumes/perfume_fleur_secrete.png"
+    "features": ["Scent Profile: Inspired by Flora Gorgeous Gardenia Intense", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_9_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-individual-5",
-    "name": "Ambre Impérial",
+    "id": "oil-10",
+    "name": "Malibu Rasasi Extrait Parfum Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "Opulent amber warmth blended with spiced vanilla pod, benzoin resin, and rare Cambodian oud infusion.",
-    "price": 210,
-    "features": [
-      "Notes: Golden Amber, Benzoin, Spiced Vanilla",
-      "Concentration: Eau de Parfum (24%)",
-      "Volume: 100ml Amber Glass"
-    ],
-    "image": "/images/perfumes/perfume_ambre_imperial.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Malibu Rasasi Extrait Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Malibu Rasasi Extrait Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_10_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-individual-6",
-    "name": "Cuir Royal",
+    "id": "oil-11",
+    "name": "Black Opium By Yves Saint Laurent Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Individual Bottles",
-    "description": "Commanding and regal blend of Tuscan leather, crushed cardamom, saffron thread, and smoked amberwood.",
-    "price": 225,
-    "features": [
-      "Notes: Tuscan Leather, Cardamom, Saffron, Amberwood",
-      "Concentration: Eau de Parfum (25%)",
-      "Volume: 100ml Heavy Architectural Flacon"
-    ],
-    "image": "/images/perfumes/perfume_cuir_royal.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Black Opium By Yves Saint Laurent). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Black Opium By Yves Saint Laurent", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_11_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-gift-1",
-    "name": "Signature Discovery Set",
+    "id": "oil-12",
+    "name": "Crystal Emerald Versace Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Gift Boxes",
-    "description": "A beautifully curated velvet box of our 3 iconic 50ml fragrances: Originelle, Bois de Nuit, and Or Rose.",
-    "price": 350,
-    "features": [
-      "Includes: 3 x 50ml Eau de Parfum Bottles",
-      "Presentation: Rigid Linen Coffret with Gold Foil",
-      "Ideal for: Gifting & Brand Discovery"
-    ],
-    "image": "/images/perfumes/perfume_discovery_set.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Crystal Emerald Versace). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Crystal Emerald Versace", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_12_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-gift-2",
-    "name": "Royal Gold Trio Coffret",
+    "id": "oil-13",
+    "name": "Myslf By Yves Saint Laurent Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Gift Boxes",
-    "description": "An opulent gift collection featuring three 50ml Extrait de Parfum creations in a handcrafted satin-lined box.",
-    "price": 390,
-    "features": [
-      "Includes: 3 x 50ml Extrait de Parfum Flacons",
-      "Presentation: Dark Olive & Gold Embossed Box",
-      "Concentration: High Extrait Concentration (30%)"
-    ],
-    "image": "/images/perfumes/perfume_trio_coffret.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Myslf By Yves Saint Laurent). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Myslf By Yves Saint Laurent", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_13_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-combo-1",
-    "name": "The Ultimate Trail Set",
+    "id": "oil-14",
+    "name": "Wild Vetiver Creed Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Combined Sets",
-    "description": "The complete luxury ritual featuring a 100ml fragrance, 15ml pure perfume oil absolute, and pocket atomizer.",
-    "price": 450,
-    "features": [
-      "Includes: 100ml EDP, 15ml Oil Absolute, Pocket Spray",
-      "Finish: Refillable Gold Travel Spray Included",
-      "Sillage: Long-lasting Layering Scent Trail"
-    ],
-    "image": "/images/perfumes/perfume_ultimate_trail.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Wild Vetiver Creed). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Wild Vetiver Creed", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_14_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-extrait-1",
-    "name": "L'Étoile Originelle Intense",
+    "id": "oil-15",
+    "name": "Dior Homme Intense 2011 Dior Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Extrait de Parfum",
-    "description": "Our legendary signature scent elevated to 30% concentration, with smoked amber crystals and vanilla pod infusion.",
-    "price": 235,
-    "features": [
-      "Notes: Double Grasse Jasmine, Smoked Amber, Vanilla",
-      "Concentration: Extrait de Parfum (30%)",
-      "Volume: 100ml Frosted Crystal Flacon"
-    ],
-    "image": "/images/perfumes/perfume_originelle_intense.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Dior Homme Intense 2011 Dior). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Dior Homme Intense 2011 Dior", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_15_2026-08-03_22-26-44.jpg"
   },
   {
-    "id": "perfume-extrait-2",
-    "name": "Oud Supreme Monolith",
+    "id": "oil-16",
+    "name": "Safran Secret Maison Crivelli Oil Concentrate",
     "category": "perfumes",
-    "subCategory": "Extrait de Parfum",
-    "description": "Rare aged Cambodian oud wood enveloped in dark Damask rose absolute, smoked incense, and golden resin.",
-    "price": 260,
-    "features": [
-      "Notes: Aged Cambodian Oud, Rose Absolute, Incense",
-      "Concentration: Pure Extrait (35%)",
-      "Volume: 100ml Obsidian Glass Flacon"
-    ],
-    "image": "/images/perfumes/perfume_oud_supreme.png"
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Safran Secret Maison Crivelli). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Safran Secret Maison Crivelli", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_16_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-17",
+    "name": "Vanilla Powder Matiere Premiere Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Vanilla Powder Matiere Premiere). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Vanilla Powder Matiere Premiere", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_17_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-18",
+    "name": "Gi Elixir Giorgio Extrait Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Gi Elixir Giorgio Extrait Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Gi Elixir Giorgio Extrait Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_18_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-19",
+    "name": "Asad By Lattafa Perfumes Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Asad By Lattafa Perfumes). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Asad By Lattafa Perfumes", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_19_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-20",
+    "name": "Virgin Island Water Creed Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Virgin Island Water Creed). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Virgin Island Water Creed", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_20_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-21",
+    "name": "Reflection Man Amouage Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Reflection Man Amouage). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Reflection Man Amouage", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_21_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-22",
+    "name": "Miss Dior Essence Dior Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Miss Dior Essence Dior). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Miss Dior Essence Dior", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_22_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-23",
+    "name": "Eto Rfum Sewbe Ewome Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Eto Rfum Sewbe Ewome). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Eto Rfum Sewbe Ewome", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_23_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-24",
+    "name": "Meant To Be Seen Extraitde Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Meant To Be Seen Extraitde Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Meant To Be Seen Extraitde Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_24_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-25",
+    "name": "Black Orchid Tom Ford Tomford Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Black Orchid Tom Ford Tomford). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Black Orchid Tom Ford Tomford", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_25_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-26",
+    "name": "Tom Ford Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Tom Ford). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Tom Ford", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_26_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-27",
+    "name": "Ure Musc Blanc For Her Narciso Rodriguez Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Ure Musc Blanc For Her Narciso Rodriguez). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Ure Musc Blanc For Her Narciso Rodriguez", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_27_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-28",
+    "name": "Libre Yves Saint Laurent Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Libre Yves Saint Laurent). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Libre Yves Saint Laurent", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_28_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-29",
+    "name": "Existence Amouage Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Existence Amouage). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Existence Amouage", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_29_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-30",
+    "name": "Aldebaran Marc-Antoine Barrois Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Aldebaran Marc-Antoine Barrois). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Aldebaran Marc-Antoine Barrois", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_30_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-31",
+    "name": "Maracuj Maison Crivelli Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Maracuj Maison Crivelli). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Maracuj Maison Crivelli", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_31_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-32",
+    "name": "Side Effect Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Side Effect). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Side Effect", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_32_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-33",
+    "name": "Musamam Black Intense Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Musamam Black Intense). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Musamam Black Intense", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_33_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-34",
+    "name": "Yves Saint Laurent Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Yves Saint Laurent). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Yves Saint Laurent", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_34_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-35",
+    "name": "Prada Paradoxe Prada By Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Prada Paradoxe Prada By). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Prada Paradoxe Prada By", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_35_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-36",
+    "name": "Burberry Her Burberry Burberry London Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Burberry Her Burberry Burberry London). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Burberry Her Burberry Burberry London", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_36_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-37",
+    "name": "- Hawas For Him Rasasi Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (- Hawas For Him Rasasi). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by - Hawas For Him Rasasi", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_37_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-38",
+    "name": "Rose Rfum Parfums Marly Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Rose Rfum Parfums Marly). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Rose Rfum Parfums Marly", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_38_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-39",
+    "name": "Profondo Giorgio Armani Extrait Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Profondo Giorgio Armani Extrait Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Profondo Giorgio Armani Extrait Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_39_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-40",
+    "name": "The One For Men Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (The One For Men). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by The One For Men", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_40_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-41",
+    "name": "Onger With You Absolutely Giorgio Armani Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Onger With You Absolutely Giorgio Armani). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Onger With You Absolutely Giorgio Armani", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_41_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-42",
+    "name": "Fums De Marly Burberry Herelixirdeparfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Fums De Marly Burberry Herelixirdeparfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Fums De Marly Burberry Herelixirdeparfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_42_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-43",
+    "name": "Donna Born In Roma Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Donna Born In Roma). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Donna Born In Roma", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_43_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-44",
+    "name": "R F U M Tom Ford Oud Wood Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (R F U M Tom Ford Oud Wood). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by R F U M Tom Ford Oud Wood", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_44_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-45",
+    "name": "D Maison Crivelli Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (D Maison Crivelli). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by D Maison Crivelli", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_45_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-46",
+    "name": "S De Marly Paris Tilia Extrait Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (S De Marly Paris Tilia Extrait). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by S De Marly Paris Tilia Extrait", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_46_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-47",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_47_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-48",
+    "name": "Crystal Noir Versace Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Crystal Noir Versace). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Crystal Noir Versace", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_48_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-49",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_49_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-50",
+    "name": "Acy Collector'S Edition Pour Homme Afnan Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Acy Collector'S Edition Pour Homme Afnan). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Acy Collector'S Edition Pour Homme Afnan", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_50_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-51",
+    "name": "Maison Francis Kurkdjian Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Maison Francis Kurkdjian). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Maison Francis Kurkdjian", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_51_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-52",
+    "name": "Eer Al Oudh Intense Oud Lattafa Perfumea Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Eer Al Oudh Intense Oud Lattafa Perfumea). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Eer Al Oudh Intense Oud Lattafa Perfumea", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_52_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-53",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_53_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-54",
+    "name": "Invictus Rabanne Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Invictus Rabanne). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Invictus Rabanne", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_54_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-55",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_55_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-56",
+    "name": "Queen Of Silk Creed Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Queen Of Silk Creed). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Queen Of Silk Creed", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_56_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-57",
+    "name": "Myslf Le Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Myslf Le Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Myslf Le Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_57_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-58",
+    "name": "Oud Cadenza Maison Crivelli Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Oud Cadenza Maison Crivelli). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Oud Cadenza Maison Crivelli", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_58_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-59",
+    "name": "The Tragedy Of Lord George Penhaligon'S Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (The Tragedy Of Lord George Penhaligon'S). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by The Tragedy Of Lord George Penhaligon'S", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_59_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-60",
+    "name": "Alexandria Ii Xerjoff Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Alexandria Ii Xerjoff). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Alexandria Ii Xerjoff", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_60_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-61",
+    "name": "Dior Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Dior). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Dior", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_61_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-62",
+    "name": "Powder Matiere Premiere Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Powder Matiere Premiere). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Powder Matiere Premiere", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_62_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-63",
+    "name": "Myway Giorgio Armani Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Myway Giorgio Armani). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Myway Giorgio Armani", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_63_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-64",
+    "name": "Etowe. Iernoon Iion Erfume Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Etowe. Iernoon Iion Erfume). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Etowe. Iernoon Iion Erfume", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_64_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-65",
+    "name": "Flora Gorgeous Orchid Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Flora Gorgeous Orchid). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Flora Gorgeous Orchid", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_65_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-66",
+    "name": "Guilty Elixir De Parfum Pour Homme Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Guilty Elixir De Parfum Pour Homme). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Guilty Elixir De Parfum Pour Homme", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_66_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-67",
+    "name": "Remember Me Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Remember Me). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Remember Me", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_67_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-68",
+    "name": "A Rabanne Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (A Rabanne). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by A Rabanne", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_68_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-69",
+    "name": "The Blazing Mr Sam Penhaligon'S Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (The Blazing Mr Sam Penhaligon'S). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by The Blazing Mr Sam Penhaligon'S", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_69_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-70",
+    "name": "Royal Essence Oil #70 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Royal Essence Oil #70). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Royal Essence Oil #70", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_70_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-71",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_71_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-72",
+    "name": "Ore Louis Vuitton Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Ore Louis Vuitton). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Ore Louis Vuitton", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_72_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-73",
+    "name": "Scandal Pour Homme Jean Paul Gaultier Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Scandal Pour Homme Jean Paul Gaultier). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Scandal Pour Homme Jean Paul Gaultier", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_73_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-74",
+    "name": "Tuxedo Yves Saint Laurent Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Tuxedo Yves Saint Laurent). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Tuxedo Yves Saint Laurent", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_74_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-75",
+    "name": "Vuitton Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Vuitton). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Vuitton", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_75_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-76",
+    "name": "Rabanne 1 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Rabanne 1). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Rabanne 1", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_76_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-77",
+    "name": "Eau De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Eau De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Eau De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_77_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-78",
+    "name": "Toile Bloom Gucci Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Toile Bloom Gucci). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Toile Bloom Gucci", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_78_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-79",
+    "name": "Royal Essence Oil #79 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Royal Essence Oil #79). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Royal Essence Oil #79", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_79_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-80",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_80_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-81",
+    "name": "Royal Essence Oil #81 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Royal Essence Oil #81). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by Royal Essence Oil #81", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_81_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-82",
+    "name": "Club De Nuit Armaf Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Club De Nuit Armaf). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Club De Nuit Armaf", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_82_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-83",
+    "name": "Bitter Peach Tom Ford Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Bitter Peach Tom Ford). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by Bitter Peach Tom Ford", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_83_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-84",
+    "name": "Oud For Greatness Initio Parfums Prives Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Oud For Greatness Initio Parfums Prives). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Oud For Greatness Initio Parfums Prives", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_84_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-85",
+    "name": "African Leather Memo Paris Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (African Leather Memo Paris). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by African Leather Memo Paris", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_85_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-86",
+    "name": "L'Immensit Louis Vuitton Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (L'Immensit Louis Vuitton). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by L'Immensit Louis Vuitton", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_86_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-87",
+    "name": "Royal Essence Oil #87 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Royal Essence Oil #87). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 252,
+    "features": ["Scent Profile: Inspired by Royal Essence Oil #87", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_87_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-88",
+    "name": "Bewt Bncome Erfume Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Bewt Bncome Erfume). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 264,
+    "features": ["Scent Profile: Inspired by Bewt Bncome Erfume", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_88_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-89",
+    "name": "Parf Absolu Aventus Creed Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Parf Absolu Aventus Creed). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 276,
+    "features": ["Scent Profile: Inspired by Parf Absolu Aventus Creed", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_89_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-90",
+    "name": "De Parfum Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (De Parfum). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 180,
+    "features": ["Scent Profile: Inspired by De Parfum", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_90_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-91",
+    "name": "Royal Essence Oil #91 Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Royal Essence Oil #91). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 192,
+    "features": ["Scent Profile: Inspired by Royal Essence Oil #91", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_91_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-92",
+    "name": "N05 Paris Eaij De Parfijm Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (N05 Paris Eaij De Parfijm). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 204,
+    "features": ["Scent Profile: Inspired by N05 Paris Eaij De Parfijm", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_92_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-93",
+    "name": "Irs Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Irs). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 216,
+    "features": ["Scent Profile: Inspired by Irs", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_93_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-94",
+    "name": "Guidance 46 Amouage Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Guidance 46 Amouage). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 228,
+    "features": ["Scent Profile: Inspired by Guidance 46 Amouage", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_94_2026-08-03_22-26-44.jpg"
+  },
+  {
+    "id": "oil-95",
+    "name": "Erba Gold Oil Concentrate",
+    "category": "perfumes",
+    "subCategory": "Fragrance Oils",
+    "description": "High-purity concentrated French fragrance oil (Erba Gold). Engineered for exceptional longevity, luxury projection, and formulation stability.",
+    "price": 240,
+    "features": ["Scent Profile: Inspired by Erba Gold", "Dosage & Concentration: 100% Pure Undiluted Concentrate (30%+ EDP)", "Supply Packaging: 1kg Sealed B2B Aluminum Canister"],
+    "image": "/images/oils/photo_95_2026-08-03_22-26-44.jpg"
   },
   {
     "id": "bottle-normal-1",
@@ -2132,17 +2928,113 @@ export const CATALOG_ITEMS: CatalogItem[] = [
     "description": "Advanced pump system featuring a tube that becomes invisible in liquid."
   },
   {
-    "id": "pump-2",
-    "name": "Fine Mist Atomizer",
+    "id": "pump-1",
+    "name": "Étoile FEA 15 Precision Crimp Pump - Champagne Gold",
     "category": "pumps",
-    "subCategory": "Premium",
-    "description": "Delivers a wide, ultra-fine continuous mist for a luxurious application."
+    "subCategory": "FEA 15 Crimp",
+    "description": "Industrial-grade FEA 15mm precision crimp spray pump crafted in electroplated champagne gold. Features micro-droplet atomizer technology for an effortless, wide cloud sillage.",
+    "price": 12,
+    "features": ["Neck Size: FEA 15mm Standard", "Dosage: 0.08ml - 0.10ml per spray", "Material: Anodized Electroplated Gold Aluminum", "Closure: Invisible Dip Tube Compatible"],
+    "image": "/images/pumps/pump_1.png"
+  },
+  {
+    "id": "pump-2",
+    "name": "Étoile Screw-On Atomizer Pump - Matte Obsidian Black",
+    "category": "pumps",
+    "subCategory": "Screw Pump",
+    "description": "Sleek matte black 18/415 thread screw spray pump. Ideal for niche travel atomizers and refillable luxury perfume flacons.",
+    "price": 11,
+    "features": ["Neck Thread: 18/415 Screw", "Finish: Matte Black Powder Coated", "Leakproof: Quadruple Gasket Seal"],
+    "image": "/images/pumps/pump_2.png"
   },
   {
     "id": "pump-3",
-    "name": "Low-Profile Gold Pump",
+    "name": "Étoile Royal Crown Zamac Collar Spray Pump - Rose Gold",
     "category": "pumps",
-    "subCategory": "Aesthetic",
-    "description": "Minimalist collar and actuator designed to sit flush against the bottle."
+    "subCategory": "Weighted Collar Pump",
+    "description": "Ultra-prestige weighted metal collar spray pump finished in polished rose gold. Designed for high-end Extrait de Parfum collections.",
+    "price": 24,
+    "features": ["Collar Material: Heavyweight Zamac Alloy", "Finish: Mirror Rose Gold", "Neck Compatibility: FEA 15mm"],
+    "image": "/images/pumps/pump_3.png"
+  },
+  {
+    "id": "pump-4",
+    "name": "Étoile Crystal Mist Snap-On Pump - Chrome Silver",
+    "category": "pumps",
+    "subCategory": "Snap-On Pump",
+    "description": "High-speed snap-on precision atomizer in mirror chrome. Engineered for high-volume automated production lines with zero crimping required.",
+    "price": 10,
+    "features": ["Mechanism: Press Snap-On Collar", "Finish: Bright Chrome Silver", "Dip Tube: High Clarity Crystal PVC"],
+    "image": "/images/pumps/pump_4.png"
+  },
+  {
+    "id": "pump-5",
+    "name": "Étoile Imperial Heavy-Duty Dispensing Pump - Burnished Bronze",
+    "category": "pumps",
+    "subCategory": "Heavy Duty Pump",
+    "description": "Industrial heavy-duty oil and perfume dispenser pump with antique burnished bronze collar and extended dip tube.",
+    "price": 18,
+    "features": ["Finish: Antique Burnished Bronze", "Dosage: 0.14ml Extended Cloud", "Gasket: Solvents-Resistant Synthetic Rubber"],
+    "image": "/images/pumps/pump_5.png"
+  },
+  {
+    "id": "pump-6",
+    "name": "Étoile Micro-Cloud Fine Atomizer - Brushed Gold",
+    "category": "pumps",
+    "subCategory": "Micro-Mist Pump",
+    "description": "Engineered with nano-aperture nozzle for an ultra-dry micro-cloud mist. Accentuates delicate floral and citrus head notes.",
+    "price": 15,
+    "features": ["Technology: Nano-Aperture Micro-Mist", "Finish: Satin Brushed Champagne Gold", "Neck Size: FEA 15mm"],
+    "image": "/images/pumps/pump_6.png"
+  },
+  {
+    "id": "pump-7",
+    "name": "Étoile Minimalist Invisible-Tube Pump - Platinum Silver",
+    "category": "pumps",
+    "subCategory": "Invisible Dip Tube",
+    "description": "Ultra-clearing invisible dip tube pump technology in polished platinum silver. Disappears completely inside liquid for pure crystal aesthetics.",
+    "price": 16,
+    "features": ["Dip Tube: Zero-Refraction Invisible Polymer", "Finish: Polished Platinum", "Spray Angle: 65° Conical Spray Pattern"],
+    "image": "/images/pumps/pump_7.png"
+  },
+  {
+    "id": "pump-8",
+    "name": "Étoile Vintage Bulb Atomizer Pump - Gold Mesh & Collar",
+    "category": "pumps",
+    "subCategory": "Bulb Atomizer",
+    "description": "Classic vintage style spray pump with woven gold silk bulb and crimped brass collar. Brings haute couture nostalgia to vanity flacons.",
+    "price": 32,
+    "features": ["Style: Retro Luxury Squeeze Bulb", "Mesh: Hand-woven Metallic Thread", "Neck Size: 18mm Threaded"],
+    "image": "/images/pumps/pump_8.png"
+  },
+  {
+    "id": "pump-9",
+    "name": "Étoile Velvet Touch Spray Pump - Soft Metallic Emerald & Gold",
+    "category": "pumps",
+    "subCategory": "Weighted Collar Pump",
+    "description": "Dual-tone luxury pump featuring dark emerald green anodized collar with gold nozzle accent. Perfect match for forest green glass flacons.",
+    "price": 21,
+    "features": ["Tone: Emerald Green & Champagne Gold", "Neck Size: FEA 15mm Standard", "Actuation Force: Ultra Smooth Soft Touch"],
+    "image": "/images/pumps/pump_9.png"
+  },
+  {
+    "id": "pump-10",
+    "name": "Étoile Magnetic Snap Atomizer Assembly - Polished Brass",
+    "category": "pumps",
+    "subCategory": "Magnetic Assembly",
+    "description": "Integrated magnetic-ready pump assembly in raw polished brass. Seamlessly aligns with magnetic weighted caps.",
+    "price": 28,
+    "features": ["Magnetic Alignment: N52 Ring Magnet Integrated", "Finish: Raw Mirror Brass", "Seal: High-Pressure Hermetic Ring"],
+    "image": "/images/pumps/pump_10.png"
+  },
+  {
+    "id": "pump-11",
+    "name": "Étoile Pocket Travel Spray Pump - Compact Gold",
+    "category": "pumps",
+    "subCategory": "Travel Pump",
+    "description": "Compact 10ml/15ml pocket atomizer pump module in polished champagne gold. Spill-proof design engineered for luxury travel kits.",
+    "price": 10,
+    "features": ["Compatibility: 10ml-20ml Vials & Pocket Flacons", "Leakproof: TSA Compliant Aircraft Pressure Seal"],
+    "image": "/images/pumps/pump_11.png"
   }
 ];

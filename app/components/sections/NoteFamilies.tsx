@@ -43,7 +43,7 @@ export default function NoteFamilies() {
   const meta = familyMeta[selectedNote.id];
 
   return (
-    <section id="notes" className="py-24 md:py-32 bg-[#E7DFC9]/25 relative z-20">
+    <section id="notes" className="py-20 md:py-32 bg-[#E7DFC9]/25 relative z-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="fade-in-section text-center max-w-2xl mx-auto mb-14 md:mb-20 flex flex-col items-center space-y-4">
           <div className="flex items-center space-x-3">

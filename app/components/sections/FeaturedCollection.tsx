@@ -93,7 +93,7 @@ function CollectionCard({
 
 export default function FeaturedCollection() {
   return (
-    <section id="collections" className="py-24 md:py-32 bg-[#F4F2E8] relative z-20">
+    <section id="collections" className="py-20 md:py-24 bg-[#F4F2E8] relative z-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="fade-in-section text-center max-w-2xl mx-auto mb-10 md:mb-20 flex flex-col items-center space-y-4">
           <div className="flex items-center space-x-3 mb-1">
@@ -108,24 +108,24 @@ export default function FeaturedCollection() {
             <div className="h-[1px] w-12 bg-[#C8A76A]/60" />
           </div>
           <span className="text-[11px] tracking-[0.3em] uppercase text-[#2B3325]/80 font-bold">
-            Curated Selections
+            Industrial Supply Pillars
           </span>
           <h2 className="font-serif text-4xl md:text-5xl text-[#1D2418] font-light">
-            Featured Collections
+            Perfume Manufacturing Essentials
           </h2>
           <p className="text-sm md:text-base text-[#2B3325]/75 font-light leading-relaxed">
-            Explore our premium range of perfumery essentials. From captivating fragrances to elegant bottles, caps, and pumps, we provide everything needed to elevate your brand.
+            Select your preferred components to build a complete perfume line. We manufacture and supply empty crystal flacons, precision magnetic caps, fine mist atomizers, and concentrated French perfume oils.
           </p>
           <div className="h-[1px] w-16 bg-[#2B3325]/40 mt-2" />
         </div>
 
         <div className="flex flex-col gap-6 lg:gap-8">
-          {/* 1. PERFUMES CATEGORY */}
+          {/* 1. PERFUME OILS CATEGORY */}
           <CollectionCard
             featured
-            tag="Perfumes"
-            title="Perfumes Collection"
-            description="Discover our signature fragrance set & royal gift boxes, featuring matching perfume oils, plush velvet lining, and raw French ingredients."
+            tag="Concentrated Oils"
+            title="French Perfume Oil Concentrates"
+            description="Pure raw fragrance oils and absolutes sourced from Grasse. Formulated for high sillage, long lasting projection, and seamless alcohol dilution."
             href="/collections?category=perfumes"
             imageSrc="/images/category/category-perfumes.png"
             className="aspect-[2/1] w-full min-h-[360px] md:min-h-[440px]"
@@ -136,33 +136,36 @@ export default function FeaturedCollection() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
             {/* 2. GLASS BOTTLES CATEGORY */}
             <CollectionCard
-              tag="Bottles"
-              title="Glass Bottles"
+              tag="Empty Flacons"
+              title="Empty Glass Bottles"
+              description="Heavy base crystal glass bottles (30ml, 50ml, 100ml) with precision 15mm crimp finish."
               href="/collections?category=bottles"
               imageSrc="/images/category/category-bottles.png"
-              className="h-[340px]"
+              className="h-[360px]"
               titleClassName="text-2xl md:text-3xl"
               contentClassName="p-6 md:p-8"
             />
 
             {/* 3. PREMIUM CAPS CATEGORY */}
             <CollectionCard
-              tag="Caps"
-              title="Premium Caps"
+              tag="Caps & Closures"
+              title="Luxury Magnetic Caps"
+              description="Weighted Zamak metal, natural wood, and acrylic caps engineered for a firm magnetic click."
               href="/collections?category=caps"
               imageSrc="/images/category/category-caps.png"
-              className="h-[340px]"
+              className="h-[360px]"
               titleClassName="text-2xl md:text-3xl"
               contentClassName="p-6 md:p-8"
             />
 
             {/* 4. SPRAY PUMPS CATEGORY */}
             <CollectionCard
-              tag="Pumps"
-              title="Spray Pumps"
+              tag="Atomizer Pumps"
+              title="Precision Spray Pumps"
+              description="Fine-mist leakproof 15mm spray atomizers in metallic gold, rose gold, silver, and matte black."
               href="/collections?category=pumps"
               imageSrc="/images/category/category-pumps.png"
-              className="h-[340px]"
+              className="h-[360px]"
               titleClassName="text-2xl md:text-3xl"
               contentClassName="p-6 md:p-8"
             />
