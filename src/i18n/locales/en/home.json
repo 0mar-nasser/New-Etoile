@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "title": "Build Your Custom",
+    "titleHighlight": "Perfume Brand",
+    "subtitle": "Industrial supplier of luxury empty glass flacons, magnetic caps, precision spray pumps, and concentrated French perfume oils. Select your components and craft your signature fragrance line with low MOQ and white-glove global supply.",
+    "exploreCatalog": "Explore Supply Catalog",
+    "customizeLine": "Contact Us",
+    "contactUs": "Contact Us"
+  },
+  "bestsellers": {
+    "badge": "Factory Supply Staples",
+    "title": "Best-Selling Flacons & Oils",
+    "subtitle": "Trusted by niche perfume houses across Europe, the Gulf, and North America.",
+    "viewAll": "View Complete Supply Line"
+  },
+  "featuredCollection": {
+    "badge": "Signature Line",
+    "title": "Featured Fragrances & Packaging",
+    "subtitle": "Discover our most sought-after scent profiles and bespoke crystal bottle molds."
+  },
+  "newArrivals": {
+    "badge": "New Mold Releases",
+    "title": "Latest Fragrance & Bottle Designs",
+    "subtitle": "Newly introduced French perfume oil blends, heavy-base crystal flacons, and magnetic wooden caps."
+  },
+  "scentQuiz": {
+    "badge": "Bespoke Selection Engine",
+    "title": "Find Your Brand's Olfactory Identity",
+    "subtitle": "Answer a few questions regarding your target audience, price point, and fragrance notes to get curated sample recommendations.",
+    "startQuiz": "Start Olfactory Analysis",
+    "resetQuiz": "Restart Quiz",
+    "questionCount": "Question {{current}} of {{total}}",
+    "resultsTitle": "Your Curated Olfactory Profile",
+    "recommendedProducts": "Recommended Components for Your Line"
+  },
+  "noteFamilies": {
+    "badge": "French Fragrance Library",
+    "title": "Explore Olfactory Note Families",
+    "subtitle": "Masterfully formulated in Grasse using authentic floral absolutes, rare woods, and precious resins."
+  },
+  "whyChoose": {
+    "badge": "Manufacturing Standards",
+    "title": "Why Global Brands Partner With Étoile",
+    "subtitle": "End-to-end industrial perfume creation from raw French concentrate to turnkey packaged bottles.",
+    "feature1Title": "Grasse French Concentrate",
+    "feature1Desc": "Formulated in Provence with highest purity IFRA-compliant fragrance oils.",
+    "feature2Title": "Low Minimum Order Quantities",
+    "feature2Desc": "Flexible MOQs starting at 100 units for luxury indie perfume brands.",
+    "feature3Title": "Custom Glass Molds & Coating",
+    "feature3Desc": "Bespoke glass colors, UV protection lacquering, and hot-foil metallic stamping.",
+    "feature4Title": "Global Express Freight",
+    "feature4Desc": "Insured hazmat hazardous-goods transport with fast customs clearance worldwide."
+  },
+  "wholesale": {
+    "badge": "Industrial B2B Consultation",
+    "title": "Request Bulk Quotation & Samples",
+    "subtitle": "Fill out your requirements below to receive physical sample kits, component specification sheets, and volume discount tiers within 24 hours.",
+    "form": {
+      "companyName": "Company / Brand Name",
+      "companyNamePlaceholder": "e.g. Maison de Parfum Co.",
+      "contactName": "Contact Person",
+      "contactNamePlaceholder": "e.g. Alexander Dupont",
+      "email": "Business Email",
+      "emailPlaceholder": "alexander@maisonparfum.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "productInterest": "Primary Component Interest",
+      "estimatedVolume": "Estimated Order Volume",
+      "message": "Project Details & Customization Requirements",
+      "messagePlaceholder": "Specify required bottle volumes (50ml/100ml), pump finishes, or custom cap engraving...",
+      "submitButton": "Submit Wholesale Application",
+      "successMessage": "Thank you! Our B2B fragrance specialists will review your application and send samples within 24 hours."
+    }
+  },
+  "newsletter": {
+    "title": "Stay Informed on Fragrance Trends",
+    "subtitle": "Subscribe to our industrial bulletin for market insights, raw material availability, and new mold designs.",
+    "button": "Subscribe to Bulletin"
+  },
+  "socialGallery": {
+    "title": "Follow Our Bottling & Atelier Process",
+    "subtitle": "Tag @etoile.parfums to showcase your custom perfume packaging creations."
+  }
+}

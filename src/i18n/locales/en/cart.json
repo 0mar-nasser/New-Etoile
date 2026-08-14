@@ -1,0 +1,14 @@
+{
+  "title": "Your Selection Cart",
+  "emptyTitle": "Your cart is currently empty",
+  "emptySub": "Browse our catalog of luxury flacons, caps, spray pumps, and French perfume oils.",
+  "startShopping": "Explore Supply Catalog",
+  "items": "items",
+  "item": "item",
+  "clearCart": "Clear Selection",
+  "subtotal": "Subtotal",
+  "estimatedShipping": "Calculated at checkout based on destination",
+  "checkout": "Proceed to B2B Order",
+  "unitPrice": "Unit Price",
+  "moqNotice": "All items meet standard minimum order quantity requirements."
+}

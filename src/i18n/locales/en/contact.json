@@ -1,0 +1,18 @@
+{
+  "title": "Contact Our B2B Specialists",
+  "subtitle": "Get in touch for custom glass mold development, scent creation, or bulk supply inquiries.",
+  "formTitle": "Send an Inquiry",
+  "name": "Full Name",
+  "namePlaceholder": "Enter your name",
+  "email": "Business Email",
+  "emailPlaceholder": "name@company.com",
+  "subject": "Subject",
+  "subjectPlaceholder": "e.g., Custom Bottle Mold Query",
+  "message": "Message",
+  "messagePlaceholder": "Tell us about your brand and required quantities...",
+  "submit": "Send Inquiry",
+  "officeAddress": "Headquarters & Atelier",
+  "officeAddressVal": "Route de Cannes, 06130 Grasse, France",
+  "phoneTitle": "Direct Line",
+  "emailTitle": "Email Inquiries"
+}

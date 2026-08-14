@@ -103,6 +103,11 @@ body {
   overflow-x: hidden;
 }
 
+body.font-cairo,
+body.font-tajawal {
+  font-family: var(--font-tajawal), "Garet", var(--font-poppins), sans-serif;
+}
+
 /* Smooth fade-up animation classes */
 .fade-in-section {
   opacity: 0;

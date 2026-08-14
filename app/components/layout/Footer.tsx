@@ -3,9 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import navigationData from "../../data/navigation.json";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 export default function Footer() {
+  const { t } = useTranslation(["footer", "navbar", "common"]);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,8 +15,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-[#384233]">
         
         {/* Column 1: Logo & Statement */}
-        <div className="lg:col-span-2 space-y-6">
-          <Link href="/" className="focus:outline-none flex flex-col items-start">
+        <div className="lg:col-span-2 space-y-6 rtl:text-right">
+          <Link href="/" className="focus:outline-none flex flex-col items-start rtl:items-end group">
             <Image 
               src="/Logos/title-light.png" 
               alt="Etoile logo" 
@@ -24,63 +26,50 @@ export default function Footer() {
             />
           </Link>
           <p className="text-xs text-[#E7DFC9]/70 leading-relaxed max-w-sm font-light">
-            Étoile is a modern luxury fragrance house inspired by French elegance, timeless beauty, and sophisticated craftsmanship. Composed in Paris, enjoyed globally.
+            {t("footer:tagline")}
           </p>
           
-          {/* Social Media */}
-          <div className="flex space-x-4">
-            {navigationData.socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                className="w-8 h-8 rounded-full border border-[#384233] flex items-center justify-center text-[#E7DFC9] hover:text-[#C8A76A] hover:border-[#C8A76A] transition-all duration-300"
-                aria-label={social.label}
-              >
-                <span className="text-xs font-light">{social.name}</span>
-              </a>
-            ))}
+          {/* Language Switcher in Footer */}
+          <div className="pt-2">
+            <span className="text-[10px] uppercase tracking-widest text-[#C8A76A] block mb-2 font-bold">
+              {t("footer:language")}
+            </span>
+            <LanguageSwitcher variant="pill" />
           </div>
         </div>
 
-        {/* Column 2: Maison Etoile */}
-        <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Maison Etoile</h4>
+        {/* Column 2: Quick Links */}
+        <div className="space-y-4 rtl:text-right">
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">
+            {t("footer:quickLinks")}
+          </h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            {navigationData.footerLinks.maison.map((link) => (
-              <li key={link.name}>
-                <Link href={link.path} className="hover:text-[#C8A76A] transition-colors">
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+            <li><Link href="/about" className="hover:text-[#C8A76A] transition-colors">{t("navbar:about")}</Link></li>
+            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">{t("navbar:collections")}</Link></li>
+            <li><Link href="/#wholesale" className="hover:text-[#C8A76A] transition-colors">{t("navbar:wholesale")}</Link></li>
+            <li><Link href="/contact" className="hover:text-[#C8A76A] transition-colors">{t("navbar:contact")}</Link></li>
           </ul>
         </div>
 
-        {/* Column 3: Collections */}
-        <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Collections</h4>
+        {/* Column 3: Supply Catalog */}
+        <div className="space-y-4 rtl:text-right">
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">
+            {t("footer:catalog")}
+          </h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            {navigationData.footerLinks.collections.map((link) => (
-              <li key={link.name}>
-                <Link href={link.path} className="hover:text-[#C8A76A] transition-colors">
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">{t("navbar:bottlesCaps")}</Link></li>
+            <li><Link href="/collections" className="hover:text-[#C8A76A] transition-colors">{t("navbar:perfumeOils")}</Link></li>
           </ul>
         </div>
 
-        {/* Column 4: Support */}
-        <div className="space-y-4">
-          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">Support</h4>
+        {/* Column 4: B2B Consultation */}
+        <div className="space-y-4 rtl:text-right">
+          <h4 className="text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-bold">
+            {t("footer:contact")}
+          </h4>
           <ul className="space-y-2.5 text-xs font-light text-[#E7DFC9]/80">
-            {navigationData.footerLinks.support.map((link) => (
-              <li key={link.name}>
-                <Link href={link.path} className="hover:text-[#C8A76A] transition-colors">
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+            <li><Link href="/contact" className="hover:text-[#C8A76A] transition-colors">{t("navbar:contact")}</Link></li>
+            <li className="text-[11px] text-[#E7DFC9]/60">{t("footer:address")}</li>
           </ul>
         </div>
 
@@ -88,11 +77,10 @@ export default function Footer() {
 
       {/* Copyright Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-light text-[#E7DFC9]/50 tracking-wider space-y-4 md:space-y-0">
-        <span>© {currentYear} Étoile Haute Parfumerie. All rights reserved.</span>
-        <div className="flex space-x-6">
-          <a href="#" className="hover:text-[#C8A76A] transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-[#C8A76A] transition-colors">Terms of Service</a>
-          <a href="#" className="hover:text-[#C8A76A] transition-colors">Accessibility Statement</a>
+        <span>{t("footer:copyright", { year: currentYear })}</span>
+        <div className="flex space-x-6 rtl:space-x-reverse">
+          <a href="#" className="hover:text-[#C8A76A] transition-colors">{t("footer:privacyPolicy")}</a>
+          <a href="#" className="hover:text-[#C8A76A] transition-colors">{t("footer:termsOfService")}</a>
         </div>
       </div>
     </footer>

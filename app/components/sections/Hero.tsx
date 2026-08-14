@@ -2,44 +2,51 @@
 
 import React from "react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import Button from "../ui/Button";
 
 export default function Hero() {
+  const { t, i18n } = useTranslation("home");
+  const isArabic = i18n.language?.startsWith("ar");
+
   return (
-    <section className="relative h-screen bg-[#1D2418] flex items-center overflow-hidden">
+    <section className="relative min-h-[92vh] md:min-h-screen bg-[#1D2418] flex items-center overflow-hidden pt-24 pb-16 md:py-0">
+      {/* Background Image positioned dynamically for LTR and RTL */}
       <Image
         src="/images/hero_perfume_nature_bg.png"
-        alt="Perfume Packaging Components - Empty Glass Bottle, Cap, Spray Pump, and Perfume Oil in Natural Scenery"
+        alt="Étoile Haute Parfumerie & Packaging"
         fill
         priority
-        className="object-cover object-right md:object-right"
+        className="object-cover object-center lg:object-right rtl:lg:object-left transition-all duration-700 opacity-70 md:opacity-85"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1D2418]/95 via-[#1D2418]/65 to-transparent z-10" />
 
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-20 h-full pt-20 flex items-center">
-        <div className="flex flex-col justify-center space-y-6 text-[#F4F2E8] max-w-xl md:max-w-2xl">
-          <div className="flex items-center space-x-3 opacity-90 mx-auto mb-4 gap-5">
-            <div className="h-[1px] w-24 md:w-36 bg-[#C8A76A]" />
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-[#C8A76A] font-semibold whitespace-nowrap">
-              Perfume & Packaging Factory
+      {/* Dynamic Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1D2418] via-[#1D2418]/85 to-[#1D2418]/30 rtl:bg-gradient-to-l rtl:from-[#1D2418] rtl:via-[#1D2418]/85 rtl:to-[#1D2418]/30 z-10" />
+
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-20 h-full flex flex-col justify-center">
+        <div className="flex flex-col justify-center space-y-6 md:space-y-8 text-[#F4F2E8] max-w-xl md:max-w-2xl text-left rtl:text-right">
+
+          {/* Heading */}
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-light tracking-wide leading-tight md:leading-[1.15]">
+            {t("hero.title")}{" "}
+            <span className={`block sm:inline ${isArabic ? "text-[#C8A76A] font-medium" : "italic text-[#E7DFC9]"}`}>
+              {t("hero.titleHighlight")}
             </span>
-            <div className="h-[1px] w-24 md:w-36 bg-[#C8A76A]" />
-          </div>
-          <h1 className="font-serif text-4xl md:text-6xl xl:text-7xl font-light tracking-wide leading-tight md:leading-none">
-            Build Your Custom <br />
-            <span className="italic text-[#E7DFC9]">Perfume Brand</span>
           </h1>
-          <p className="text-sm md:text-base text-[#E7DFC9]/85 font-light leading-relaxed max-w-xl">
-            Industrial supplier of luxury empty glass flacons, magnetic caps, precision spray pumps, and concentrated French perfume oils. Select your components and craft your signature fragrance line with low MOQ and white-glove global supply.
+
+          {/* Subtitle */}
+          <p className="text-sm md:text-base xl:text-lg text-[#E7DFC9]/90 font-light leading-relaxed max-w-xl">
+            {t("hero.subtitle")}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 pt-4">
-            <Button variant="primary" href="/collections">
-              Explore Supply Catalog
+          {/* Call to Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 pt-2">
+            <Button variant="primary" href="/collections" className="shadow-xl hover:scale-105">
+              {t("hero.exploreCatalog")}
             </Button>
-            <Button variant="secondary" href="#wholesale">
-              Customize Perfume Line
+            <Button variant="secondary" href="/contact" className="hover:scale-105">
+              {t("hero.contactUs")}
             </Button>
           </div>
         </div>

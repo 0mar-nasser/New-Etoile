@@ -3,12 +3,15 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS } from "../../data/products";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
 
 export default function NewArrivals() {
+  const { t, i18n } = useTranslation(["home", "common"]);
   const { addToCart } = useCart();
+  const isRtl = i18n.language === "ar";
 
   const newArrivalProduct =
     PRODUCTS.find((p) => p.id === "originelle-intense") || PRODUCTS[0];
@@ -49,156 +52,86 @@ export default function NewArrivals() {
       <div className="relative mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Side */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 rtl:text-right">
             <div className="space-y-6 lg:sticky lg:top-28">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <div className="h-[1px] w-8 bg-[#C8A76A]" />
                 <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#C8A76A]">
-                  Factory Innovations
+                  {t("newArrivals.badge")}
                 </span>
               </div>
 
-              <h2 className="font-serif text-4xl font-light leading-tight tracking-wide md:text-5xl">
-                Upcoming{" "}
-                <span className="italic text-[#E7DFC9]">
-                  Releases
-                </span>
+              <h2 className="font-serif text-4xl md:text-5xl font-light text-[#F4F2E8]">
+                {t("newArrivals.title")}
               </h2>
 
-              <p className="text-sm font-light leading-relaxed text-[#E7DFC9]/75 md:text-base">
-                Preview our upcoming glass flacon mold designs, weighted zamak caps, and high-purity perfume oil compounds engineered for next-generation fragrance brands.
+              <p className="text-sm text-[#E7DFC9]/80 font-light leading-relaxed">
+                {t("newArrivals.subtitle")}
               </p>
 
-              <div className="flex items-center gap-8 pt-2">
-                <div>
-                  <span className="font-serif text-3xl text-[#C8A76A]">
-                    01
-                  </span>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#E7DFC9]/60">
-                    Coming Soon
-                  </p>
-                </div>
-
-                <div className="h-10 w-[1px] bg-[#384233]" />
-
-                <div>
-                  <span className="font-serif text-3xl text-[#C8A76A]">
-                    2026
-                  </span>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#E7DFC9]/60">
-                    Limited Edition
-                  </p>
-                </div>
+              <div className="pt-4">
+                <Link
+                  href="/collections"
+                  className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-semibold hover:text-[#F4F2E8] transition-colors"
+                >
+                  <span>{t("common:viewDetails")}</span>
+                  <span>{isRtl ? "←" : "→"}</span>
+                </Link>
               </div>
-
-              <Link
-                href={`/collections/${newArrivalProduct.id}`}
-                className="inline-flex items-center gap-2 pt-2 text-[10px] font-light uppercase tracking-[0.25em] text-[#F4F2E8] transition-colors hover:text-[#C8A76A]"
-              >
-                <span>Explore Preview</span>
-                <span>→</span>
-              </Link>
             </div>
           </div>
 
-          {/* Right Side */}
-          <div className="lg:col-span-8 flex flex-col gap-6">
-            {upcomingProducts.map((product, index) => (
-              <article
-                key={product.id}
-                className="group relative grid grid-cols-1 gap-6 rounded-[28px] border border-[#384233]/70 bg-[#2B3325]/40 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[#C8A76A]/30 hover:bg-[#2B3325]/70 md:grid-cols-[260px_1fr] md:gap-8 md:p-8"
+          {/* Right Side: Product Cards */}
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {upcomingProducts.map((p) => (
+              <div
+                key={p.id}
+                className="group relative flex flex-col justify-between rounded-[24px] border border-[#384233]/60 bg-[#2B3325]/40 p-6 transition-all duration-500 hover:border-[#C8A76A]/40 hover:bg-[#2B3325]/70"
               >
-                {/* Image */}
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] border border-[#384233]/60">
-                  <div className="transition-transform duration-700 group-hover:scale-105 h-full w-full">
-                    {product.image ? (
+                <div>
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[18px] border border-[#384233]/60">
+                    {p.image ? (
                       <Image
-                        src={product.image}
-                        alt={`${product.name} Bottle`}
+                        src={p.image}
+                        alt={p.name}
                         fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 300px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     ) : (
                       <ImagePlaceholder
-                        label={`${product.name} Bottle`}
-                        aspect="aspect-[4/5]"
+                        label={p.name}
+                        aspect="aspect-[3/4]"
                         theme="dark"
-                        className="h-full"
                       />
                     )}
                   </div>
 
-                  <span className="absolute left-4 top-4 rounded-full bg-[#C8A76A] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.25em] text-[#1D2418]">
-                    Coming Soon
+                  <div className="mt-5 space-y-2 rtl:text-right">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#C8A76A] font-bold block">
+                      {p.tagline}
+                    </span>
+                    <h3 className="font-serif text-xl font-light text-[#F4F2E8]">
+                      {p.name}
+                    </h3>
+                    <p className="text-xs text-[#E7DFC9]/70 font-light leading-relaxed line-clamp-2">
+                      {p.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 flex items-center justify-between border-t border-[#384233]/60 pt-4">
+                  <span className="font-serif text-lg font-semibold text-[#F4F2E8]">
+                    ${p.price}
                   </span>
+                  <button
+                    onClick={() => addToCart(p, "100ml")}
+                    className="bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-4 py-2 rounded-full text-[10px] tracking-wider uppercase font-bold transition-all duration-300 cursor-pointer"
+                  >
+                    {t("common:addToCart")}
+                  </button>
                 </div>
-
-                {/* Content */}
-                <div className="flex flex-col justify-between gap-6">
-                  <div className="space-y-5">
-                    <div className="flex items-start justify-between">
-                      <span className="select-none font-serif text-5xl leading-none text-[#C8A76A]/20 md:text-6xl">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-
-                      <span className="pt-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#C8A76A]">
-                        Exclusive Release
-                      </span>
-                    </div>
-
-                    <div className="-mt-2 space-y-2">
-                      <h3 className="font-serif text-3xl font-light tracking-wide text-[#F4F2E8]">
-                        {product.name}
-                      </h3>
-
-                      <p className="max-w-xl text-sm font-light leading-relaxed text-[#E7DFC9]/75">
-                        {product.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {product.notes.map((note) => (
-                        <span
-                          key={note}
-                          className="rounded-full border border-[#384233] bg-[#1D2418]/60 px-3 py-1 text-[9px] font-light tracking-wide text-[#E7DFC9]"
-                        >
-                          {note}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="flex flex-col gap-4 border-t border-[#384233]/80 pt-5 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <span className="font-serif text-2xl text-[#F4F2E8]">
-                        ${product.price}
-                      </span>
-
-                      <p className="mt-1 text-[10px] font-light uppercase tracking-[0.2em] text-[#E7DFC9]/50">
-                        {product.volume} Eau de Parfum
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                      <Link
-                        href={`/collections/${product.id}`}
-                        className="border-b border-[#E7DFC9]/30 pb-0.5 text-[10px] font-light uppercase tracking-[0.2em] text-[#E7DFC9] transition-colors hover:border-[#C8A76A]/50 hover:text-[#C8A76A]"
-                      >
-                        View Details
-                      </Link>
-
-                      <button
-                        onClick={() => addToCart(product, "100ml")}
-                        className="rounded-full bg-[#C8A76A] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#1D2418] transition-all duration-300 hover:bg-[#F4F2E8]"
-                      >
-                        Pre-Order
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>

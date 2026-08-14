@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
 
 type CollectionCardProps = {
@@ -32,10 +33,14 @@ function CollectionCard({
   titleClassName = "text-3xl",
   contentClassName = "p-8",
 }: CollectionCardProps) {
+  const { t, i18n } = useTranslation("common");
+  const isRtl = i18n.language === "ar";
+
   return (
     <div
-      className={`fade-in-section relative overflow-hidden shadow-2xl border border-[#E7DFC9]/20 bg-[#1D2418] group ${featured ? "rounded-[32px]" : "rounded-[28px]"
-        } ${className}`}
+      className={`fade-in-section relative overflow-hidden shadow-2xl border border-[#E7DFC9]/20 bg-[#1D2418] group ${
+        featured ? "rounded-[32px]" : "rounded-[28px]"
+      } ${className}`}
     >
       {imageSrc ? (
         <Image
@@ -54,49 +59,63 @@ function CollectionCard({
         />
       )}
 
-      {/* Elegant dark gradient overlay for optimal readability */}
+      {/* Gradient Overlay */}
       <div
-        className={`absolute inset-0 z-10 ${featured
-          ? "bg-gradient-to-r from-[#1D2418]/90 via-[#1D2418]/50 to-[#1D2418]/15 md:from-[#1D2418]/95 md:via-[#1D2418]/55 md:to-transparent"
-          : "bg-gradient-to-t from-[#1D2418]/95 via-[#1D2418]/40 to-transparent"
-          }`}
+        className={`absolute inset-0 z-10 ${
+          featured
+            ? "bg-gradient-to-r from-[#1D2418]/90 via-[#1D2418]/50 to-[#1D2418]/15 rtl:bg-gradient-to-l rtl:from-[#1D2418]/90 rtl:via-[#1D2418]/50 rtl:to-[#1D2418]/15"
+            : "bg-gradient-to-t from-[#1D2418]/95 via-[#1D2418]/60 to-transparent"
+        }`}
       />
 
+      {/* Content */}
       <div
-        className={`absolute z-30 flex flex-col space-y-3 ${featured
-          ? "inset-0 justify-center max-w-xl"
-          : "inset-x-0 bottom-0 justify-end"
-          } ${contentClassName}`}
+        className={`relative z-20 h-full flex flex-col justify-between text-[#F4F2E8] rtl:text-right ${contentClassName}`}
       >
-        <span className="text-[10px] tracking-[0.3em] uppercase text-[#C8A76A] font-semibold">
-          {tag}
-        </span>
-        <h3 className={`font-serif text-[#F4F2E8] font-light leading-tight ${titleClassName}`}>
-          {title}
-        </h3>
-        {description && (
-          <p className="max-w-xl text-sm text-[#E7DFC9]/85 font-light leading-relaxed">
-            {description}
-          </p>
-        )}
-        <Link
-          href={href}
-          className="inline-flex items-center space-x-2 text-xs text-[#F4F2E8] hover:text-[#C8A76A] font-light tracking-[0.25em] uppercase transition-colors duration-300 pt-1"
-        >
-          <span>Explore Collection</span>
-          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </Link>
+        <div className="space-y-2">
+          <span className="inline-block text-[10px] tracking-[0.25em] uppercase text-[#C8A76A] font-semibold bg-[#1D2418]/60 backdrop-blur-md px-3 py-1 rounded-full border border-[#C8A76A]/30">
+            {tag}
+          </span>
+        </div>
+
+        <div className="space-y-3">
+          <h3
+            className={`font-serif font-light text-[#F4F2E8] leading-tight group-hover:text-[#E7DFC9] transition-colors ${titleClassName}`}
+          >
+            {title}
+          </h3>
+
+          {description && (
+            <p className="text-xs md:text-sm text-[#E7DFC9]/85 font-light leading-relaxed max-w-xl">
+              {description}
+            </p>
+          )}
+
+          <div className="pt-2">
+            <Link
+              href={href}
+              className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[#C8A76A] font-semibold hover:text-[#F4F2E8] transition-colors"
+            >
+              <span>{t("learnMore")}</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                {isRtl ? "←" : "→"}
+              </span>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 export default function FeaturedCollection() {
+  const { t } = useTranslation(["home", "common"]);
+
   return (
-    <section id="collections" className="py-20 md:py-24 bg-[#F4F2E8] relative z-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="fade-in-section text-center max-w-2xl mx-auto mb-10 md:mb-20 flex flex-col items-center space-y-4">
-          <div className="flex items-center space-x-3 mb-1">
+    <section className="py-24 bg-[#F4F2E8] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-16">
+        <div className="flex flex-col items-center text-center space-y-4 max-w-2xl mx-auto">
+          <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <div className="h-[1px] w-12 bg-[#C8A76A]/60" />
             <Image
               src="/Logos/Nav-Logo-dark.png"
@@ -108,24 +127,23 @@ export default function FeaturedCollection() {
             <div className="h-[1px] w-12 bg-[#C8A76A]/60" />
           </div>
           <span className="text-[11px] tracking-[0.3em] uppercase text-[#2B3325]/80 font-bold">
-            Industrial Supply Pillars
+            {t("featuredCollection.badge")}
           </span>
           <h2 className="font-serif text-4xl md:text-5xl text-[#1D2418] font-light">
-            Perfume Manufacturing Essentials
+            {t("featuredCollection.title")}
           </h2>
           <p className="text-sm md:text-base text-[#2B3325]/75 font-light leading-relaxed">
-            Select your preferred components to build a complete perfume line. We manufacture and supply empty crystal flacons, precision magnetic caps, fine mist atomizers, and concentrated French perfume oils.
+            {t("featuredCollection.subtitle")}
           </p>
           <div className="h-[1px] w-16 bg-[#2B3325]/40 mt-2" />
         </div>
 
         <div className="flex flex-col gap-6 lg:gap-8">
-          {/* 1. PERFUME OILS CATEGORY */}
           <CollectionCard
             featured
-            tag="Concentrated Oils"
-            title="French Perfume Oil Concentrates"
-            description="Pure raw fragrance oils and absolutes sourced from Grasse. Formulated for high sillage, long lasting projection, and seamless alcohol dilution."
+            tag={t("home:featuredCollection.badge")}
+            title={t("home:featuredCollection.title")}
+            description={t("home:featuredCollection.subtitle")}
             href="/collections?category=perfumes"
             imageSrc="/images/category/category-perfumes.png"
             className="aspect-[2/1] w-full min-h-[360px] md:min-h-[440px]"
@@ -134,11 +152,10 @@ export default function FeaturedCollection() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-            {/* 2. GLASS BOTTLES CATEGORY */}
             <CollectionCard
-              tag="Empty Flacons"
-              title="Empty Glass Bottles"
-              description="Heavy base crystal glass bottles (30ml, 50ml, 100ml) with precision 15mm crimp finish."
+              tag="Flacons"
+              title="Glass Bottles"
+              description="Heavy base crystal glass bottles (30ml, 50ml, 100ml)."
               href="/collections?category=bottles"
               imageSrc="/images/category/category-bottles.png"
               className="h-[360px]"
@@ -146,11 +163,10 @@ export default function FeaturedCollection() {
               contentClassName="p-6 md:p-8"
             />
 
-            {/* 3. PREMIUM CAPS CATEGORY */}
             <CollectionCard
-              tag="Caps & Closures"
-              title="Luxury Magnetic Caps"
-              description="Weighted Zamak metal, natural wood, and acrylic caps engineered for a firm magnetic click."
+              tag="Caps"
+              title="Magnetic Caps"
+              description="Weighted Zamak metal, natural wood, and acrylic caps."
               href="/collections?category=caps"
               imageSrc="/images/category/category-caps.png"
               className="h-[360px]"
@@ -158,11 +174,10 @@ export default function FeaturedCollection() {
               contentClassName="p-6 md:p-8"
             />
 
-            {/* 4. SPRAY PUMPS CATEGORY */}
             <CollectionCard
-              tag="Atomizer Pumps"
-              title="Precision Spray Pumps"
-              description="Fine-mist leakproof 15mm spray atomizers in metallic gold, rose gold, silver, and matte black."
+              tag="Pumps"
+              title="Precision Atomizers"
+              description="Fine-mist leakproof spray atomizers."
               href="/collections?category=pumps"
               imageSrc="/images/category/category-pumps.png"
               className="h-[360px]"

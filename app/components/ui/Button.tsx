@@ -22,7 +22,7 @@ export default function Button({
 
   const variantClasses = {
     primary: "bg-[#C8A76A] hover:bg-[#b09156] text-[#1D2418] shadow-lg",
-    secondary: "border border-[#F4F2E8]/40 hover:border-[#F4F2E8] text-[#F4F2E8] bg-transparent",
+    secondary: "border border-[#F4F2E8]/40 hover:border-[#F4F2E8] text-[#1D2418] bg-white/60",
     dark: "bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] shadow-md"
   };
 

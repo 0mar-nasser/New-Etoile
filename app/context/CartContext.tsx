@@ -43,10 +43,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       const savedCart = localStorage.getItem("etoile_cart");
       if (savedCart) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setCart(JSON.parse(savedCart) as CartItem[]);
       }
       const savedWishlist = localStorage.getItem("etoile_wishlist");
       if (savedWishlist) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setWishlist(JSON.parse(savedWishlist) as string[]);
       }
     } catch {

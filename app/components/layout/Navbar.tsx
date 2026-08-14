@@ -3,21 +3,27 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS } from "../../data/products";
-import navigationData from "../../data/navigation.json";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { 
-    cartItemCount, 
-    toggleCartOpen, 
-    searchQuery, 
-    setSearchQuery, 
-    wishlist, 
+  const router = useRouter();
+  const { t, i18n } = useTranslation(["navbar", "common"]);
+  const isRtl = i18n.language?.startsWith("ar");
+  const wishlistDrawerX = isRtl ? "-100%" : "100%";
+  const {
+    cartItemCount,
+    toggleCartOpen,
+    searchQuery,
+    setSearchQuery,
+    wishlist,
     toggleWishlist,
-    addToCart
+    addToCart,
   } = useCart();
 
   const [scrolled, setScrolled] = useState(false);
@@ -39,188 +45,272 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close search/wishlist panels when navigating to a new page
+  // Close panels when navigating
   useEffect(() => {
-    setSearchActive(false); // eslint-disable-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSearchActive(false);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setWishlistOpen(false);
   }, [pathname]);
 
+  // Prevent background body scroll when wishlist drawer is open
+  useEffect(() => {
+    if (wishlistOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [wishlistOpen]);
+
   const wishlistedProducts = PRODUCTS.filter((p) => wishlist.includes(p.id));
 
-  // Determine navbar background color & padding
   const navBgClass = isHome
     ? scrolled
       ? "bg-[#2B3325]/95 backdrop-blur-md py-4 border-b border-[#384233]/40 shadow-lg"
-      : "bg-transparent py-6 border-b border-transparent"
+      : "bg-transparent py-5 border-b border-transparent"
     : "bg-[#2B3325] py-4 border-b border-[#384233]/60 shadow-lg";
+
+  const navLinks = [
+    { path: "/", label: t("navbar:home") },
+    { path: "/collections", label: t("navbar:collections") },
+    { path: "/about", label: t("navbar:about") },
+    { path: "/contact", label: t("navbar:contact") },
+  ];
+
+  const handleSearchClick = () => {
+    if (pathname !== "/collections") {
+      router.push("/collections");
+    }
+    setSearchActive(!searchActive);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pathname !== "/collections") {
+      router.push("/collections");
+    }
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${navBgClass}`}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                {/* Center Logo */}
-        <Link href="/" className="flex flex-col items-center focus:outline-none">
-          <Image 
-            src="/Logos/title-light.png" 
-            alt="Etoile logo" 
-            width={120} 
-            height={35} 
-            className="object-contain"
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-6">
+
+        {/* Brand Logo */}
+        <Link href="/" className="flex items-center focus:outline-none shrink-0 group">
+          <Image
+            src="/Logos/title-light.png"
+            alt="Étoile Logo"
+            width={130}
+            height={40}
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
             priority
           />
         </Link>
-        {/* Left Nav Links */}
-        <div className="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
-          {navigationData.navbarLinks.map((link) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              className={`hover:text-[#C8A76A] transition-colors duration-300 ${
-                pathname === link.path ? "text-[#C8A76A]" : ""
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
 
-        {/* Mobile menu trigger */}
-        <div className="md:hidden flex items-center">
-          <Link href="/collections" className="text-[#F4F2E8] hover:text-[#C8A76A] mr-4 text-xs tracking-widest uppercase font-light">
-            Shop
-          </Link>
-        </div>
-
-
-
-        {/* Right Nav Options */}
-        <div className="flex items-center space-x-4 md:space-x-6 text-xs tracking-[0.2em] uppercase font-light text-[#F4F2E8]">
-          
-          {/* Search Icon & Box */}
-          <div className="relative flex items-center">
-            {searchActive && (
-              <input
-                type="text"
-                placeholder="Search scent..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-[#1D2418] border border-[#384233] rounded-full px-4 py-1.5 text-[10px] text-[#F4F2E8] focus:outline-none focus:border-[#C8A76A] mr-2 w-32 md:w-44 transition-all duration-300 animate-fade-in"
-                autoFocus
-              />
-            )}
-            <button
-              onClick={() => {
-                setSearchActive(!searchActive);
-                if (searchActive) setSearchQuery("");
-              }}
-              className="hover:text-[#C8A76A] transition-colors focus:outline-none p-1"
-              aria-label="Search"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Wishlist Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setWishlistOpen(!wishlistOpen)}
-              className="relative hover:text-[#C8A76A] transition-colors focus:outline-none p-1 flex items-center"
-              aria-label="Wishlist"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-              </svg>
-              {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#C8A76A] text-[#1D2418] font-bold text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-
-            {wishlistOpen && (
-              <div className="absolute right-0 mt-3 w-80 bg-[#F4F2E8] border border-[#E7DFC9] rounded-[22px] shadow-2xl p-5 z-50 text-[#1D2418] normal-case tracking-normal animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-300">
-                <div className="flex items-center justify-between border-b border-[#E7DFC9] pb-3 mb-3">
-                  <span className="font-serif text-xs font-semibold tracking-wider uppercase text-[#2B3325]">Wishlist</span>
-                  <button onClick={() => setWishlistOpen(false)} className="text-[10px] text-[#C8A76A] hover:text-[#1D2418] hover:underline uppercase tracking-wider font-semibold transition-colors duration-350 cursor-pointer">Close</button>
-                </div>
-
-                {wishlistedProducts.length === 0 ? (
-                  <p className="text-[11px] text-[#2B3325]/60 text-center py-6 font-light">Your wishlist is empty.</p>
-                ) : (
-                  <div className="space-y-3.5 max-h-60 overflow-y-auto pr-1">
-                    {wishlistedProducts.map((p) => (
-                      <div key={p.id} className="flex items-center justify-between gap-3 border-b border-[#E7DFC9]/50 pb-3 last:border-b-0 last:pb-0 group">
-                        <div className="flex items-center gap-3">
-                          {/* Product Thumbnail */}
-                          <div className="relative w-10 h-12 rounded-[8px] overflow-hidden shrink-0 border border-[#E7DFC9] bg-[#F4F2E8]">
-                            {p.image ? (
-                              <Image
-                                src={p.image}
-                                alt={p.name}
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                sizes="40px"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 relative select-none">
-                                <span className="font-serif text-[8px] font-semibold text-[#1D2418] tracking-widest opacity-85">Étoile</span>
-                              </div>
-                            )}
-                          </div>
-                          
-                          <div className="flex flex-col min-w-0">
-                            <Link href={`/collections/${p.id}`} className="font-serif text-xs font-semibold text-[#1D2418] hover:text-[#C8A76A] transition-colors leading-tight truncate max-w-[120px]">
-                              {p.name}
-                            </Link>
-                            <span className="text-[10px] text-[#C8A76A] font-bold mt-0.5">${p.price}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-center space-x-1.5 shrink-0">
-                          <button
-                            onClick={() => {
-                              addToCart(p, "100ml");
-                              setWishlistOpen(false);
-                            }}
-                            className="bg-[#2B3325] text-white hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-1.5 rounded-full text-[9px] tracking-wider uppercase font-bold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
-                          >
-                            Add
-                          </button>
-                          <button
-                            onClick={() => toggleWishlist(p.id)}
-                            className="text-[#2B3325]/45 hover:text-red-400/90 hover:scale-110 active:scale-95 transition-all p-1.5 rounded-full hover:bg-black/5 cursor-pointer"
-                            aria-label="Remove from wishlist"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                              <path fillRule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.536l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.006.306l-1.5 2.5a.75.75 0 1 0 1.292.76l1.5-2.5a.75.75 0 0 0-.286-1.066Zm5.34.306a.75.75 0 1 0-1.292-.762l-1.5 2.5a.75.75 0 1 0 1.292.762l1.5-2.5Z" clipRule="evenodd" />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+        {/* Navigation Links */}
+        <div className="hidden lg:flex items-center gap-8 md:gap-10 text-xs md:text-base tracking-[0.18em] uppercase font-medium text-[#F4F2E8]">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.path;
+            return (
+              <Link
+                key={link.path}
+                href={link.path}
+                className={`relative py-1 transition-colors duration-300 cursor-pointer ${isActive ? "text-[#C8A76A] font-semibold" : "hover:text-[#C8A76A]"
+                  }`}
+              >
+                {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C8A76A] rounded-full animate-fade-in" />
                 )}
-              </div>
-            )}
-          </div>
+              </Link>
+            );
+          })}
+        </div>
 
-          {/* Cart Icon */}
+        {/* Right Controls - Highlighted Prominent Luxury Buttons */}
+        <div className="flex items-center gap-3 md:gap-4 text-xs tracking-[0.15em] uppercase font-light text-[#F4F2E8]">
+
+          {/* Language Switcher */}
+          <LanguageSwitcher variant="compact" />
+
+          {/* Search Button */}
+          <button
+            type="button"
+            onClick={handleSearchClick}
+            className="w-11 h-11 rounded-full bg-[#1D2418] hover:bg-[#C8A76A] text-[#C8A76A] hover:text-[#1D2418] border-2 border-[#C8A76A]/60 hover:border-[#C8A76A] flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 active:scale-95 cursor-pointer group"
+            aria-label={t("common:search")}
+            title={t("common:search")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.2" stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
+            </svg>
+          </button>
+
+          {/* Wishlist Button */}
+          <button
+            onClick={() => setWishlistOpen(!wishlistOpen)}
+            className="relative w-11 h-11 rounded-full bg-[#1D2418] hover:bg-[#C8A76A] text-[#C8A76A] hover:text-[#1D2418] border-2 border-[#C8A76A]/60 hover:border-[#C8A76A] flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 active:scale-95 cursor-pointer group"
+            aria-label={t("common:wishlist")}
+            title={t("common:wishlist")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+            {wishlist.length > 0 && (
+              <span className="absolute -top-1 -right-1 rtl:-left-1 rtl:right-auto bg-[#C8A76A] text-[#1D2418] font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#1D2418] shadow-lg animate-scale-in">
+                {wishlist.length}
+              </span>
+            )}
+          </button>
+
+          {/* Wishlist Side Drawer with Framer Motion */}
+          <AnimatePresence>
+            {wishlistOpen && (
+              <>
+                {/* Backdrop Overlay */}
+                <motion.div
+                  key="wishlist-backdrop"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={() => setWishlistOpen(false)}
+                  className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 pointer-events-auto"
+                />
+
+                {/* Side Drawer Panel */}
+                <motion.div
+                  key="wishlist-drawer"
+                  initial={{ x: wishlistDrawerX }}
+                  animate={{ x: 0 }}
+                  exit={{ x: wishlistDrawerX }}
+                  transition={{ type: "spring", damping: 25, stiffness: 220 }}
+                  className="fixed top-0 right-0 rtl:right-auto rtl:left-0 h-full w-full sm:max-w-md bg-[#F4F2E8] text-[#1D2418] shadow-2xl z-50 flex flex-col pointer-events-auto normal-case tracking-normal"
+                >
+                  {/* Header */}
+                  <div className="p-6 border-b border-[#E7DFC9] flex items-center justify-between bg-[#2B3325] text-[#F4F2E8]">
+                    <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                      <span className="font-serif text-lg tracking-wide uppercase font-light">
+                        {t("navbar:wishlistTitle")}
+                      </span>
+                      <span className="text-[10px] bg-[#C8A76A] text-[#1D2418] font-bold px-2 py-0.5 rounded-full">
+                        {wishlistedProducts.length}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setWishlistOpen(false)}
+                      className="hover:text-[#C8A76A] hover:rotate-90 transition-all duration-300 focus:outline-none p-1 cursor-pointer"
+                      aria-label={t("common:close")}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Items List */}
+                  <div className="flex-grow overflow-y-auto overscroll-contain p-6 space-y-4">
+                    {wishlistedProducts.length === 0 ? (
+                      <div className="h-full flex flex-col items-center justify-center space-y-4 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.0" stroke="currentColor" className="w-12 h-12 text-[#2B3325]/30">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                        </svg>
+                        <p className="font-serif text-lg font-light text-[#1D2418]/65">{t("navbar:emptyWishlist")}</p>
+                      </div>
+                    ) : (
+                      wishlistedProducts.map((p) => (
+                        <div key={p.id} className="flex items-center justify-between gap-3 border-b border-[#E7DFC9]/50 pb-4 last:border-b-0 last:pb-0 group p-2 hover:bg-white/40 rounded-xl transition-all">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className="relative w-14 h-16 rounded-[10px] overflow-hidden shrink-0 border border-[#E7DFC9] bg-[#F4F2E8] shadow-sm">
+                              {p.image ? (
+                                <Image
+                                  src={p.image}
+                                  alt={p.name}
+                                  fill
+                                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                  sizes="56px"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 relative select-none">
+                                  <span className="font-serif text-[8px] font-semibold text-[#1D2418] tracking-widest opacity-85">Étoile</span>
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="flex flex-col min-w-0">
+                              <Link
+                                href={`/collections/${p.id}`}
+                                onClick={() => setWishlistOpen(false)}
+                                className="font-serif text-sm font-semibold text-[#1D2418] hover:text-[#C8A76A] transition-colors leading-tight truncate max-w-[140px]"
+                              >
+                                {p.name}
+                              </Link>
+                              <span className="text-xs text-[#C8A76A] font-bold mt-1">${p.price}</span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 shrink-0">
+                            <button
+                              onClick={() => {
+                                addToCart(p, "100ml");
+                                setWishlistOpen(false);
+                              }}
+                              className="bg-[#2B3325] text-white hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-1.5 rounded-full text-[10px] tracking-wider uppercase font-bold transition-all duration-300 cursor-pointer shadow-sm"
+                            >
+                              {t("common:addToCart")}
+                            </button>
+                            <button
+                              onClick={() => toggleWishlist(p.id)}
+                              className="text-[#2B3325]/45 hover:text-red-500 transition-all p-1.5 rounded-full hover:bg-black/5 cursor-pointer"
+                              aria-label={t("common:remove")}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                                <path fillRule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.536l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.006.306l-1.5 2.5a.75.75 0 1 0 1.292.76l1.5-2.5a.75.75 0 0 0-.286-1.066Zm5.34.306a.75.75 0 1 0-1.292-.762l-1.5 2.5a.75.75 0 1 0 1.292.762l1.5-2.5Z" clipRule="evenodd" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+
+                  {/* Drawer Footer */}
+                  {wishlistedProducts.length > 0 && (
+                    <div className="p-6 border-t border-[#E7DFC9] bg-[#E7DFC9]/20">
+                      <Link
+                        href="/wishlist"
+                        onClick={() => setWishlistOpen(false)}
+                        className="block w-full bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] py-3 rounded-full text-xs tracking-[0.2em] uppercase font-bold transition-all duration-300 shadow-md text-center cursor-pointer"
+                      >
+                        {isRtl ? "عرض صفحة المفضلة الكاملة" : "View Wishlist Page"}
+                      </Link>
+                    </div>
+                  )}
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
+
+          {/* Cart Prominent Gold Button */}
           <button
             onClick={toggleCartOpen}
-            className="relative flex items-center space-x-1 md:space-x-2 focus:outline-none group p-1"
-            aria-label="Open Cart"
+            className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#C8A76A] hover:bg-[#F4F2E8] text-[#1D2418] border-2 border-[#C8A76A] hover:border-[#F4F2E8] transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 cursor-pointer font-bold tracking-widest text-xs md:text-sm uppercase group"
+            aria-label={t("common:cart")}
           >
-            <span className="hover:text-[#C8A76A] transition-colors duration-300 hidden sm:inline">Cart</span>
-            <div className="relative">
+            <span className="hidden sm:inline">
+              {t("common:cart")}
+            </span>
+            <div className="relative flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="1.2"
+                strokeWidth="2.2"
                 stroke="currentColor"
-                className="w-5 h-5 group-hover:text-[#C8A76A] transition-colors duration-300"
+                className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
               >
                 <path
                   strokeLinecap="round"
@@ -229,7 +319,7 @@ export default function Navbar() {
                 />
               </svg>
               {cartItemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#C8A76A] text-[#1D2418] font-semibold text-[10px] w-[18px] h-[18px] rounded-full flex items-center justify-center shadow-md animate-scale-in">
+                <span className="bg-[#1D2418] text-[#C8A76A] font-bold text-[11px] px-2 py-0.5 rounded-full ml-1.5 rtl:mr-1.5 rtl:ml-0 shadow-md">
                   {cartItemCount}
                 </span>
               )}
