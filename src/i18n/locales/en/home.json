@@ -14,9 +14,29 @@
     "viewAll": "View Complete Supply Line"
   },
   "featuredCollection": {
-    "badge": "Signature Line",
-    "title": "Featured Fragrances & Packaging",
-    "subtitle": "Discover our most sought-after scent profiles and bespoke crystal bottle molds."
+    "badge": "Perfume Components",
+    "title": "Core Supply Lines & Components",
+    "subtitle": "Comprehensive perfume manufacturing solutions from pure French oils to luxury flacons, caps, and pumps.",
+    "fragrances": {
+      "tag": "French Essences",
+      "title": "Concentrated Fragrance Oils",
+      "description": "Pure Grasse essences with high concentration and long-lasting sillage for your brand."
+    },
+    "bottles": {
+      "tag": "Crystal Flacons",
+      "title": "Luxury Glass Bottles",
+      "description": "Heavy-base crystal flacons with bespoke niche silhouettes in 30ml, 50ml, and 100ml."
+    },
+    "caps": {
+      "tag": "Magnetic Caps",
+      "title": "Zamak & Magnetic Closures",
+      "description": "Weighted Zamak, natural wood, and acrylic caps featuring smooth magnetic snap fit."
+    },
+    "atomizers": {
+      "tag": "Precision Pumps",
+      "title": "Micro-Mist Atomizers",
+      "description": "Leak-proof engineered sprayers delivering an ultra-fine, consistent diffusion."
+    }
   },
   "newArrivals": {
     "badge": "New Mold Releases",

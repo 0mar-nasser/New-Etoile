@@ -7,47 +7,26 @@ import { useTranslation } from "react-i18next";
 import { CATALOG_ITEMS, CatalogItem } from "../data/catalog";
 import ImagePlaceholder from "../components/ui/ImagePlaceholder";
 import { useCart } from "../context/CartContext";
-import { Product } from "../data/products";
+import ProductInquiryModal from "../components/ui/ProductInquiryModal";
 
-const itemToProduct = (item: CatalogItem, volume: string): Product => {
-  let sizes = [{ volume: "100ml", price: item.price || 0 }];
-  let price = item.price || 0;
-
-  if (item.category === "bottles") {
-    sizes = [
-      { volume: "30ml", price: 10 },
-      { volume: "50ml", price: 15 },
-      { volume: "75ml", price: 20 },
-      { volume: "100ml", price: 25 },
-      { volume: "150ml", price: 30 },
-      { volume: "200ml", price: 35 },
-    ];
-    price = sizes.find((s) => s.volume === volume)?.price || 25;
-  }
-
-  return {
-    id: item.id,
-    name: item.name,
-    tagline: item.description,
-    description: item.description,
-    price: price,
-    volume: volume,
-    family: item.category,
-    notes: [],
-    notesDetailed: { head: "", heart: "", base: "" },
-    sizes: sizes,
-    image: item.image,
-  };
-};
-
-function CatalogCard({ item, onQuickView }: { item: CatalogItem; onQuickView: (item: CatalogItem) => void }) {
-  const { t } = useTranslation(["products", "common"]);
+function CatalogCard({
+  item,
+  onQuickView,
+  onInquire,
+}: {
+  item: CatalogItem;
+  onQuickView: (item: CatalogItem) => void;
+  onInquire: (item: CatalogItem) => void;
+}) {
+  const { t, i18n } = useTranslation(["products", "common"]);
+  const isRtl = i18n.language?.startsWith("ar");
   const { toggleWishlist, isInWishlist } = useCart();
   const isFav = isInWishlist(item.id);
 
   return (
     <div className="bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40 rtl:text-right">
-      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6">
+      {/* Image Container */}
+      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6 border border-[#E7DFC9]/50 bg-white/40">
         {item.image ? (
           <Image
             src={item.image}
@@ -60,12 +39,13 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem; onQuickView: (i
           <ImagePlaceholder label={item.name} aspect="aspect-[4/5]" theme="light" />
         )}
 
+        {/* Wishlist Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             toggleWishlist(item.id);
           }}
-          className="absolute top-4 right-4 rtl:right-auto rtl:left-4 bg-[#1D2418]/70 hover:bg-[#1D2418] text-[#F4F2E8] w-9 h-9 rounded-full flex items-center justify-center border border-[#384233] transition-colors focus:outline-none z-20 cursor-pointer"
+          className="absolute top-4 right-4 rtl:right-auto rtl:left-4 bg-[#1D2418]/70 hover:bg-[#1D2418] text-[#F4F2E8] w-9 h-9 rounded-full flex items-center justify-center border border-[#384233] transition-all focus:outline-none z-20 cursor-pointer hover:scale-110 active:scale-95"
           aria-label={t("common:wishlist")}
         >
           <svg
@@ -84,48 +64,70 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem; onQuickView: (i
           </svg>
         </button>
 
+        {/* Hover Overlay */}
         <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-[2px]">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onQuickView(item);
             }}
-            className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
+            className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
           >
             {t("common:quickView")}
           </button>
           <Link
             href={`/collections/${item.id}`}
-            className="bg-[#2B3325] text-[#F4F2E8] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-medium transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
+            className="bg-[#2B3325] text-[#F4F2E8] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
           >
             {t("common:viewDetails")}
           </Link>
         </div>
       </div>
 
+      {/* Product Details */}
       <div className="flex flex-col flex-grow text-left rtl:text-right space-y-2">
-        <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-semibold">{item.category}</span>
-        <Link href={`/collections/${item.id}`} className="font-serif text-xl text-[#1D2418] font-light tracking-wide hover:text-[#C8A76A] transition-colors">
+        <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-bold">
+          {item.category} {item.subCategory ? `· ${item.subCategory}` : ""}
+        </span>
+        <Link
+          href={`/collections/${item.id}`}
+          className="font-serif text-xl text-[#1D2418] font-light tracking-wide hover:text-[#C8A76A] transition-colors leading-snug"
+        >
           {item.name}
         </Link>
         <p className="text-xs text-[#2B3325]/75 font-light leading-relaxed flex-grow line-clamp-2">
           {item.description}
         </p>
 
-        <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 mt-4">
-          {item.price ? (
-            <span className="font-serif text-lg text-[#1D2418] font-medium">${item.price}</span>
-          ) : (
-            <span className="font-serif text-sm font-medium uppercase tracking-widest text-[#C8A76A]">Inquire</span>
-          )}
-          <div className="flex items-center space-x-2 rtl:space-x-reverse">
-            <button
-              onClick={() => onQuickView(item)}
-              className="bg-transparent hover:bg-[#E7DFC9]/50 text-[#2B3325] border border-[#E7DFC9] px-3 py-2 rounded-full text-[9px] tracking-widest uppercase font-semibold transition-all duration-300 cursor-pointer"
-            >
-              {t("common:quickView")}
-            </button>
+        {/* Feature tags if any */}
+        {item.features && item.features.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {item.features.slice(0, 2).map((feat, i) => (
+              <span
+                key={i}
+                className="text-[9px] bg-[#E7DFC9]/60 text-[#384233] px-2.5 py-0.5 rounded-full font-light"
+              >
+                {feat}
+              </span>
+            ))}
           </div>
+        )}
+
+        {/* Action Row - Inquire & View Details (No Prices) */}
+        <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 mt-4 gap-2">
+          <Link
+            href={`/collections/${item.id}`}
+            className="text-[10px] tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5 transition-colors"
+          >
+            {t("common:viewDetails")}
+          </Link>
+
+          <button
+            onClick={() => onInquire(item)}
+            className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] px-4 py-2 rounded-full text-[10px] tracking-wider uppercase font-bold transition-all duration-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+          >
+            {t("common:inquire")}
+          </button>
         </div>
       </div>
     </div>
@@ -133,11 +135,13 @@ function CatalogCard({ item, onQuickView }: { item: CatalogItem; onQuickView: (i
 }
 
 export default function CollectionsPage() {
-  const { t } = useTranslation(["products", "common"]);
+  const { t, i18n } = useTranslation(["products", "common"]);
+  const isRtl = i18n.language?.startsWith("ar");
   const [activeTab, setActiveTab] = useState<"all" | "perfumes" | "bottles" | "caps" | "pumps">("all");
   const [quickViewItem, setQuickViewItem] = useState<CatalogItem | null>(null);
+  const [inquiryItem, setInquiryItem] = useState<CatalogItem | null>(null);
 
-  const { addToCart, searchQuery, setSearchQuery } = useCart();
+  const { searchQuery, setSearchQuery } = useCart();
 
   // Filter items based on activeTab and searchQuery
   let filteredItems = CATALOG_ITEMS;
@@ -171,7 +175,7 @@ export default function CollectionsPage() {
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
           <span className="text-[10px] tracking-[0.4em] uppercase text-[#C8A76A] font-bold">
-            ✦ {t("products:allCategories")} ✦
+            ✦ {t("common:catalog")} ✦
           </span>
           <h1 className="font-serif text-4xl md:text-6xl text-[#1D2418] font-light">
             {t("products:allCategories")}
@@ -232,7 +236,9 @@ export default function CollectionsPage() {
         {/* Catalog Grid */}
         {filteredItems.length === 0 ? (
           <div className="text-center py-16 space-y-4">
-            <p className="font-serif text-2xl font-light text-[#1D2418]/70">No products match your search.</p>
+            <p className="font-serif text-2xl font-light text-[#1D2418]/70">
+              {isRtl ? "لا توجد منتجات مطابقة لبحثك." : "No products match your search."}
+            </p>
             <button
               onClick={() => setSearchQuery("")}
               className="bg-[#2B3325] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-[#C8A76A] hover:text-[#1D2418] transition-all cursor-pointer"
@@ -243,7 +249,12 @@ export default function CollectionsPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item) => (
-              <CatalogCard key={item.id} item={item} onQuickView={(i) => setQuickViewItem(i)} />
+              <CatalogCard
+                key={item.id}
+                item={item}
+                onQuickView={(i) => setQuickViewItem(i)}
+                onInquire={(i) => setInquiryItem(i)}
+              />
             ))}
           </div>
         )}
@@ -255,25 +266,51 @@ export default function CollectionsPage() {
           <div className="bg-[#F4F2E8] border border-[#E7DFC9] rounded-[28px] max-w-lg w-full p-6 space-y-4 relative text-left rtl:text-right shadow-2xl">
             <button
               onClick={() => setQuickViewItem(null)}
-              className="absolute top-4 right-4 rtl:right-auto rtl:left-4 text-sm font-bold text-[#C8A76A] hover:text-[#1D2418]"
+              className="absolute top-4 right-4 rtl:right-auto rtl:left-4 text-sm font-bold text-[#C8A76A] hover:text-[#1D2418] cursor-pointer"
             >
               {t("common:close")}
             </button>
+            <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-bold">
+              {quickViewItem.category}
+            </span>
             <h3 className="font-serif text-2xl font-light text-[#1D2418]">{quickViewItem.name}</h3>
-            <p className="text-xs text-[#2B3325]/75">{quickViewItem.description}</p>
-            <div className="pt-4 flex justify-end gap-3">
+            <p className="text-xs text-[#2B3325]/75 leading-relaxed">{quickViewItem.description}</p>
+            
+            <div className="pt-4 flex justify-between items-center border-t border-[#E7DFC9] gap-3">
+              <Link
+                href={`/collections/${quickViewItem.id}`}
+                onClick={() => setQuickViewItem(null)}
+                className="text-xs uppercase tracking-wider text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5"
+              >
+                {t("common:viewDetails")}
+              </Link>
               <button
                 onClick={() => {
-                  addToCart(itemToProduct(quickViewItem, "100ml"), "100ml");
+                  const target = quickViewItem;
                   setQuickViewItem(null);
+                  setInquiryItem(target);
                 }}
-                className="bg-[#2B3325] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-[#C8A76A] hover:text-[#1D2418] transition-all cursor-pointer"
+                className="bg-[#2B3325] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-[#C8A76A] hover:text-[#1D2418] transition-all cursor-pointer shadow-md"
               >
-                {t("common:addToCart")}
+                {t("common:inquire")}
               </button>
             </div>
           </div>
         </div>
+      )}
+
+      {/* Inquiry Modal */}
+      {inquiryItem && (
+        <ProductInquiryModal
+          product={{
+            id: inquiryItem.id,
+            name: inquiryItem.name,
+            category: inquiryItem.category,
+            description: inquiryItem.description,
+            image: inquiryItem.image,
+          }}
+          onClose={() => setInquiryItem(null)}
+        />
       )}
     </div>
   );

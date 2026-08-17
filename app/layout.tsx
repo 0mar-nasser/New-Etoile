@@ -3,7 +3,6 @@ import { Cormorant_Garamond, Poppins, Tajawal } from "next/font/google";
 import { CartProvider } from "./context/CartContext";
 import { I18nProvider } from "@/src/i18n";
 import Navbar from "./components/layout/Navbar";
-import CartDrawer from "./components/CartDrawer";
 import Footer from "./components/layout/Footer";
 import LanguageLoader from "./components/ui/LanguageLoader";
 import "./globals.css";
@@ -28,8 +27,8 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "Etoile | Haute Parfumerie & Packaging",
-  description: "Experience French elegance, timeless beauty, and sophisticated industrial packaging craftsmanship. Discover your signature scent from Etoile's luxury fragrance catalog.",
+  title: "Etoile | Haute Parfumerie & Packaging Catalog",
+  description: "Experience French elegance, timeless beauty, and sophisticated industrial packaging craftsmanship. Discover your signature components from Etoile's luxury fragrance catalog.",
 };
 
 export default function RootLayout({
@@ -47,7 +46,6 @@ export default function RootLayout({
           <LanguageLoader />
           <CartProvider>
             <Navbar />
-            <CartDrawer />
             <main className="flex-grow pt-0">{children}</main>
             <Footer />
           </CartProvider>

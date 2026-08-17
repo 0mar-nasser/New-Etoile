@@ -1,19 +1,19 @@
 {
-  "allCategories": "All Supply Categories",
+  "allCategories": "All Product Categories",
   "categoryPerfumeOils": "French Perfume Oils",
   "categoryBottles": "Glass Bottles & Flacons",
   "categoryCaps": "Magnetic Caps & Closures",
   "categoryPumps": "Precision Spray Pumps",
   "sortBy": "Sort By",
-  "sortPopular": "Most Popular",
-  "sortPriceLow": "Price: Low to High",
-  "sortPriceHigh": "Price: High to Low",
-  "sortNewest": "Newest Mold Additions",
+  "sortPopular": "Most Requested",
+  "sortNewest": "Newest Additions",
   "filterByCategory": "Category Filter",
-  "inStock": "In Factory Stock",
+  "inStock": "Available in Catalog",
   "customizable": "Custom Logo & Finish Available",
-  "volume": "Volume",
+  "volume": "Specification & Volume",
   "notes": "Fragrance Notes",
   "material": "Material & Finish",
-  "moqLabel": "Minimum Order Quantity"
+  "moqLabel": "Minimum Order Quantity",
+  "inquireAboutItem": "Inquire About Product",
+  "requestDetails": "Request Specifications via Contact"
 }

@@ -18,7 +18,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "luxury-btn px-8 py-3.5 text-center text-xs tracking-[0.25em] uppercase font-medium rounded-full transition-all duration-300 inline-block cursor-pointer focus:outline-none";
+    "luxury-btn px-8 py-3.5 text-center text-sm tracking-[0.25em] uppercase font-medium rounded-full transition-all duration-300 inline-block cursor-pointer focus:outline-none";
 
   const variantClasses = {
     primary: "bg-[#C8A76A] hover:bg-[#b09156] text-[#1D2418] shadow-lg",

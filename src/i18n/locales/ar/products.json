@@ -1,19 +1,19 @@
 {
-  "allCategories": "جميع فئات التوريد",
+  "allCategories": "جميع فئات المنتجات",
   "categoryPerfumeOils": "زيوت العطور الفرنسية",
   "categoryBottles": "الزجاجات والعبوات",
   "categoryCaps": "الأغطية المغناطيسية",
   "categoryPumps": "مضخات الرش الدقيقة",
   "sortBy": "ترتيب حسب",
-  "sortPopular": "الأكثر شعبية",
-  "sortPriceLow": "السعر: من الأقل للأعلى",
-  "sortPriceHigh": "السعر: من الأعلى للأقل",
-  "sortNewest": "أحدث القوالب المضافة",
+  "sortPopular": "الأكثر طلباً",
+  "sortNewest": "أحدث المنتجات والقوالب",
   "filterByCategory": "تصفية حسب الفئة",
-  "inStock": "متوفر في المخزن",
+  "inStock": "متوفر في الكتالوج",
   "customizable": "يتوفر طباعة الشعار والتخصيص",
-  "volume": "الحجم",
+  "volume": "المواصفات والحجم",
   "notes": "المكونات العطرية",
   "material": "الخامة واللمسة النهائية",
-  "moqLabel": "الحد الأدنى للطلب"
+  "moqLabel": "الحد الأدنى للطلب",
+  "inquireAboutItem": "استفسر عن المنتج",
+  "requestDetails": "طلب المواصفات والأسعار عبر التواصل"
 }

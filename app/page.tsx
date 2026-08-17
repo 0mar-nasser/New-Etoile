@@ -4,27 +4,26 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import { useCart } from "./context/CartContext";
 import { Product } from "./data/products";
 import ImagePlaceholder from "./components/ui/ImagePlaceholder";
+import ProductInquiryModal from "./components/ui/ProductInquiryModal";
 
 // Section Components
 import Hero from "./components/sections/Hero";
 import FeaturedCollection from "./components/sections/FeaturedCollection";
 import BestSellers from "./components/sections/BestSellers";
 import Wholesale from "./components/sections/Wholesale";
-import NoteFamilies from "./components/sections/NoteFamilies";
 import WhyChoose from "./components/sections/WhyChoose";
 import NewArrivals from "./components/sections/NewArrivals";
-import SocialGallery from "./components/sections/SocialGallery";
 import Newsletter from "./components/sections/Newsletter";
 
 export default function Home() {
-  const { t } = useTranslation(["home", "common"]);
-  const { addToCart } = useCart();
+  const { t, i18n } = useTranslation(["home", "common"]);
+  const isRtl = i18n.language?.startsWith("ar");
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [inquiryProduct, setInquiryProduct] = useState<Product | null>(null);
 
   // Page Intro Loader
   useEffect(() => {
@@ -141,13 +140,22 @@ export default function Home() {
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left rtl:text-right">
-                <div className="relative aspect-square w-full rounded-[20px] overflow-hidden">
-                  <ImagePlaceholder label={`${quickViewProduct.name} Scent`} aspect="aspect-square" theme="light" />
+                <div className="relative aspect-square w-full rounded-[20px] overflow-hidden border border-[#E7DFC9] bg-white/40">
+                  {quickViewProduct.image ? (
+                    <Image
+                      src={quickViewProduct.image}
+                      alt={quickViewProduct.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <ImagePlaceholder label={`${quickViewProduct.name} Scent`} aspect="aspect-square" theme="light" />
+                  )}
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <span className="text-[10px] tracking-widest uppercase text-[#C8A76A] font-semibold">
+                    <span className="text-[10px] tracking-widest uppercase text-[#C8A76A] font-bold">
                       {quickViewProduct.family}
                     </span>
                     <h3 className="font-serif text-2xl text-[#1D2418] font-light mt-1">
@@ -159,24 +167,57 @@ export default function Home() {
                     {quickViewProduct.description}
                   </p>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/60">
-                    <span className="font-serif text-xl font-semibold">${quickViewProduct.price}</span>
-                    <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                      <button
-                        onClick={() => {
-                          addToCart(quickViewProduct, "100ml");
-                          setQuickViewProduct(null);
-                        }}
-                        className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 cursor-pointer"
-                      >
-                        {t("common:addToCart")}
-                      </button>
+                  {/* Notes / features */}
+                  {quickViewProduct.notes && quickViewProduct.notes.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {quickViewProduct.notes.map((note, i) => (
+                        <span key={i} className="text-[9px] bg-[#E7DFC9]/60 text-[#384233] px-2.5 py-0.5 rounded-full font-light">
+                          {note}
+                        </span>
+                      ))}
                     </div>
+                  )}
+
+                  {/* Action buttons (No Prices) */}
+                  <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/60 gap-3">
+                    <Link
+                      href={`/collections/${quickViewProduct.id}`}
+                      onClick={() => setQuickViewProduct(null)}
+                      className="text-xs tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5"
+                    >
+                      {t("common:viewDetails")}
+                    </Link>
+
+                    <button
+                      onClick={() => {
+                        const target = quickViewProduct;
+                        setQuickViewProduct(null);
+                        setInquiryProduct(target);
+                      }}
+                      className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] text-[#F4F2E8] px-6 py-2.5 rounded-full text-xs tracking-wider uppercase font-semibold transition-all duration-300 cursor-pointer shadow-md"
+                    >
+                      {t("common:inquire")}
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        )}
+
+        {/* Inquiry Modal */}
+        {inquiryProduct && (
+          <ProductInquiryModal
+            product={{
+              id: inquiryProduct.id,
+              name: inquiryProduct.name,
+              category: inquiryProduct.family,
+              description: inquiryProduct.description,
+              image: inquiryProduct.image,
+              selectedSpec: inquiryProduct.volume,
+            }}
+            onClose={() => setInquiryProduct(null)}
+          />
         )}
       </div>
     </>
