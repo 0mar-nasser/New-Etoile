@@ -69,9 +69,8 @@ export default function Home() {
       {/* 1. LOADING SCREEN */}
       {loading && (
         <div
-          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-all duration-700 ease-out ${
-            fadeOut ? "opacity-0 translate-y-[-20px] pointer-events-none" : "opacity-100 translate-y-0"
-          }`}
+          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1D2418] transition-all duration-700 ease-out ${fadeOut ? "opacity-0 translate-y-[-20px] pointer-events-none" : "opacity-100 translate-y-0"
+            }`}
         >
           <div className="relative flex flex-col items-center">
             <div className="mb-6 animate-spin-fast">
@@ -102,9 +101,8 @@ export default function Home() {
 
       {/* MAIN LAYOUT */}
       <div
-        className={`relative min-h-screen flex flex-col transition-opacity duration-1000 ${
-          fadeOut ? "opacity-100" : "opacity-0"
-        }`}
+        className={`relative min-h-screen flex flex-col transition-opacity duration-1000 ${fadeOut ? "opacity-100" : "opacity-0"
+          }`}
       >
         <Hero />
 

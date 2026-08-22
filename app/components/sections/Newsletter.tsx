@@ -21,9 +21,9 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-[#1D2418] text-[#F4F2E8] border-t border-[#384233] relative z-20 overflow-hidden">
+    <section className="py-16 md:py-18 bg-[#1D2418] text-[#F4F2E8] border-t border-[#384233] relative z-20 overflow-hidden">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C8A76A]/5 rounded-full blur-[140px] pointer-events-none" />
-      
+
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-6">
         <span className="text-[10px] tracking-[0.4em] uppercase text-[#C8A76A] font-bold">
           {t("footer:newsletterTitle")}
@@ -34,7 +34,7 @@ export default function Newsletter() {
         <p className="text-xs md:text-sm text-[#E7DFC9]/80 font-light max-w-md mx-auto leading-relaxed">
           {t("home:newsletter.subtitle")}
         </p>
-        
+
         <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto pt-4 relative">
           <div className="flex flex-col sm:flex-row items-stretch gap-3">
             <input

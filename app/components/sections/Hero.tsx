@@ -40,7 +40,7 @@ export default function Hero() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-[80vh] bg-[#1D2418] flex items-center overflow-hidden pt-24 pb-16 md:py-0 select-none">
+    <section className="relative h-[70vh] bg-[#1D2418] flex items-center overflow-hidden pt-24 pb-16 md:py-0 select-none">
       {/* Background Images Slider */}
       {HERO_IMAGES.map((imgSrc, index) => (
         <div
@@ -89,8 +89,8 @@ export default function Hero() {
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentIndex
-                ? "w-8 bg-[#C8A76A]"
-                : "w-2 bg-white/40 hover:bg-white/70"
+              ? "w-8 bg-[#C8A76A]"
+              : "w-2 bg-white/40 hover:bg-white/70"
               }`}
           />
         ))}

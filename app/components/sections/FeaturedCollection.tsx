@@ -59,15 +59,15 @@ export default function FeaturedCollection() {
   const isRtl = i18n.language === "ar";
 
   return (
-    <section className="py-8 md:py-10 bg-[#F4F2E8] relative overflow-hidden">
+    <section className="pt-10 bg-[#F4F2E8] relative overflow-hidden">
       {/* Background ambient accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C8A76A]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2B3325]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full mx-auto px-4 md:px-4 space-y-12 md:space-y-16 relative z-10">
+      <div className="w-full mx-auto space-y-12 md:space-y-16 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center  max-w-2xl mx-auto">
+        <div className="flex flex-col items-center text-center w-full  mx-auto gap-3">
           <div className="flex items-center space-x-0 rtl:space-x-reverse">
             <div className="h-[1px] w-12 bg-[#C8A76A]/60" />
             <Image
@@ -105,7 +105,7 @@ export default function FeaturedCollection() {
                 alt={t(cat.titleKey)}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                className="object-cover transition-transform duration-700"
               />
 
               {/* Dynamic Gradient Overlays for perfect legibility */}
@@ -113,12 +113,9 @@ export default function FeaturedCollection() {
               <div className="absolute inset-0 bg-[#C8A76A]/0 group-hover:bg-[#C8A76A]/5 transition-colors duration-500 z-10 pointer-events-none" />
 
               {/* Top Bar: Tag & Number Index */}
-              <div className="relative z-20 flex items-center justify-between gap-2">
-                <span className="inline-block text-[10px] tracking-[0.2em] uppercase text-[#C8A76A] font-semibold bg-[#1D2418]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C8A76A]/30 shadow-md">
+              <div className="relative z-20 flex items-center justify-center">
+                <span className="inline-block text-[12px] tracking-[0.2em] uppercase text-[#C8A76A] font-semibold bg-[#1D2418]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C8A76A]/30 shadow-md">
                   {t(cat.tagKey)}
-                </span>
-                <span className="font-mono text-xs text-[#E7DFC9]/60 font-medium px-2 py-1 rounded bg-[#1D2418]/60 backdrop-blur-sm border border-white/10">
-                  {cat.index}
                 </span>
               </div>
 
