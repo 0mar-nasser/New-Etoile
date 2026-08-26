@@ -24,15 +24,15 @@ function CatalogCard({
   const isFav = isInWishlist(item.id);
 
   return (
-    <div className="bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40 rtl:text-right">
+    <div className="bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40 rtl:text-right">
       {/* Image Container */}
-      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6 border border-[#E7DFC9]/50 bg-white/40">
+      <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer  border border-[#E7DFC9]/50 bg-white/40">
         {item.image ? (
           <Image
             src={item.image}
             alt={item.name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
@@ -63,29 +63,10 @@ function CatalogCard({
             />
           </svg>
         </button>
-
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-[#2B3325]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-[2px]">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickView(item);
-            }}
-            className="bg-[#F4F2E8] text-[#2B3325] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
-          >
-            {t("common:quickView")}
-          </button>
-          <Link
-            href={`/collections/${item.id}`}
-            className="bg-[#2B3325] text-[#F4F2E8] hover:bg-[#C8A76A] hover:text-[#1D2418] px-3.5 py-2 rounded-full text-[9px] tracking-[0.2em] uppercase font-semibold transition-all duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0 cursor-pointer"
-          >
-            {t("common:viewDetails")}
-          </Link>
-        </div>
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col flex-grow text-left rtl:text-right space-y-2">
+      <div className="flex flex-col flex-grow text-left rtl:text-right space-y-2 p-5">
         <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-bold">
           {item.category} {item.subCategory ? `· ${item.subCategory}` : ""}
         </span>
@@ -95,36 +76,18 @@ function CatalogCard({
         >
           {item.name}
         </Link>
-        <p className="text-xs text-[#2B3325]/75 font-light leading-relaxed flex-grow line-clamp-2">
-          {item.description}
-        </p>
-
-        {/* Feature tags if any */}
-        {item.features && item.features.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {item.features.slice(0, 2).map((feat, i) => (
-              <span
-                key={i}
-                className="text-[9px] bg-[#E7DFC9]/60 text-[#384233] px-2.5 py-0.5 rounded-full font-light"
-              >
-                {feat}
-              </span>
-            ))}
-          </div>
-        )}
-
         {/* Action Row - Inquire & View Details (No Prices) */}
-        <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 mt-4 gap-2">
+        <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 gap-2">
           <Link
             href={`/collections/${item.id}`}
-            className="text-[10px] tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5 transition-colors"
+            className="text-[11px] sm:text-xs tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5 transition-colors whitespace-nowrap"
           >
             {t("common:viewDetails")}
           </Link>
 
           <button
             onClick={() => onInquire(item)}
-            className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] px-4 py-2 rounded-full text-[10px] tracking-wider uppercase font-bold transition-all duration-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+            className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap"
           >
             {t("common:inquire")}
           </button>
@@ -170,17 +133,47 @@ export default function CollectionsPage() {
   ];
 
   return (
-    <div className="bg-[#F4F2E8] min-h-screen text-[#1D2418] pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-10">
-        {/* Header */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-[10px] tracking-[0.4em] uppercase text-[#C8A76A] font-bold">
-            ✦ {t("common:catalog")} ✦
-          </span>
-          <h1 className="font-serif text-4xl md:text-6xl text-[#1D2418] font-light">
-            {t("products:allCategories")}
-          </h1>
-          <div className="h-[1px] w-12 bg-[#C8A76A]/60 mx-auto" />
+    <div className="bg-[#F4F2E8] min-h-screen text-[#1D2418]">
+      <div className="space-y-10">
+        {/* Header Hero Banner */}
+        <div className="relative overflow-hidden  py-14 md:py-20 px-6 md:px-12 text-center text-[#F4F2E8] bg-[#1D2418]">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            <Image
+              src="/images/wholesale_floral_bg.jpg"
+              alt="Étoile Catalog Header Background"
+              fill
+              className="object-cover object-center opacity-30 mix-blend-overlay scale-105"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#1D2418]/90 via-[#1D2418]/75 to-[#1D2418]/95" />
+          </div>
+
+          {/* Ambient Glows */}
+          <div className="absolute right-0 top-0 w-[260px] h-[260px] bg-[#C8A76A]/15 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute left-0 bottom-0 w-[260px] h-[260px] bg-[#C8A76A]/10 rounded-full blur-[70px] pointer-events-none" />
+
+          {/* Watermark */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+            <span className="font-serif text-[55px] sm:text-[90px] md:text-[130px] font-bold tracking-[0.25em] text-[#C8A76A]/[0.05] uppercase whitespace-nowrap">
+              ÉTOILE
+            </span>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 space-y-4 max-w-2xl mx-auto">
+            <span className="inline-block text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#C8A76A] font-bold px-4 py-1.5 rounded-full bg-[#C8A76A]/10 border border-[#C8A76A]/30 backdrop-blur-sm shadow-sm">
+              ✦ {t("common:catalog")} ✦
+            </span>
+            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-[#F4F2E8] font-light tracking-wide drop-shadow-sm">
+              {t("products:allCategories")}
+            </h1>
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C8A76A]/60" />
+              <div className="w-1.5 h-1.5 rotate-45 bg-[#C8A76A]" />
+              <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#C8A76A]/60" />
+            </div>
+          </div>
         </div>
 
         {/* Live Search Bar Box */}
@@ -221,11 +214,10 @@ export default function CollectionsPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as "all" | "perfumes" | "bottles" | "caps" | "pumps")}
-                className={`px-4 py-2 text-xs md:text-sm uppercase tracking-[0.15em] font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
-                  activeTab === tab.id
-                    ? "border-[#C8A76A] text-[#1D2418]"
-                    : "border-transparent text-[#2B3325]/60 hover:text-[#1D2418]"
-                }`}
+                className={`px-4 py-2 text-xs md:text-sm uppercase tracking-[0.15em] font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${activeTab === tab.id
+                  ? "border-[#C8A76A] text-[#1D2418]"
+                  : "border-transparent text-[#2B3325]/60 hover:text-[#1D2418]"
+                  }`}
               >
                 {tab.label}
               </button>
@@ -247,7 +239,7 @@ export default function CollectionsPage() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {filteredItems.map((item) => (
               <CatalogCard
                 key={item.id}
@@ -259,45 +251,6 @@ export default function CollectionsPage() {
           </div>
         )}
       </div>
-
-      {/* Quick View Modal */}
-      {quickViewItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-[#F4F2E8] border border-[#E7DFC9] rounded-[28px] max-w-lg w-full p-6 space-y-4 relative text-left rtl:text-right shadow-2xl">
-            <button
-              onClick={() => setQuickViewItem(null)}
-              className="absolute top-4 right-4 rtl:right-auto rtl:left-4 text-sm font-bold text-[#C8A76A] hover:text-[#1D2418] cursor-pointer"
-            >
-              {t("common:close")}
-            </button>
-            <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-bold">
-              {quickViewItem.category}
-            </span>
-            <h3 className="font-serif text-2xl font-light text-[#1D2418]">{quickViewItem.name}</h3>
-            <p className="text-xs text-[#2B3325]/75 leading-relaxed">{quickViewItem.description}</p>
-            
-            <div className="pt-4 flex justify-between items-center border-t border-[#E7DFC9] gap-3">
-              <Link
-                href={`/collections/${quickViewItem.id}`}
-                onClick={() => setQuickViewItem(null)}
-                className="text-xs uppercase tracking-wider text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5"
-              >
-                {t("common:viewDetails")}
-              </Link>
-              <button
-                onClick={() => {
-                  const target = quickViewItem;
-                  setQuickViewItem(null);
-                  setInquiryItem(target);
-                }}
-                className="bg-[#2B3325] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-[#C8A76A] hover:text-[#1D2418] transition-all cursor-pointer shadow-md"
-              >
-                {t("common:inquire")}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Inquiry Modal */}
       {inquiryItem && (

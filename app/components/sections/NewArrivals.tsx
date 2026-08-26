@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS, Product } from "../../data/products";
@@ -75,12 +76,22 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
         <div className="pointer-events-none absolute left-1/4 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#C8A76A]/10 blur-[140px]" />
         <div className="pointer-events-none absolute right-10 bottom-10 h-[450px] w-[400px] rounded-full bg-[#384233]/40 blur-[120px]" />
 
-        <div className="relative mx-auto max-w-7xl px-6 md:px-12 z-10">
-          {/* Section Header - Kept exactly as specified */}
-          <div className="flex flex-col items-center justify-center text-center w-full mx-auto mb-6 md:mb-10 select-none opacity-50 overflow-hidden">
-            <span className="font-serif text-[clamp(1.6rem,7vw,7.5rem)] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#C8A76A] uppercase whitespace-nowrap leading-none block">
+        <div className="relative mx-auto px-6 md:px-12 z-10">
+          {/* Section Header */}
+          <div className="flex flex-col items-center justify-center text-center w-full mx-auto mb-6 md:mb-10 select-none overflow-hidden py-1">
+            <motion.h2
+              initial={{ opacity: 0, y: 70, filter: "blur(8px)" }}
+              whileInView={{ opacity: 0.5, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+              transition={{
+                duration: 1.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              style={{ willChange: "transform, opacity, filter" }}
+              className="font-serif text-[clamp(1.6rem,7vw,7.5rem)] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#C8A76A] uppercase whitespace-nowrap leading-none block"
+            >
               NEW ARRIVALS
-            </span>
+            </motion.h2>
           </div>
 
           {/* Cards Grid with Requested Card Design */}

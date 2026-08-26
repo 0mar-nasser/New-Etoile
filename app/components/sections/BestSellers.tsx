@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useCart } from "../../context/CartContext";
 import { PRODUCTS, Product } from "../../data/products";
@@ -96,10 +97,20 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
 
         <div className="max-w-[92%]  mx-auto px-4 sm:px-6 md:px-12 relative z-10">
           {/* Section Header with Slider Navigation */}
-          <div className="flex flex-col items-center justify-center text-center w-full mx-auto mb-6 md:mb-10 select-none opacity-50 overflow-hidden">
-            <span className="font-serif text-[clamp(1.6rem,7vw,7.5rem)] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#C8A76A] uppercase whitespace-nowrap leading-none block">
+          <div className="flex flex-col items-center justify-center text-center w-full mx-auto mb-6 md:mb-10 select-none overflow-hidden py-1">
+            <motion.h2
+              initial={{ opacity: 0, y: 70, filter: "blur(8px)" }}
+              whileInView={{ opacity: 0.5, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
+              transition={{
+                duration: 1.2,
+                ease: [0.16, 1, 0.3, 1], // Luxury cubic-bezier curve for buttery smooth deceleration
+              }}
+              style={{ willChange: "transform, opacity, filter" }}
+              className="font-serif text-[clamp(1.6rem,7vw,7.5rem)] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#C8A76A] uppercase whitespace-nowrap leading-none block"
+            >
               MOST SELECTED
-            </span>
+            </motion.h2>
           </div>
 
           {/* Interactive Products Slider */}

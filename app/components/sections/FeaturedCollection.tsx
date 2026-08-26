@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 interface CategoryItem {
@@ -67,7 +68,17 @@ export default function FeaturedCollection() {
       <div className="w-full mx-auto space-y-12 md:space-y-16 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center w-full  mx-auto gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
+          transition={{
+            duration: 1.1,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          style={{ willChange: "transform, opacity, filter" }}
+          className="flex flex-col items-center text-center w-full mx-auto gap-3"
+        >
           <div className="flex items-center space-x-0 rtl:space-x-reverse">
             <div className="h-[1px] w-12 bg-[#C8A76A]/60" />
             <Image
@@ -85,11 +96,8 @@ export default function FeaturedCollection() {
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#1D2418] font-light">
             {t("featuredCollection.title")}
           </h2>
-          <p className="text-sm md:text-base text-[#2B3325]/75 font-light leading-relaxed">
-            {t("featuredCollection.subtitle")}
-          </p>
           <div className="h-[1px] w-16 bg-[#2B3325]/40 mt-2" />
-        </div>
+        </motion.div>
 
         {/* Categories Showcase Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">

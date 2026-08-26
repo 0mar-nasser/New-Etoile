@@ -31,11 +31,11 @@ export default function Newsletter() {
         <h2 className="font-serif text-3xl md:text-5xl text-[#F4F2E8] font-light tracking-wide leading-tight">
           {t("home:newsletter.title")}
         </h2>
-        <p className="text-xs md:text-sm text-[#E7DFC9]/80 font-light max-w-md mx-auto leading-relaxed">
+        <p className="text-xs md:text-sm text-[#E7DFC9]/80 font-light max-w-lg mx-auto leading-relaxed">
           {t("home:newsletter.subtitle")}
         </p>
 
-        <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto pt-4 relative">
+        <form onSubmit={handleNewsletterSubmit} className="max-w-2xl mx-auto pt-4 relative">
           <div className="flex flex-col sm:flex-row items-stretch gap-3">
             <input
               type="email"
