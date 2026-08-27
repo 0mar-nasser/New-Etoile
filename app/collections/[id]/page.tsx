@@ -32,27 +32,28 @@ function resolveProduct(id: string): UnifiedProduct | null {
   // 1. Try CATALOG_ITEMS
   const catalogItem = CATALOG_ITEMS.find((item) => item.id === id);
   if (catalogItem) {
-    let sizes = [{ volume: "100ml Standard" }];
+    let sizes = [{ volume: "100 مل قياسي (100ml)" }];
     if (catalogItem.category === "bottles") {
       sizes = [
-        { volume: "30ml Flacon" },
-        { volume: "50ml Flacon" },
-        { volume: "75ml Flacon" },
-        { volume: "100ml Flacon" },
-        { volume: "150ml Flacon" },
+        { volume: "30 مل (30ml)" },
+        { volume: "50 مل (50ml)" },
+        { volume: "75 مل (75ml)" },
+        { volume: "100 مل (100ml)" },
+        { volume: "150 مل (150ml)" },
       ];
     } else if (catalogItem.category === "perfumes") {
       sizes = [
-        { volume: "50ml Concentrate" },
-        { volume: "100ml Concentrate" },
-        { volume: "200ml Sample Flacon" },
-        { volume: "1 Liter Bulk Canister" },
+        { volume: "عينة تجريبية 100 مل" },
+        { volume: "عبوة نصف كجم (500 مل)" },
+        { volume: "عبوة ألومنيوم 1 كجم" },
+        { volume: "تعبئة مصانع جملة (5 كجم)" },
       ];
     } else if (catalogItem.category === "caps" || catalogItem.category === "pumps") {
       sizes = [
-        { volume: "Single Sample" },
-        { volume: "Pack of 10 Units" },
-        { volume: "Bulk Carton (100 Units)" },
+        { volume: "عينة فردية تجريبية" },
+        { volume: "حزمة عينات (10 قطع)" },
+        { volume: "كرتون جملة (100 قطعة)" },
+        { volume: "توريد مصانع (1000 قطعة)" },
       ];
     }
 
@@ -65,9 +66,9 @@ function resolveProduct(id: string): UnifiedProduct | null {
       image: catalogItem.image,
       features: catalogItem.features,
       notesDetailed: catalogItem.category === "perfumes" ? {
-        head: "Bergamot, Dewy Green Notes, Pink Pepper",
-        heart: "Damask Rose, Grasse Jasmine, Floral Accord",
-        base: "Golden Amber, White Musk, Sandalwood Cream"
+        head: "برغموت إيطالي، نوتات خضراء ندية، فلفل وردي",
+        heart: "ورد دمشقي، ياسمين غراس، باقة زهور بيضاء",
+        base: "عنبر ذهبي دافئ، مسك أبيض، كريمة الصندل"
       } : undefined,
       sizes: sizes,
     };
@@ -249,11 +250,10 @@ export default function ProductDetailPage() {
                     <button
                       key={size.volume}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-5 py-2.5 rounded-full border text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
-                        selectedSize.volume === size.volume
+                      className={`px-5 py-2.5 rounded-full border text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer ${selectedSize.volume === size.volume
                           ? "bg-[#2B3325] border-[#C8A76A] text-[#F4F2E8] shadow-sm"
                           : "bg-transparent border-[#E7DFC9] text-[#2B3325] hover:border-[#C8A76A]/60"
-                      }`}
+                        }`}
                     >
                       {size.volume}
                     </button>

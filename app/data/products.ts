@@ -22,107 +22,107 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     id: "originelle",
-    name: "L'Étoile Originelle Concentrate",
-    tagline: "Signature French Floral Woody Perfume Oil Concentrate",
+    name: "خلاصة ليتوال أوريجينيل | L'Étoile Originelle",
+    tagline: "زيت عطري فرنسي زهري خشبي مركز وخام للعلامات الراقية",
     price: 185,
-    volume: "100ml Oil / Liter Bulk",
-    family: "Floral Woody Concentrate",
-    notes: ["Grasse Jasmine Absolute", "Warm Amber Resin", "New Caledonian Sandalwood"],
+    volume: "100 مل عينة / لتر جملة",
+    family: "زهري خشبي مركز (Floral Woody)",
+    notes: ["مطلق ياسمين غراس", "راتنج العنبر الدافئ", "صندل كاليدونيا الجديدة"],
     notesDetailed: {
-      head: "Italian Bergamot, Dewy Violet Leaves",
-      heart: "Grasse Jasmine Absolute, Damask Rose Extract",
-      base: "Golden Amber Crystals, White Musk, Sandalwood Cream"
+      head: "برغموت إيطالي، أوراق البنفسج الندية",
+      heart: "مطلق ياسمين غراس الفرنسي، مستخلص الورد الجوري",
+      base: "بلورات العنبر الذهبي، المسك الأبيض، كريمة خشب الصندل"
     },
     sizes: [
-      { volume: "100ml Sample", price: 120 },
-      { volume: "500ml Canister", price: 450 },
-      { volume: "1 Liter Aluminum Bottle", price: 820 }
+      { volume: "عينة 100 مل", price: 120 },
+      { volume: "عبوة 500 مل", price: 450 },
+      { volume: "عبوة ألومنيوم 1 لتر", price: 820 }
     ],
-    description: "High-purity perfume oil concentrate (30%+ dosage strength). Designed for luxury perfume brands looking for a sophisticated floral-woody signature. Perfectly pairs with our 100ml crystal glass flacons and 15mm crimp precision spray pumps.",
+    description: "زيت عطري خام فائق النقاوة والتركيز (Extrait de Parfum +30%). مطور للمصانع والبراندات الفاخرة الباحثة عن بصمة عطرية زهرية خشبية فريدة وثبات طويل المدى. يتوافق تماماً مع قواريرنا الزجاجية الكريستالية ومضخات الكبس المعيارية 15 مم.",
     image: "/images/perfumes/perfume_originelle.png"
   },
   {
     id: "bois",
-    name: "Bois de Nuit Essential Blend",
-    tagline: "Deep, mysterious woody-leather fragrance compound",
+    name: "مزيج بوا دو نوي الأساسي | Bois de Nuit",
+    tagline: "مركب عطري جلدي خشبي غامض وفخم",
     price: 195,
-    volume: "100ml Oil / Liter Bulk",
-    family: "Woody Leather Concentrate",
-    notes: ["Tuscan Leather Accord", "Virginia Cedarwood", "Haitian Vetiver"],
+    volume: "100 مل عينة / لتر جملة",
+    family: "جلدي خشبي مركز (Woody Leather)",
+    notes: ["أكورد الجلد التوسكاني", "خشب الأرز الفيرجيني", "نجيل الهند الهايتي"],
     notesDetailed: {
-      head: "Cardamom Oil, Smoked Black Pepper",
-      heart: "Tuscan Leather Accord, Virginia Cedarwood",
-      base: "Haitian Vetiver, Amberwood, Patchouli Bark"
+      head: "زيت حب الهال، الفلفل الأسود المدخن",
+      heart: "أكورد الجلد التوسكاني الفاخر، خشب الأرز من فيرجينيا",
+      base: "نجيل الهند الهايتي، خشب العنبر، لحاء الباتشولي"
     },
     sizes: [
-      { volume: "100ml Sample", price: 130 },
-      { volume: "500ml Canister", price: 480 },
-      { volume: "1 Liter Aluminum Bottle", price: 860 }
+      { volume: "عينة 100 مل", price: 130 },
+      { volume: "عبوة 500 مل", price: 480 },
+      { volume: "عبوة ألومنيوم 1 لتر", price: 860 }
     ],
-    description: "A commanding leather and cedarwood raw oil compound engineered for niche masculine and unisex perfume lines. High formulation stability, compatible with alcohol dilution up to 25% EDP / Extrait.",
+    description: "مركب زيت عطري خام طاغي من الجلود الفاخرة وخشب الأرز مصمم لخطوط العطور النيش الرجالية واليونيسكس. ثبات فائق واستقرار استثنائي في التركيب ومثالي للتخفيف الكحولي حتى 25% EDP / Extrait.",
     image: "/images/perfumes/perfume_bois_de_nuit.png"
   },
   {
     id: "or-rose",
-    name: "Or Rose Floral Compound",
-    tagline: "Golden Rose & Iris concentrated raw fragrance oil",
+    name: "مركب أور روز الزهري | Or Rose Floral",
+    tagline: "زيت عطري مركز من الورد الذهبي وجذور السوسن",
     price: 190,
-    volume: "100ml Oil / Liter Bulk",
-    family: "Floral Oriental Concentrate",
-    notes: ["Damask Rose Absolute", "Florence Iris Root", "Madagascar Vanilla"],
+    volume: "100 مل عينة / لتر جملة",
+    family: "زهري شرقي مركز (Floral Oriental)",
+    notes: ["مطلق الورد الدمشقي", "جذور السوسن الفلورنسي", "فانيلا مدغشقر"],
     notesDetailed: {
-      head: "Sicilian Mandarin, Pink Pepper Zest",
-      heart: "Damask Rose Absolute, Florence Iris, Peony Extract",
-      base: "Madagascar Vanilla Pod, White Patchouli, Tonka Bean"
+      head: "المندرين الصقلي، بشر الفلفل الوردي",
+      heart: "مطلق الورد الدمشقي، سوسن فلورنسا، مستخلص الفاوانيا",
+      base: "قرون فانيلا مدغشقر، الباتشولي الأبيض، حبوب التونكا"
     },
     sizes: [
-      { volume: "100ml Sample", price: 125 },
-      { volume: "500ml Canister", price: 460 },
-      { volume: "1 Liter Aluminum Bottle", price: 840 }
+      { volume: "عينة 100 مل", price: 125 },
+      { volume: "عبوة 500 مل", price: 460 },
+      { volume: "عبوة ألومنيوم 1 لتر", price: 840 }
     ],
-    description: "Luminous and romantic concentrated oil blend. Harvested Damask rose petals blended with precious iris root. Developed for high-end retail perfume lines looking for radiant, long-lasting floral sillage.",
+    description: "مزيج عطري مشرق ورومانسي فائق التركيز. بتلات الورد الدمشقي المنتقاة بعناية ممزوجة بجذور السوسن الثمينة. تم تطويره لخطوط العطور الفاخرة الباحثة عن فوحان زهري راقي يدوم طويلاً.",
     image: "/images/perfumes/perfume_or_rose.png"
   },
   {
     id: "fleur-secrete",
-    name: "Fleur Secrète Citrus Essence",
-    tagline: "Ethereal Italian Bergamot & Neroli raw perfume oil",
+    name: "خلاصة فلور سيكريت الحمضية | Fleur Secrète",
+    tagline: "زيت عطري أثيري من البرغموت الإيطالي وزهر البرتقال النيرولي",
     price: 180,
-    volume: "100ml Oil / Liter Bulk",
-    family: "Citrus Fresh Concentrate",
-    notes: ["Calabrian Bergamot", "Orange Blossom", "Solar White Musk"],
+    volume: "100 مل عينة / لتر جملة",
+    family: "حمضي منعش مركز (Citrus Fresh)",
+    notes: ["برغموت كالابريا", "زهر البرتقال (نيرولي)", "المسك الأبيض الشمسي"],
     notesDetailed: {
-      head: "Calabrian Bergamot, Lemon Zest, Neroli Oil",
-      heart: "Orange Blossom Absolute, Crisp Green Tea",
-      base: "White Musk Crystals, Solar Wood Accord, Soft Moss"
+      head: "برغموت كالابريا، بشر الليمون، زيت النيرولي",
+      heart: "مطلق زهر البرتقال، الشاي الأخضر المنعش",
+      base: "بلورات المسك الأبيض، أكورد الأخشاب الشمسية، طحلب السنديان الناعم"
     },
     sizes: [
-      { volume: "100ml Sample", price: 115 },
-      { volume: "500ml Canister", price: 430 },
-      { volume: "1 Liter Aluminum Bottle", price: 790 }
+      { volume: "عينة 100 مل", price: 115 },
+      { volume: "عبوة 500 مل", price: 430 },
+      { volume: "عبوة ألومنيوم 1 لتر", price: 790 }
     ],
-    description: "Fresh and sparkling citrus-floral fragrance concentrate. High cold-press bergamot content with neroli notes. Ideal for spring/summer perfume collections and fresh body mist formulations.",
+    description: "مركز عطري حمضي زهري منعش وفوار. نسبة عالية من زيت البرغموت المعصور على البارد مع نوتات النيرولي الفواحة. مثالي لمجموعات العطور الصيفية والربيعية ومعطرات الجسم الفاخرة.",
     image: "/images/perfumes/perfume_fleur_secrete.png"
   },
   {
     id: "originelle-intense",
-    name: "L'Étoile Originelle Extrait Pure",
-    tagline: "Ultra-concentrated pure perfume oil absolute (35%)",
+    name: "ليتوال أوريجينيل إكستري بيور | L'Étoile Originelle Extrait",
+    tagline: "مطلق زيت عطري نقي فائق التركيز بنسبة 35%",
     price: 215,
-    volume: "100ml Oil / Liter Bulk",
-    family: "Floral Woody Extrait",
-    notes: ["Double Jasmine Absolute", "Smoked Amber", "Sandalwood Cream"],
+    volume: "100 مل عينة / لتر جملة",
+    family: "زهري خشبي إكستري (Floral Woody Extrait)",
+    notes: ["مطلق الياسمين المزدوج", "العنبر المدخن", "كريمة خشب الصندل"],
     notesDetailed: {
-      head: "Bergamot Extract, Pink Pepper Oil",
-      heart: "Double Grasse Jasmine Absolute, Royal Rose",
-      base: "Smoked Amber Crystals, Sandalwood Cream, Vanilla Extract"
+      head: "مستخلص البرغموت النقي، زيت الفلفل الوردي",
+      heart: "مطلق ياسمين غراس المزدوج، الورد الملكي",
+      base: "بلورات العنبر المدخن، كريمة الصندل، مستخلص الفانيلا الخام"
     },
     sizes: [
-      { volume: "100ml Sample", price: 145 },
-      { volume: "500ml Canister", price: 520 },
-      { volume: "1 Liter Aluminum Bottle", price: 940 }
+      { volume: "عينة 100 مل", price: 145 },
+      { volume: "عبوة 500 مل", price: 520 },
+      { volume: "عبوة ألومنيوم 1 لتر", price: 940 }
     ],
-    description: "Our highest concentration raw fragrance oil. Formulated with double Grasse jasmine extract and smoked amber crystals. Designed for ultra-prestige Extrait de Parfum packaging with weighted metal caps.",
+    description: "أعلى تركيز من الزيوت العطرية الخام في تشكيلتنا. مركب بمستخلص مضاعف من ياسمين غراس وبلورات العنبر المدخن. مخصص لإنتاج عطور Extrait de Parfum فائقة الفخامة مع زجاجات وأغطية الزاماك الثقيلة.",
     image: "/images/perfumes/perfume_originelle_intense.png"
   }
 ];

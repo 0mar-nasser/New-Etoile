@@ -4,11 +4,17 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { usePathname } from "next/navigation";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 export default function Footer() {
+  const pathname = usePathname();
   const { t } = useTranslation(["footer", "navbar", "common"]);
   const currentYear = new Date().getFullYear();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <footer className="bg-[#1D2418] text-[#F4F2E8] pt-20 pb-10 border-t border-[#384233] relative z-20">
@@ -16,7 +22,7 @@ export default function Footer() {
 
         {/* Column 1: Logo & Statement */}
         <div className="lg:col-span-2 space-y-6 rtl:text-right">
-          <Link href="/" className="focus:outline-none flex flex-col items-start rtl:items-end group">
+          <Link href="/" className="focus:outline-none flex flex-col group">
             <Image
               src="/Logos/title-light.png"
               alt="Etoile logo"

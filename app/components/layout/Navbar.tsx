@@ -29,6 +29,11 @@ export default function Navbar() {
 
   const isHome = pathname === "/";
 
+  // Hide on admin routes
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   // Handle scroll detection
   useEffect(() => {
     const handleScroll = () => {

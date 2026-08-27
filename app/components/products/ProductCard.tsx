@@ -29,9 +29,8 @@ export default function ProductCard({
   return (
     <>
       <div
-        className={`bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40 ${
-          isRtl ? "text-right" : "text-left"
-        } ${className}`}
+        className={`bg-[#F4F2E8] rounded-[24px] border border-[#E7DFC9]/60 p-6 flex flex-col relative group shadow-sm transition-all duration-500 hover:shadow-xl hover:border-[#C8A76A]/40 ${isRtl ? "text-right" : "text-left"
+          } ${className}`}
       >
         {/* Image Container */}
         <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden flex items-center justify-center cursor-pointer mb-6 border border-[#E7DFC9]/50 bg-white/40">

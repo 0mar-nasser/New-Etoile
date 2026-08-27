@@ -107,7 +107,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         return item;
       })
       .filter((item) => item.quantity > 0);
-    
+
     saveCart(newCart);
   };
 

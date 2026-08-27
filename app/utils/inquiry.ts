@@ -12,10 +12,12 @@ export function getWhatsAppInquiryUrl(productName: string, specification?: strin
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
 
-export function getContactInquiryUrl(productName: string, category?: string): string {
+export function getContactInquiryUrl(productName: string, category?: string, spec?: string): string {
   const params = new URLSearchParams();
   params.set("subject", "product");
   params.set("product", productName);
   if (category) params.set("category", category);
+  if (spec) params.set("spec", spec);
   return `/contact?${params.toString()}`;
 }
+

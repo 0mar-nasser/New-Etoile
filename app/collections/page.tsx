@@ -66,28 +66,28 @@ function CatalogCard({
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col flex-grow text-left rtl:text-right space-y-2 p-5">
+      <div className="flex flex-col flex-grow text-left rtl:text-right space-y-2 p-4 sm:p-5">
         <span className="text-[10px] uppercase tracking-wider text-[#C8A76A] font-bold">
           {item.category} {item.subCategory ? `· ${item.subCategory}` : ""}
         </span>
         <Link
           href={`/collections/${item.id}`}
-          className="font-serif text-xl text-[#1D2418] font-light tracking-wide hover:text-[#C8A76A] transition-colors leading-snug"
+          className="font-serif text-lg sm:text-xl text-[#1D2418] font-light tracking-wide hover:text-[#C8A76A] transition-colors leading-snug"
         >
           {item.name}
         </Link>
         {/* Action Row - Inquire & View Details (No Prices) */}
-        <div className="flex items-center justify-between pt-4 border-t border-[#E7DFC9]/50 gap-2">
+        <div className="flex flex-wrap items-center justify-between pt-4 border-t border-[#E7DFC9]/50 gap-2.5 mt-auto">
           <Link
             href={`/collections/${item.id}`}
-            className="text-[11px] sm:text-xs tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5 transition-colors whitespace-nowrap"
+            className="text-[11px] sm:text-xs tracking-wider uppercase text-[#2B3325] hover:text-[#C8A76A] font-semibold border-b border-[#2B3325]/20 hover:border-[#C8A76A] pb-0.5 transition-colors"
           >
             {t("common:viewDetails")}
           </Link>
 
           <button
             onClick={() => onInquire(item)}
-            className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap"
+            className="luxury-btn bg-[#2B3325] hover:bg-[#C8A76A] text-[#F4F2E8] hover:text-[#1D2418] px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-sm hover:scale-105 active:scale-95 shrink-0"
           >
             {t("common:inquire")}
           </button>
