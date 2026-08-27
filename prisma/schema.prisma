@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id
+  name        String
+  category    String   // perfumes, bottles, caps, pumps
+  subCategory String?
+  description String   @default("")
+  price       Float    @default(0)
+  features    String[] @default([])
+  image       String   @default("/images/perfumes/perfume_originelle.png")
+  inStock     Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  inquiries   Inquiry[]
+
+  @@index([category])
+  @@index([subCategory])
+}
+
+model Inquiry {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  message     String
+  status      String   @default("PENDING") // PENDING, CONTACTED, COMPLETED, CANCELLED
+  productId   String?
+  productName String?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("ADMIN") // ADMIN, SUPERADMIN
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

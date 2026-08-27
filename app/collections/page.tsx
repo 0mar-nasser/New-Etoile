@@ -209,7 +209,7 @@ export default function CollectionsPage() {
 
         {/* Category Tabs */}
         {!searchQuery && (
-          <div className="flex justify-center border-b border-[#E7DFC9] overflow-x-auto gap-4 md:gap-8 pb-4">
+          <div className="sticky top-19 z-50 flex justify-center bg-[#F4F2E8] border-b border-[#E7DFC9] overflow-x-auto gap-4 md:gap-8 pb-4">
             {categoryTabs.map((tab) => (
               <button
                 key={tab.id}

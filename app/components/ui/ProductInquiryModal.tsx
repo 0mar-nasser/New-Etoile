@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { getWhatsAppInquiryUrl, getContactInquiryUrl } from "../../utils/inquiry";
+import { submitInquiry } from "../../actions/inquiries";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 export interface InquiryProduct {
@@ -50,7 +51,18 @@ export default function ProductInquiryModal({
     if (!formName.trim() || !formContact.trim()) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await submitInquiry({
+        name: formName,
+        contact: formContact,
+        quantity: formQty,
+        message: formMsg,
+        productId: product.id,
+        productName: product.name,
+      });
+    } catch (err) {
+      console.error(err);
+    }
     setIsSubmitting(false);
     setSubmitted(true);
   };
