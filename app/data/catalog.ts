@@ -9,6 +9,8 @@ export interface CatalogItem {
   price?: number;
   features?: string[];
   image?: string;
+  isNewArrival?: boolean;
+  isMostSelected?: boolean;
 }
 
 export const CATALOG_ITEMS: CatalogItem[] = catalogData as CatalogItem[];

@@ -40,7 +40,7 @@ export async function getAdminCatalog(): Promise<{ success: boolean; data: Catal
     });
 
     if (dbProducts && dbProducts.length > 0) {
-      const formatted: CatalogItem[] = dbProducts.map((p) => ({
+      const formatted: CatalogItem[] = (dbProducts as any[]).map((p: any) => ({
         id: p.id,
         name: p.name,
         category: p.category as any,
@@ -49,6 +49,8 @@ export async function getAdminCatalog(): Promise<{ success: boolean; data: Catal
         price: p.price,
         features: p.features,
         image: p.image,
+        isNewArrival: (p as any).isNewArrival ?? false,
+        isMostSelected: (p as any).isMostSelected ?? p.isFeatured ?? false,
       }));
       return { success: true, data: formatted };
     }
@@ -83,6 +85,8 @@ export async function getAdminProductById(id: string): Promise<{ success: boolea
           price: dbProduct.price,
           features: dbProduct.features,
           image: dbProduct.image,
+          isNewArrival: (dbProduct as any).isNewArrival ?? false,
+          isMostSelected: (dbProduct as any).isMostSelected ?? dbProduct.isFeatured ?? false,
         },
       };
     }
@@ -110,6 +114,8 @@ export async function createAdminProduct(productData: {
   price?: number;
   features?: string[];
   image?: string;
+  isNewArrival?: boolean;
+  isMostSelected?: boolean;
 }): Promise<{ success: boolean; data?: CatalogItem; error?: string }> {
   const isAuth = await checkAdminSession();
   if (!isAuth) {
@@ -139,6 +145,8 @@ export async function createAdminProduct(productData: {
       price: productData.price !== undefined ? Number(productData.price) : 0,
       features: productData.features && productData.features.length > 0 ? productData.features : [],
       image: productData.image?.trim() || "/images/perfumes/perfume_originelle.png",
+      isNewArrival: !!productData.isNewArrival,
+      isMostSelected: !!productData.isMostSelected,
     };
 
     // 1. Try PostgreSQL insertion
@@ -154,6 +162,7 @@ export async function createAdminProduct(productData: {
           features: newItem.features || [],
           image: newItem.image || "/images/perfumes/perfume_originelle.png",
           inStock: true,
+          isFeatured: newItem.isMostSelected || false,
         },
       });
     } catch (dbErr) {
@@ -165,8 +174,10 @@ export async function createAdminProduct(productData: {
     items.unshift(newItem);
     writeCatalogFile(items);
 
+    revalidatePath("/");
     revalidatePath("/collections");
     revalidatePath("/admin/products");
+    revalidatePath("/admin/showcase");
     revalidatePath("/admin");
 
     return { success: true, data: newItem };
@@ -198,6 +209,7 @@ export async function updateAdminProduct(
           price: updatedData.price !== undefined ? Number(updatedData.price) : undefined,
           features: updatedData.features,
           image: updatedData.image,
+          isFeatured: updatedData.isMostSelected !== undefined ? updatedData.isMostSelected : undefined,
         },
       });
     } catch (dbErr) {
@@ -214,14 +226,18 @@ export async function updateAdminProduct(
         ...updatedData,
         id,
         price: updatedData.price !== undefined ? Number(updatedData.price) : items[index].price,
+        isNewArrival: updatedData.isNewArrival !== undefined ? updatedData.isNewArrival : items[index].isNewArrival,
+        isMostSelected: updatedData.isMostSelected !== undefined ? updatedData.isMostSelected : items[index].isMostSelected,
       };
       writeCatalogFile(items);
     }
 
+    revalidatePath("/");
     revalidatePath("/collections");
     revalidatePath(`/collections/${id}`);
     revalidatePath("/admin/products");
     revalidatePath(`/admin/products/${id}`);
+    revalidatePath("/admin/showcase");
     revalidatePath("/admin");
 
     const returnItem = items[index] || { id, ...updatedData } as CatalogItem;
@@ -253,8 +269,10 @@ export async function deleteAdminProduct(id: string): Promise<{ success: boolean
     const filtered = items.filter((i) => i.id !== id);
     writeCatalogFile(filtered);
 
+    revalidatePath("/");
     revalidatePath("/collections");
     revalidatePath("/admin/products");
+    revalidatePath("/admin/showcase");
     revalidatePath("/admin");
 
     return { success: true };
@@ -296,5 +314,88 @@ export async function quickUpdatePrice(id: string, newPrice: number): Promise<{ 
     return { success: true };
   } catch {
     return { success: false, error: "فشل تحديث السعر" };
+  }
+}
+
+/**
+ * 1-Click Toggle for Homepage Highlights (New Arrivals / Most Selected)
+ */
+export async function toggleShowcaseStatus(
+  id: string,
+  field: "isNewArrival" | "isMostSelected",
+  value: boolean
+): Promise<{ success: boolean; error?: string }> {
+  const isAuth = await checkAdminSession();
+  if (!isAuth) {
+    return { success: false, error: "غير مصرح لك بالتعديل. يرجى تسجيل الدخول أولاً." };
+  }
+
+  try {
+    // 1. Try PostgreSQL
+    if (field === "isMostSelected") {
+      try {
+        await prisma.product.update({
+          where: { id },
+          data: { isFeatured: value },
+        });
+      } catch (dbErr) {
+        console.warn("PostgreSQL showcase update skipped:", dbErr);
+      }
+    }
+
+    // 2. Sync local JSON
+    const items = readCatalogFile();
+    const index = items.findIndex((i) => i.id === id);
+    if (index !== -1) {
+      items[index][field] = value;
+      writeCatalogFile(items);
+    }
+
+    revalidatePath("/");
+    revalidatePath("/admin/showcase");
+    revalidatePath("/admin/products");
+    revalidatePath("/admin");
+
+    return { success: true };
+  } catch (err) {
+    console.error("Error toggling showcase status:", err);
+    return { success: false, error: "حدث خطأ أثناء تعديل القسم المعروض" };
+  }
+}
+
+/**
+ * Get active showcase items for New Arrivals and Most Selected
+ */
+export async function getShowcaseProducts(): Promise<{
+  success: boolean;
+  newArrivals: CatalogItem[];
+  mostSelected: CatalogItem[];
+}> {
+  try {
+    const res = await getAdminCatalog();
+    if (!res.success || !res.data) {
+      return { success: false, newArrivals: [], mostSelected: [] };
+    }
+
+    const all = res.data;
+    let newArrivals = all.filter((i) => i.isNewArrival);
+    let mostSelected = all.filter((i) => i.isMostSelected);
+
+    // If none are explicitly set yet, fallback gracefully to initial items
+    if (newArrivals.length === 0) {
+      newArrivals = all.slice(0, 4);
+    }
+    if (mostSelected.length === 0) {
+      mostSelected = all.slice(0, 8);
+    }
+
+    return {
+      success: true,
+      newArrivals,
+      mostSelected,
+    };
+  } catch (err) {
+    console.error("Error fetching showcase products:", err);
+    return { success: false, newArrivals: [], mostSelected: [] };
   }
 }

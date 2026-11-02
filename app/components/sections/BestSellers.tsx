@@ -6,7 +6,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useCart } from "../../context/CartContext";
-import { PRODUCTS, Product } from "../../data/products";
+import { Product } from "../../data/products";
+import { CatalogItem } from "../../data/catalog";
+import { getShowcaseProducts } from "../../actions/admin-catalog";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
 import ProductInquiryModal from "../ui/ProductInquiryModal";
 
@@ -22,27 +24,39 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [displayItems, setDisplayItems] = useState<CatalogItem[]>([]);
   const isRtl = i18n.language?.startsWith("ar");
 
-  // Display all best selling products in slider
-  const bestSellers = PRODUCTS;
+  useEffect(() => {
+    async function loadShowcase() {
+      try {
+        const res = await getShowcaseProducts();
+        if (res.success && res.mostSelected && res.mostSelected.length > 0) {
+          setDisplayItems(res.mostSelected);
+        }
+      } catch {
+        // Fallback to default
+      }
+    }
+    loadShowcase();
+  }, [isRtl]);
+
+  const bestSellers = displayItems;
 
   const updateScrollState = () => {
     if (!sliderRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
 
-    // In RTL, scrollLeft can be negative or positive depending on the browser
     const scrollPos = Math.abs(scrollLeft);
     const maxScroll = scrollWidth - clientWidth - 5;
 
     setCanScrollLeft(scrollPos > 10);
     setCanScrollRight(scrollPos < maxScroll);
 
-    // Calculate approximate active card index
-    const cardWidth = 360;
+    const cardWidth = 340;
     const newIndex = Math.min(
       Math.max(0, Math.round(scrollPos / cardWidth)),
-      bestSellers.length - 1
+      Math.max(0, bestSellers.length - 1)
     );
     setActiveIndex(newIndex);
   };
@@ -59,27 +73,10 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
     };
   }, [bestSellers.length, isRtl]);
 
-  const handleScroll = (direction: "prev" | "next") => {
-    if (!sliderRef.current) return;
-    const container = sliderRef.current;
-    const scrollAmount = 380; // approximate width of one card + gap
-
-    // Direction calculation handling RTL
-    let delta = direction === "next" ? scrollAmount : -scrollAmount;
-    if (isRtl) {
-      delta = -delta;
-    }
-
-    container.scrollBy({
-      left: delta,
-      behavior: "smooth",
-    });
-  };
-
   const scrollToIndex = (index: number) => {
     if (!sliderRef.current) return;
     const container = sliderRef.current;
-    const cardWidth = 380;
+    const cardWidth = 340;
     const targetScroll = index * cardWidth;
 
     container.scrollTo({
@@ -90,12 +87,12 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
 
   return (
     <>
-      <section className="py-12 md:py-18 bg-[#1D2418] text-[#F4F2E8] relative overflow-hidden">
+      <section id="most-selected" className="py-12 md:py-18 bg-[#1D2418] text-[#F4F2E8] relative overflow-hidden">
         {/* Subtle Ambient Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[#C8A76A]/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#384233]/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-[92%]  mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        <div className="max-w-[92%] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
           {/* Section Header with Slider Navigation */}
           <div className="flex flex-col items-center justify-center text-center w-full mx-auto mb-6 md:mb-10 select-none overflow-hidden py-1">
             <motion.h2
@@ -104,7 +101,7 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
               viewport={{ once: true, amount: 0.1, margin: "0px 0px -40px 0px" }}
               transition={{
                 duration: 1.2,
-                ease: [0.16, 1, 0.3, 1], // Luxury cubic-bezier curve for buttery smooth deceleration
+                ease: [0.16, 1, 0.3, 1],
               }}
               style={{ willChange: "transform, opacity, filter" }}
               className="font-serif text-[clamp(1.6rem,7vw,7.5rem)] font-bold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] text-[#C8A76A] uppercase whitespace-nowrap leading-none block"
@@ -118,8 +115,23 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
             ref={sliderRef}
             className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-1 -mx-1"
           >
-            {bestSellers.map((product, index) => {
+            {bestSellers.map((product) => {
               const isFav = isInWishlist(product.id);
+              const tagCategory = product.subCategory || product.category;
+
+              const productForInquiry: Product = {
+                id: product.id,
+                name: product.name,
+                tagline: product.subCategory || "",
+                description: product.description,
+                price: product.price || 0,
+                volume: "100ml / 1L",
+                family: tagCategory,
+                notes: product.features || [],
+                notesDetailed: { head: "", heart: "", base: "" },
+                sizes: [{ volume: "Standard", price: product.price || 0 }],
+                image: product.image,
+              };
 
               return (
                 <div
@@ -133,7 +145,7 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover transition-transform duration-700 ease-out "
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 768px) 280px, 350px"
                       />
                     ) : (
@@ -144,6 +156,12 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
                         className="h-full"
                       />
                     )}
+
+                    {/* Badge: Best Choice */}
+                    <div className="absolute top-3.5 left-3.5 rtl:left-auto rtl:right-3.5 z-20 bg-[#1D2418]/90 text-[#C8A76A] border border-[#C8A76A]/40 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-md">
+                      ★ Featured
+                    </div>
+
                     {/* Wishlist Button */}
                     <button
                       onClick={() => toggleWishlist(product.id)}
@@ -168,9 +186,9 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
 
                     {/* Quick View Button on Image Hover */}
                     {onQuickView && (
-                      <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center z-10 ">
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center z-10 pointer-events-none group-hover:pointer-events-auto">
                         <button
-                          onClick={() => onQuickView(product)}
+                          onClick={() => onQuickView(productForInquiry)}
                           className="bg-[#F4F2E8] text-[#1D2418] hover:bg-[#C8A76A] px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold transition-colors duration-300 shadow-lg cursor-pointer mb-4"
                         >
                           {t("common:quickView")}
@@ -183,7 +201,7 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
                   <div className="space-y-3 rtl:text-right flex-1 flex flex-col justify-between p-5">
                     <div>
                       <span className="text-[10px] uppercase tracking-[0.2em] text-[#C8A76A] font-semibold block">
-                        {product.family}
+                        {tagCategory}
                       </span>
                       <h3 className="font-serif text-xl md:text-2xl font-light text-[#F4F2E8] group-hover:text-[#C8A76A] transition-colors mt-1 line-clamp-1">
                         {product.name}
@@ -191,14 +209,14 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
                     </div>
 
                     {/* Notes tags */}
-                    {product.notes && product.notes.length > 0 && (
+                    {product.features && product.features.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {product.notes.slice(0, 3).map((note) => (
+                        {product.features.slice(0, 3).map((feat, idx) => (
                           <span
-                            key={note}
-                            className="text-[9px] bg-[#1D2418] text-[#E7DFC9]/80 px-2.5 py-0.5 rounded-full border border-[#384233]/70 font-light"
+                            key={idx}
+                            className="text-[9px] bg-[#1D2418] text-[#E7DFC9]/80 px-2.5 py-0.5 rounded-full border border-[#384233]/70 font-light truncate max-w-[150px]"
                           >
-                            {note}
+                            {feat}
                           </span>
                         ))}
                       </div>
@@ -214,7 +232,7 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
                       </Link>
 
                       <button
-                        onClick={() => setInquiryProduct(product)}
+                        onClick={() => setInquiryProduct(productForInquiry)}
                         className="bg-[#C8A76A] hover:bg-[#E7DFC9] text-[#1D2418] px-4 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase font-bold transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
                       >
                         {t("common:inquire")}
@@ -227,19 +245,22 @@ export default function BestSellers({ onQuickView }: BestSellersProps) {
           </div>
 
           {/* Slider Pagination Dots Indicator */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {bestSellers.map((product, idx) => (
-              <button
-                key={product.id}
-                onClick={() => scrollToIndex(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
-                  ? "w-8 bg-[#C8A76A]"
-                  : "w-2 bg-[#384233] hover:bg-[#C8A76A]/50"
+          {bestSellers.length > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {bestSellers.map((product, idx) => (
+                <button
+                  key={product.id}
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === activeIndex
+                      ? "w-8 bg-[#C8A76A]"
+                      : "w-2 bg-[#384233] hover:bg-[#C8A76A]/50"
                   }`}
-              />
-            ))}
-          </div>
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

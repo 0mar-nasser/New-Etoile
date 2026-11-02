@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useCart } from "../../context/CartContext";
-import { PRODUCTS, Product } from "../../data/products";
+import { Product } from "../../data/products";
+import { CatalogItem } from "../../data/catalog";
+import { getShowcaseProducts } from "../../actions/admin-catalog";
 import ImagePlaceholder from "../ui/ImagePlaceholder";
 import ProductInquiryModal from "../ui/ProductInquiryModal";
 
@@ -19,55 +21,81 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
   const { toggleWishlist, isInWishlist } = useCart();
   const isRtl = i18n.language === "ar";
   const [inquiryProduct, setInquiryProduct] = useState<Product | null>(null);
+  const [displayItems, setDisplayItems] = useState<CatalogItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const baseProduct = PRODUCTS.find((p) => p.id === "originelle-intense") || PRODUCTS[0];
-
-  const upcomingProducts: Product[] = [
+  // Fallback defaults in case no items exist yet
+  const defaultItems: CatalogItem[] = [
     {
-      ...baseProduct,
       id: "originelle-intense",
       name: isRtl ? "أوريجينيل إنتنس" : "Originelle Intense",
-      family: isRtl ? "خلاصة شرقية" : "Oriental Extract",
-      notes: ["Oud", "Amber", "Rose"],
+      category: "perfumes",
+      subCategory: isRtl ? "خلاصة شرقية" : "Oriental Extract",
+      features: ["Oud", "Amber", "Rose"],
       description: isRtl
         ? "عطر فرنسي فاخر بتركيز عالٍ ونوتات غنية تدوم طويلاً."
         : "A rich luxury French fragrance with high sillage and longevity.",
-      image: baseProduct.image || "/images/perfumes/perfume_or_rose.png",
+      image: "/images/perfumes/perfume_or_rose.png",
+      price: 185,
     },
     {
-      ...baseProduct,
       id: "noir-etoile",
       name: isRtl ? "نوار إتوال" : "Noir Étoile",
-      family: isRtl ? "أخشاب شرقية" : "Woody Oriental",
-      notes: ["Oud", "Leather", "Patchouli"],
+      category: "perfumes",
+      subCategory: isRtl ? "أخشاب شرقية" : "Woody Oriental",
+      features: ["Oud", "Leather", "Patchouli"],
       description: isRtl
         ? "عطر خشبي غامض يتألق بنفحات الجلود الفاخرة ودفء العود الشرقي الأصيل."
         : "A mysterious woody fragrance with rich leather accords and deep oriental warmth.",
       image: "/images/perfumes/perfume_bois_de_nuit.png",
+      price: 195,
     },
     {
-      ...baseProduct,
       id: "velvet-rose",
       name: isRtl ? "فلفت روز" : "Velvet Rose",
-      family: isRtl ? "زهري ناعم" : "Velvet Floral",
-      notes: ["Rose", "Peony", "White Musk"],
+      category: "perfumes",
+      subCategory: isRtl ? "زهري ناعم" : "Velvet Floral",
+      features: ["Rose", "Peony", "White Musk"],
       description: isRtl
         ? "عطر زهري راقٍ يفوح ببتلات الورد المخملي والمسك الأبيض النقي."
         : "An elegant floral fragrance wrapped in velvety rose petals and soft white musk.",
       image: "/images/perfumes/perfume_or_rose.png",
+      price: 175,
     },
     {
-      ...baseProduct,
       id: "ambre-imperial",
       name: isRtl ? "عنبر إمبريال" : "Ambre Impérial",
-      family: isRtl ? "عنبر بلسمي" : "Amber Warmth",
-      notes: ["Amber", "Bourbon Vanilla", "Sandalwood"],
+      category: "perfumes",
+      subCategory: isRtl ? "عنبر بلسمي" : "Amber Warmth",
+      features: ["Amber", "Bourbon Vanilla", "Sandalwood"],
       description: isRtl
         ? "تركيز عنبري دافئ غني بفانيليا البوربون النادرة وخشب الصندل الكريمي."
         : "A warm golden amber concentrate infused with rare bourbon vanilla and creamy sandalwood.",
       image: "/images/perfumes/perfume_discovery_set.png",
+      price: 210,
     },
   ];
+
+  useEffect(() => {
+    async function loadShowcase() {
+      setLoading(true);
+      try {
+        const res = await getShowcaseProducts();
+        if (res.success && res.newArrivals && res.newArrivals.length > 0) {
+          setDisplayItems(res.newArrivals);
+        } else {
+          setDisplayItems(defaultItems);
+        }
+      } catch {
+        setDisplayItems(defaultItems);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadShowcase();
+  }, [isRtl]);
+
+  const itemsToRender = displayItems.length > 0 ? displayItems : defaultItems;
 
   return (
     <>
@@ -94,15 +122,30 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
             </motion.h2>
           </div>
 
-          {/* Cards Grid with Requested Card Design */}
+          {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 mt-6">
-            {upcomingProducts.map((product) => {
+            {itemsToRender.map((product) => {
               const isFav = isInWishlist(product.id);
+              const tagCategory = product.subCategory || product.category;
+
+              const productForInquiry: Product = {
+                id: product.id,
+                name: product.name,
+                tagline: product.subCategory || "",
+                description: product.description,
+                price: product.price || 0,
+                volume: "100ml / 1L",
+                family: tagCategory,
+                notes: product.features || [],
+                notesDetailed: { head: "", heart: "", base: "" },
+                sizes: [{ volume: "Standard", price: product.price || 0 }],
+                image: product.image,
+              };
 
               return (
                 <div
                   key={product.id}
-                  className="w-full group relative flex flex-col justify-between bg-[#242D1F]/60 rounded-3xl border border-[#384233]/70 hover:border-[#C8A76A]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50 "
+                  className="w-full group relative flex flex-col justify-between bg-[#242D1F]/60 rounded-3xl border border-[#384233]/70 hover:border-[#C8A76A]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50"
                 >
                   {/* Top Image Container */}
                   <div className="relative aspect-[2/2] w-full rounded-2xl overflow-hidden bg-[#161C12] border border-[#384233]/50">
@@ -122,6 +165,11 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
                         className="h-full"
                       />
                     )}
+
+                    {/* Badge: New */}
+                    <div className="absolute top-3.5 left-3.5 rtl:left-auto rtl:right-3.5 z-20 bg-gradient-to-r from-[#C8A76A] to-[#D4AF37] text-[#141A12] px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider shadow-md">
+                      New
+                    </div>
 
                     {/* Wishlist Button */}
                     <button
@@ -149,7 +197,7 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
                     {onQuickView && (
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center z-10 pointer-events-none group-hover:pointer-events-auto">
                         <button
-                          onClick={() => onQuickView(product)}
+                          onClick={() => onQuickView(productForInquiry)}
                           className="bg-[#F4F2E8] text-[#1D2418] hover:bg-[#C8A76A] px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold transition-colors duration-300 shadow-lg cursor-pointer mb-4"
                         >
                           {t("common:quickView")}
@@ -162,7 +210,7 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
                   <div className="space-y-3 rtl:text-right flex-1 flex flex-col justify-between p-5">
                     <div>
                       <span className="text-[10px] uppercase tracking-[0.2em] text-[#C8A76A] font-semibold block">
-                        {product.family}
+                        {tagCategory}
                       </span>
                       <h3 className="font-serif text-xl md:text-2xl font-light text-[#F4F2E8] group-hover:text-[#C8A76A] transition-colors mt-1 line-clamp-1">
                         {product.name}
@@ -170,14 +218,14 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
                     </div>
 
                     {/* Notes tags */}
-                    {product.notes && product.notes.length > 0 && (
+                    {product.features && product.features.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        {product.notes.slice(0, 3).map((note) => (
+                        {product.features.slice(0, 3).map((feat, idx) => (
                           <span
-                            key={note}
-                            className="text-[9px] bg-[#1D2418] text-[#E7DFC9]/80 px-2.5 py-0.5 rounded-full border border-[#384233]/70 font-light"
+                            key={idx}
+                            className="text-[9px] bg-[#1D2418] text-[#E7DFC9]/80 px-2.5 py-0.5 rounded-full border border-[#384233]/70 font-light truncate max-w-[150px]"
                           >
-                            {note}
+                            {feat}
                           </span>
                         ))}
                       </div>
@@ -193,7 +241,7 @@ export default function NewArrivals({ onQuickView }: NewArrivalsProps) {
                       </Link>
 
                       <button
-                        onClick={() => setInquiryProduct(product)}
+                        onClick={() => setInquiryProduct(productForInquiry)}
                         className="bg-[#C8A76A] hover:bg-[#E7DFC9] text-[#1D2418] px-4 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase font-bold transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
                       >
                         {t("common:inquire")}

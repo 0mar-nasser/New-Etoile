@@ -44,6 +44,8 @@ export default function AddProductPage() {
   const [newFeature, setNewFeature] = useState("");
   const [image, setImage] = useState("/images/perfumes/perfume_originelle.png");
   const [customImageUrl, setCustomImageUrl] = useState("");
+  const [isNewArrival, setIsNewArrival] = useState(false);
+  const [isMostSelected, setIsMostSelected] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -81,6 +83,8 @@ export default function AddProductPage() {
         price: price === "" ? 0 : Number(price),
         features,
         image: finalImage,
+        isNewArrival,
+        isMostSelected,
       });
 
       if (res.success) {
@@ -284,22 +288,56 @@ export default function AddProductPage() {
                 );
               })}
             </div>
+            {/* Live Preview */}
+            <div className="flex items-center gap-4 bg-[#1D2418] p-3 rounded-xl border border-[#384233] mt-4">
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-black/40 border border-[#384233] flex-shrink-0">
+                <Image
+                  src={customImageUrl.trim() || image}
+                  alt="preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="text-xs text-[#E7DFC9]/70">
+                <p className="text-[#C8A76A] font-semibold">الصورة المختارة</p>
+                <p className="truncate max-w-lg text-[11px] opacity-70">
+                  {customImageUrl.trim() || image}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-[#1D2418] p-3 rounded-xl border border-[#384233]">
-            <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-black/40 border border-[#384233] flex-shrink-0">
-              <Image
-                src={customImageUrl.trim() || image}
-                alt="preview"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-xs text-[#E7DFC9]/70">
-              <p className="text-[#C8A76A] font-semibold">الصورة المختارة</p>
-              <p className="truncate max-w-lg text-[11px] opacity-70">
-                {customImageUrl.trim() || image}
-              </p>
+          {/* Row 6: Homepage Showcase Toggles */}
+          <div className="space-y-3 pt-4 border-t border-[#263120]">
+            <label className="text-xs text-[#C8A76A] font-semibold block">
+              أقسام العرض في الصفحة الرئيسية (Homepage Showcase)
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label className="flex items-center gap-3 p-4 rounded-2xl bg-[#1D2418] border border-[#384233] hover:border-[#C8A76A]/50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={isNewArrival}
+                  onChange={(e) => setIsNewArrival(e.target.checked)}
+                  className="w-4 h-4 rounded accent-[#C8A76A]"
+                />
+                <div>
+                  <p className="text-xs font-semibold text-[#F4F2E8]">⚡ وصل حديثاً (NEW ARRIVALS)</p>
+                  <p className="text-[11px] text-[#E7DFC9]/60">إبراز الصنف في كروت المنتجات الحديثة أعلى الرئيسية</p>
+                </div>
+              </label>
+
+              <label className="flex items-center gap-3 p-4 rounded-2xl bg-[#1D2418] border border-[#384233] hover:border-[#C8A76A]/50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={isMostSelected}
+                  onChange={(e) => setIsMostSelected(e.target.checked)}
+                  className="w-4 h-4 rounded accent-[#C8A76A]"
+                />
+                <div>
+                  <p className="text-xs font-semibold text-[#F4F2E8]">⭐ الأكثر طلباً (MOST SELECTED)</p>
+                  <p className="text-[11px] text-[#E7DFC9]/60">إبراز الصنف في سلايدر الأكثر طلباً في الرئيسية</p>
+                </div>
+              </label>
             </div>
           </div>
         </div>

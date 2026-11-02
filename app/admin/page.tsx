@@ -136,7 +136,13 @@ export default function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/admin/showcase"
+            className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#1D2418] border border-[#C8A76A]/50 text-[#C8A76A] hover:bg-[#C8A76A]/10 text-xs font-bold transition-all shadow-md"
+          >
+            <span>⭐ تخصيص أقسام الرئيسية (New Arrivals & Most Selected)</span>
+          </Link>
           <button
             onClick={handleOpenAddModal}
             className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-[#C8A76A] to-[#D4AF37] text-[#141A12] font-bold text-xs shadow-lg shadow-[#C8A76A]/25 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"

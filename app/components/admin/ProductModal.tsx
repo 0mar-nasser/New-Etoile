@@ -55,6 +55,8 @@ export default function ProductModal({
   const [newFeature, setNewFeature] = useState("");
   const [image, setImage] = useState("/images/perfumes/perfume_originelle.png");
   const [customImageUrl, setCustomImageUrl] = useState("");
+  const [isNewArrival, setIsNewArrival] = useState(false);
+  const [isMostSelected, setIsMostSelected] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -69,6 +71,8 @@ export default function ProductModal({
       setFeatures(product.features || []);
       setImage(product.image || "/images/perfumes/perfume_originelle.png");
       setCustomImageUrl(product.image?.startsWith("http") ? product.image : "");
+      setIsNewArrival(!!product.isNewArrival);
+      setIsMostSelected(!!product.isMostSelected);
     } else {
       setName("");
       setCategory("perfumes");
@@ -78,6 +82,8 @@ export default function ProductModal({
       setFeatures([]);
       setImage("/images/perfumes/perfume_originelle.png");
       setCustomImageUrl("");
+      setIsNewArrival(false);
+      setIsMostSelected(false);
     }
     setError(null);
   }, [product, isOpen]);
@@ -117,6 +123,8 @@ export default function ProductModal({
       price: price === "" ? 0 : Number(price),
       features,
       image: finalImage,
+      isNewArrival,
+      isMostSelected,
     };
 
     try {
@@ -351,6 +359,40 @@ export default function ProductModal({
                   {customImageUrl.trim() || image}
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Row 6: Homepage Showcase Toggles */}
+          <div className="space-y-3 pt-3 border-t border-[#384233]">
+            <label className="text-xs text-[#C8A76A] font-medium block">
+              أقسام العرض في الصفحة الرئيسية (Homepage Showcase)
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-[#1D2418] border border-[#384233] hover:border-[#C8A76A]/50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={isNewArrival}
+                  onChange={(e) => setIsNewArrival(e.target.checked)}
+                  className="w-4 h-4 rounded accent-[#C8A76A]"
+                />
+                <div>
+                  <p className="text-xs font-semibold text-[#F4F2E8]">⚡ وصل حديثاً (NEW ARRIVALS)</p>
+                  <p className="text-[10px] text-[#E7DFC9]/60">إبراز الصنف في كروت المنتجات الحديثة</p>
+                </div>
+              </label>
+
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-[#1D2418] border border-[#384233] hover:border-[#C8A76A]/50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={isMostSelected}
+                  onChange={(e) => setIsMostSelected(e.target.checked)}
+                  className="w-4 h-4 rounded accent-[#C8A76A]"
+                />
+                <div>
+                  <p className="text-xs font-semibold text-[#F4F2E8]">⭐ الأكثر طلباً (MOST SELECTED)</p>
+                  <p className="text-[10px] text-[#E7DFC9]/60">إبراز الصنف في سلايدر الأكثر طلباً</p>
+                </div>
+              </label>
             </div>
           </div>
 
